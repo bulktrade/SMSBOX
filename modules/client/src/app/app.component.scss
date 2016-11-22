@@ -1,0 +1,158 @@
+//  Bootstrap settings
+.container, .row {
+    padding: 0;
+}
+
+login,
+signup {
+    height: 100%;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ag-selection-checkbox {
+    > img {
+        padding-left: 2px;
+    }
+}
+
+.mode_edit-icon {
+    padding: 0 3px 0 2px;
+}
+
+.paginator {
+    > div {
+        border-color: #929292;
+    }
+}
+
+.main-wrap {
+    background: #fff;
+    padding: 20px;
+    margin-top: 60px;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+#admin .form-horizontal .form-group,
+#login .form-horizontal .form-group,
+#signup .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#admin .form-control,
+#login .form-control,
+#signup .form-control {
+    border-radius: 0;
+    box-shadow: none !important;
+    outline: none;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding-left: 15px;
+
+    &:active, &:focus {
+        box-shadow: 0 0 10px 0 rgba(0, 150, 136, 0.32);
+        border-color: #009688;
+    }
+
+    &.error {
+        border-bottom-color: #b70018;
+    }
+}
+
+#admin .control-label,
+#login .control-label,
+#signup .control-label {
+    font-weight: 500;
+    font-size: 15px;
+    padding-bottom: 0;
+    padding-left: 15px;
+    text-align: left !important;
+}
+
+.btn-material-primary {
+    background: #009688;
+    color: rgba(255,255,255, 0.84);
+    border-radius: 2px;
+    outline: none !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    &:hover {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+
+    &:active {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+
+    &:focus {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+}
+
+.backButton {
+    background: #555;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    outline: none !important;
+
+    &:hover {
+        color: #fff;
+        background: #3e3e3e;
+    }
+
+    &:active {
+        background: #313131;
+    }
+
+    &:focus {
+        color: #fff;
+        background: #313131;
+    }
+}
+
+#admin .control-label button,
+#login .control-label button {
+    background-color: #009688;
+    border-radius: 0;
+    border: none;
+    padding: 0 16px;
+    line-height: 36px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    color: #fff !important;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: transparent;
+}
+
+.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header, .navbar-nav {
+    margin: 0;
+}
+
+//  Major rules
+body {
+    background-color: #E9ECF3 !important;
+}
+
+.titlePage {
+    padding: 20px;
+    color: #fff;
+    background-color: #009688;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .main-wrap {
+        margin: 10px 0 30px 0;
+    }
+}

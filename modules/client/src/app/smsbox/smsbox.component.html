@@ -1,0 +1,56 @@
+<div class="main-wrap">
+	<div class="inner-wrap">
+		<div class="row">
+			<div class="top-title">
+				<div class="row">
+					<div class="title col-xs-5 col-sm-3">{{'smsbox.title' | translate}}</div>
+					<div class="login col-xs-7 col-sm-9">
+						<button [routerLink]="['/login']" pButton type="text" icon="fa-user" label="{{'smsbox.login' |
+							translate}}"></button>
+						<button [routerLink]="['/signup']" pButton type="text" icon="fa-sign-in" label="{{'smsbox.signup' |
+							translate}}"></button>
+					</div>
+				</div>
+			</div>
+			<form role="form" (ngSubmit)="onSubmit()" #smsboxForm="ngForm" novalidate>
+				<div class="form-group row">
+					<label for="country" class="col-sm-2 col-form-label">{{'smsbox.country' |
+						translate}}</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="country" name="country" #country="ngModel"
+						       [(ngModel)]="model.country"
+						       placeholder="{{'smsbox.country' | translate}}"
+						       autocomplete="false">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="phoneNumber" class="col-sm-2 col-form-label">{{'smsbox.phoneNumber' |
+						translate}}</label>
+					<div class="col-sm-10">
+						<input type="text" [(ngModel)]="model.phoneNumber" class="form-control" id="phoneNumber"
+						       name="phoneNumber" #phoneNumber="ngModel"
+						       placeholder="{{'smsbox.phoneNumber' | translate}}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="body" class="col-sm-2 col-form-label">{{'smsbox.body' |
+						translate}}</label>
+					<div class="col-sm-10 col-xl-10">
+						<textarea type="text" [(ngModel)]="model.body" class="form-control" id="body"
+						          name="body" #body="ngModel" placeholder="{{'smsbox.body' | translate}}">
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<button type="submit"
+						        class="btn btn-material-primary pull-right col-xs-12 col-sm-2 updateProfile"
+						        [disabled]="!smsboxForm.form.valid">{{'smsbox.sendButton' |
+							translate}}
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,37 @@
+<div class="wrap">
+	<div id="login" class="container">
+		<div class="title">
+			{{'login.title' | translate}}
+		</div>
+		<form role="form" (ngSubmit)="onSubmit($event)" #loginForm="ngForm" novalidate>
+			<div class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2">
+						{{'login.username' | translate}}
+					</label>
+					<input type="text" class="form-control" required
+					       [(ngModel)]="model.username" id="username" name="username"
+					       autocomplete="on" #username="ngModel">
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2">
+						{{"login.password" | translate}}
+					</label>
+					<input type="password" class="form-control" required id="password"
+					       maxlength="64" [(ngModel)]="model.password" name="password"
+					       autocomplete="on" #password="ngModel">
+				</div>
+				<div class="form-group">
+					<button type="button" (click)="back()" class="backButton btn pull-left col-xs-12 col-sm-4 col-md-4">
+						{{'BACK_BUTTON' | translate}}
+					</button>
+
+					<button type="submit" class="submitButton btn btn-material-primary pull-right col-xs-12 col-sm-4 col-md-4"
+					        [disabled]="!loginForm.form.valid">
+						{{'login.submit' | translate}}
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

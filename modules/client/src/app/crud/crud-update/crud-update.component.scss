@@ -1,0 +1,16 @@
+#crud-create-window {
+
+    .form-group {
+        &:first-child {
+            padding-top: 15px;
+        }
+    }
+
+    .bottom-panel {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 15px;
+        padding-bottom: 6px;
+    }
+
+}

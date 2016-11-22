@@ -1,0 +1,88 @@
+<navigation-bar></navigation-bar>
+
+<div class="main-wrap">
+    <div class="inner-wrap">
+        <breadcrumb></breadcrumb>
+
+        <div class="charts row">
+            <div class="status inbox col-sm-4">
+                <div class="wrap">
+                    <div class="title">
+                        <span>
+                            SMS send
+                        </span>
+                        <i class="material-icons">send</i>
+                    </div>
+                    <div class="data">
+                        <div class="wrap">
+                            <div class="data-title">
+                                SMS send list
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status outbox col-sm-4">
+                <div class="wrap">
+                    <div class="title">
+                        <span>
+                            SMS received
+                        </span>
+                        <i class="material-icons">call_received</i>
+                    </div>
+                    <div class="data">
+                        <div class="wrap">
+                            <div class="data-title">
+                                SMS send list
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="status balance col-sm-4">
+                <div class="wrap">
+                        <div class="title">
+                        <span>
+                            Balance
+                        </span>
+                        <i class="material-icons">account_balance</i>
+                    </div>
+                    <div class="data">
+                        <div class="wrap">
+                            <div class="data-title">
+                                SMS send list
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart send col-sm-6">
+                <div class="wrap">
+                    <div class="title">
+                        <span>
+                            Send statistic
+                        </span>
+                        <i class="material-icons">call_made</i>
+                    </div>
+                    <div class="data">
+                        <line-chart [chartType]="'Serial chart'"></line-chart>
+                    </div>
+                </div>
+            </div>
+            <div class="chart received col-sm-6">
+                <div class="wrap">
+                    <div class="title">
+                        <span>
+                            Received statistic
+                        </span>
+                        <i class="material-icons">call_received</i>
+                    </div>
+                    <div class="data">
+                      <line-chart [chartType]="'Bar chart'"></line-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

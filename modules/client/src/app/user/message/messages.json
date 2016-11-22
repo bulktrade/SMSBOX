@@ -1,0 +1,22 @@
+{
+    "messages": [
+        {
+            "telephoneNumber": "+380983417360",
+            "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus culpa esse hic ipsum nesciunt nobis quod saepe tempora! Aliquid, incidunt?",
+            "date": "Oct 15",
+            "state": "received"
+        },
+        {
+            "telephoneNumber": "+380983417360",
+            "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus culpa esse hic ipsum nesciunt nobis quod saepe tempora! Aliquid, incidunt?",
+            "date": "Dec 15",
+            "state": "outgoing"
+        },
+        {
+            "telephoneNumber": "+380983417361",
+            "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus culpa esse hic ipsum nesciunt nobis quod saepe tempora! Aliquid, incidunt?",
+            "date": "Jun 15",
+            "state": "received"
+        }
+    ]
+}

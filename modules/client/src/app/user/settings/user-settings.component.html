@@ -1,0 +1,108 @@
+<div id="settingsWindow">
+
+	<navigation-bar></navigation-bar>
+
+	<div class="main-wrap">
+		<div class="inner-wrap">
+			<breadcrumb></breadcrumb>
+
+			<div class="card">
+				<h3 class="card-header titlePage">{{'userSettings.title' |
+					translate}}</h3>
+				<div class="card-block">
+					<form role="form" (ngSubmit)="onSubmit(settingsForm)" #settingsForm="ngForm" novalidate>
+						<div class="form-group row">
+							<label for="gender" class="col-sm-2 col-form-label">{{'userSettings.gender' |
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="gender" name="gender" #gender="ngModel"
+								       [(ngModel)]="model.gender"
+								       placeholder="{{'userSettings.gender' | translate}}"
+								       autocomplete="false">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="firstname" class="col-sm-2 col-form-label">{{'userSettings.firstname' |
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="text" [(ngModel)]="model.firstname" class="form-control" id="firstname"
+								       name="firstname" #firstname="ngModel"
+								       placeholder="{{'userSettings.firstname' | translate}}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="surname" class="col-sm-2 col-form-label">{{'userSettings.surname' |
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="text" [(ngModel)]="model.surname" class="form-control" id="surname"
+								       name="surname" #surname="ngModel"
+								       placeholder="{{'userSettings.surname' | translate}}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="emailAddress" class="col-sm-2 col-form-label">{{'userSettings.emailAddress' |
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="text" [(ngModel)]="model.emailAddress" class="form-control"
+								       id="emailAddress" name="emailAddress" #emailAddress="ngModel"
+								       placeholder="{{'userSettings.emailAddress' | translate}}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="mobilePhoneNumber" class="col-sm-2 col-form-label">
+								{{'userSettings.mobilePhoneNumber'| translate}}</label>
+							<div class="col-sm-10">
+								<input type="text" [(ngModel)]="model.mobilePhoneNumber" class="form-control"
+								       id="mobilePhoneNumber" name="mobilePhoneNumber" #mobilePhoneNumber="ngModel"
+								       placeholder="{{'userSettings.mobilePhoneNumber' | translate}}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="password" class="col-sm-2 col-form-label">{{'userSettings.password' |
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="password" [(ngModel)]="model.password" class="form-control" id="password"
+								       name="password" #password="ngModel"
+								       placeholder="{{'userSettings.password' | translate}}"
+								       validateEqual="confirmPassword" reverse="true">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="confirmPassword" class="col-sm-2 col-form-label">{{'userSettings.confirmPassword'
+								|
+								translate}}</label>
+							<div class="col-sm-10">
+								<input type="password" [(ngModel)]="model.confirmPassword" class="form-control"
+								       [ngClass]="{invalid: confirmPassword.invalid}"
+								       id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel"
+								       placeholder="{{'userSettings.confirmPassword' | translate}}"
+								       validateEqual="password" reverse="false">
+								<small class="form-text text-muted hint" *ngIf="confirmPassword.invalid">
+									{{'userSettings.confirmPasswordHint' | translate}}
+								</small>
+							</div>
+						</div>
+						<div class="info">
+							<alert type="danger" dismissible="true" *ngIf="messageModel.errorMessage" (close)="messageModel.errorMessage=false">
+								{{ 'userSettings.dangerMessage' | translate }}
+							</alert>
+							<alert type="success" dismissible="true" *ngIf="messageModel.successMessage" (close)="messageModel.successMessage=false">
+								{{ 'userSettings.successMessage' | translate }}
+							</alert>
+						</div>
+						<div class="form-group row">
+							<div class="col-sm-12 col-md-12 col-lg-12">
+								<button type="submit"
+								        class="btn btn-material-primary pull-right col-xs-12 col-sm-2 updateProfile"
+								        [disabled]="!settingsForm.form.valid">{{'userSettings.updateProfile' |
+									translate}}
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

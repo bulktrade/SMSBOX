@@ -1,0 +1,25 @@
+<div id="chat-window" style="position: relative; background: #e5e5e5;">
+	<div class="menu">
+		<div class="back">
+			<i class="fa fa-chevron-left back-icon" (click)="location.back()"></i>
+			<i class="fa fa-user user-icon" aria-hidden="true"></i>
+			<div class="name">{{ telephoneNumber }}</div>
+		</div>
+	</div>
+	<ol class="chat">
+		<li [ngClass]="{other: message.state === 'received', self: message.state === 'outgoing'}"
+		    *ngFor="let message of messages">
+
+			<div class="avatar"></div>
+
+			<div class="msg">
+				<p>{{ message.messageText }}</p>
+				<time>{{ message.date }}</time>
+			</div>
+		</li>
+	</ol>
+	<form role="form" (ngSubmit)="onSubmit()">
+		<input class="textarea" type="text" placeholder="Type here!"/>
+		<i (click)="onSubmit()" class="material-icons send-icon">send</i>
+	</form>
+</div>

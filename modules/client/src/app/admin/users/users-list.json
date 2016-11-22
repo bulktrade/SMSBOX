@@ -1,0 +1,120 @@
+{
+    "columnDefs": [
+        {
+            "headerName": "ID",
+            "field": "id",
+            "width": 198
+        },
+        {
+            "headerName": "Name",
+            "field": "name",
+            "width": 198,
+            "editable": true
+        },
+        {
+            "headerName": "Mood",
+            "field": "mood",
+            "editable": true,
+            "width": 150
+        },
+        {
+            "headerName": "Numeric",
+            "field": "number",
+            "editable": true,
+            "width": 150
+        }
+    ],
+    "rowData": [
+        {
+            "id": "1",
+            "name": "Bob",
+            "mood": "Sad",
+            "happy": "Happy",
+            "number": 10
+        },
+        {
+            "id": "2",
+            "name": "Harry",
+            "happy": "Sad",
+            "number": 3
+        },
+        {
+            "id": "3",
+            "name": "Sally",
+            "happy": "Happy",
+            "number": 20
+        },
+        {
+            "id": "4",
+            "name": "Mary",
+            "mood": "Sad",
+            "number": 5
+        },
+        {
+            "id": "5",
+            "name": "John",
+            "mood": "Happy",
+            "number": 15
+        },
+        {
+            "id": "6",
+            "name": "Bob",
+            "happy": "Happy",
+            "number": 10
+        },
+        {
+            "id": "7",
+            "name": "Harry",
+            "happy": "Sad",
+            "number": 3
+        },
+        {
+            "id": "8",
+            "name": "Sally",
+            "happy": "Happy",
+            "number": 20
+        },
+        {
+            "id": "9",
+            "name": "Mary",
+            "mood": "Sad",
+            "number": 5
+        },
+        {
+            "id": "10",
+            "name": "John",
+            "mood": "Happy",
+            "number": 15
+        },
+        {
+            "id": "11",
+            "name": "Bob",
+            "happy": "Happy",
+            "number": 10
+        },
+        {
+            "id": "12",
+            "name": "Harry",
+            "happy": "Sad",
+            "number": 3
+        },
+        {
+            "id": "13",
+            "name": "Sally",
+            "happy": "Happy",
+            "number": 20
+        },
+        {
+            "id": "14",
+            "name": "Mary",
+            "mood": "Sad",
+            "number": 5
+        },
+        {
+            "id": "15",
+            "name": "John",
+            "mood": "Happy",
+            "number": 15
+        }
+    ]
+}

@@ -1,0 +1,8 @@
+<ul class="submenu" *ngIf="tree.length != 0" [ngClass]="[customClass]" type="button" data-toggle="dropdown">
+    <li *ngFor="let item of tree" [ngClass]="item.ngClass">
+        <a [routerLink]="[item.link]">
+            {{ item.name | translate }}
+        </a>
+        <navigation-bar-menu-tree [tree]="item.childs" [customClass]="item.submenuNgClass"></navigation-bar-menu-tree>
+    </li>
+</ul>
