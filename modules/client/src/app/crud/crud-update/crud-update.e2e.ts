@@ -19,10 +19,4 @@ describe('Crud update', () => {
         crudUpdatePage.clickOnUpdatebutton();
         expect(crudUpdatePage.isPresentInfoMessage()).toBeTruthy();
     });
-
-    it('should have a <crud-view>', () => {
-        crudUpdatePage.clickOnBackButton();
-        crudUpdatePage.clickOnBackButton();
-        expect(crudUpdatePage.isPresentCrudViewTag()).toBeTruthy();
-    });
 });
