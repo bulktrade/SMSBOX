@@ -24,6 +24,7 @@ import 'rxjs/add/operator/mergeMap';
 // Other
 import 'bootstrap-loader';
 import 'jquery';
+import 'chart.js';
 
 if ('production' === ENV) {
   // Production

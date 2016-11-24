@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import { AdminDashboardService } from "./admin-dashboard.service";
+import { AdminDashboardModel } from "./admin-dashboard.model";
 
 @Component({
     selector: 'dashboard',
@@ -6,11 +8,20 @@ import {Component} from "@angular/core";
     styles: [
         require('../../common/content.scss'),
         require('./admin-dashboard.component.scss')
-    ]
+    ],
+    providers: [AdminDashboardService]
 })
 
 export class AdminDashboardComponent {
-    constructor() {
+    dashboardBoxes: AdminDashboardModel[] = [];
 
+    constructor(public dashboardService: AdminDashboardService) {
+    }
+
+    ngOnInit() {
+        this.dashboardService.getDashboardBoxes()
+            .subscribe((dashboardBoxes: AdminDashboardModel[]) => {
+                this.dashboardBoxes = dashboardBoxes;
+            });
     }
 }

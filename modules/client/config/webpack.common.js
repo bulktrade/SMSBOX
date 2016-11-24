@@ -178,6 +178,10 @@ module.exports = function (options) {
 				{
 					from: 'src/app/admin/users/users-list.json',
 					to: 'users-list.json'
+				},
+				{
+					from: 'src/app/admin/dashboard/dashboard.json',
+					to: 'dashboard.json'
 				}
 			]),
 

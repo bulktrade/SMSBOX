@@ -56,5 +56,10 @@
     "crud.ok": "Ok",
     "crud.search": "Search",
     "crud.confirmDeleteMsg": "You are dropping the record. Are you sure?",
-    "crud.required": "is required"
+    "dashboardStatus.usersTitle": "Users",
+    "dashboardStatus.profitTitle": "Profit",
+    "dashboardStatus.smsTitle": "SMS",
+    "dashboardChart.usersTitle": "User",
+    "dashboardChart.profitTitle": "Profit",
+    "dashboardChart.smsTitle": "SMS"
 }

@@ -15,6 +15,8 @@ import {
     NavigationBarComponentModule
 } from "../navigation/navigationBar/navigation-bar.component";
 import {UsersComponent} from "./users/admin-users.component";
+import { ChartModule } from "primeng/components/chart/chart";
+import { ButtonModule } from "primeng/components/button/button";
 
 const ADMIN_DECLARATION = [
     AdminComponent,
@@ -34,7 +36,9 @@ const ADMIN_DECLARATION = [
         ReactiveFormsModule,
         UserComponentModule,
         BreadcrumbModule,
-        NavigationBarComponentModule
+        NavigationBarComponentModule,
+        ChartModule,
+        ButtonModule
     ],
     declarations: [
         ADMIN_DECLARATION
