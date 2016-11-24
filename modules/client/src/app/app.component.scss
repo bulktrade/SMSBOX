@@ -23,10 +23,18 @@ signup {
     padding: 0 3px 0 2px;
 }
 
+.hint {
+    color: #d9534f;
+}
+
 .paginator {
     > div {
         border-color: #929292;
     }
+}
+
+navigation {
+    height: 100%;
 }
 
 .main-wrap {

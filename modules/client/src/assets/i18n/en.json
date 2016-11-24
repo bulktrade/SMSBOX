@@ -49,6 +49,7 @@
     "smsbox.phoneNumber": "Phone number",
     "smsbox.body": "Body",
     "smsbox.sendButton": "Send",
+    "smsbox.phoneNumberHint": "Enter the phone number in the correct format",
     "crud.create": "Create",
     "crud.update": "Update",
     "crud.delete": "Delete",

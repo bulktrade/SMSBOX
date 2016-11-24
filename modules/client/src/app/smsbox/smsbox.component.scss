@@ -1,5 +1,11 @@
+#smsbox-window {
+    display: flex;
+    height: 100%;
+}
+
 .main-wrap {
-    margin-top: 20px;
+    margin: auto;
+    width: 850px;
 }
 
 .title {
@@ -9,6 +15,11 @@
 .top-title {
     button {
         font-size: 15px;
+    }
+
+    i {
+        padding-left: 7px;
+        cursor: pointer;
     }
 }
 
@@ -59,7 +70,12 @@ form {
 }
 
 @media screen and (max-width: 768px) {
+    #smsbox-window {
+        height: auto;
+    }
+
     .main-wrap {
+        width: 100%;
         margin: 0;
     }
 

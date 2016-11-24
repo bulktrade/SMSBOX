@@ -1,67 +1,43 @@
-#navigationBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: none;
-    width: 100%;
-    background-color: #009688;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    z-index: 1;
+#navigation {
+    height: 100%;
 
-    * {
-        color: #fff;
-    }
+    #navigationBar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        background-color: #009688;
+        box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+        z-index: 1;
 
-    .navbar-brand {
-        padding-left: 41px;
-        padding-right: 25px;
-        font-size: 20px;
-    }
+        * {
+            color: #fff;
+        }
 
-    .navbar-nav {
-        li {
-            &.active {
-                a {
-                    background-color: #007368;
+        .navbar-brand {
+            padding-left: 41px;
+            padding-right: 25px;
+            font-size: 20px;
+        }
 
-                    &:focus {
+        .navbar-nav {
+            li {
+                &.active {
+                    a {
                         background-color: #007368;
+
+                        &:focus {
+                            background-color: #007368;
+                        }
                     }
                 }
-            }
 
-            a {
-                font-size: 17px;
+                a {
+                    font-size: 17px;
 
-                &:hover {
-                    background-color: #007368;
-                }
-            }
-        }
-    }
-}
-
-.showNavigation {
-    .main-wrap {
-        margin-top: 60px;
-    }
-
-    #navigationBar {
-        display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    #navigationBar {
-        position: static;
-
-        .navbar-collapse {
-            padding: 0;
-
-            .navbar-nav {
-                li {
-                    a {
-
+                    &:hover {
+                        background-color: #007368;
                     }
                 }
             }
@@ -70,7 +46,35 @@
 
     .showNavigation {
         .main-wrap {
-            margin-top: 20px;
+            margin-top: 60px;
+        }
+
+        #navigationBar {
+            display: block;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #navigationBar {
+            position: static;
+
+            .navbar-collapse {
+                padding: 0;
+
+                .navbar-nav {
+                    li {
+                        a {
+
+                        }
+                    }
+                }
+            }
+        }
+
+        .showNavigation {
+            .main-wrap {
+                margin-top: 20px;
+            }
         }
     }
 }
