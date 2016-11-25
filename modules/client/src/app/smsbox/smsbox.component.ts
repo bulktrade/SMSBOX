@@ -10,7 +10,7 @@ import { SMSBoxModel } from "./smsbox.model";
     ]
 })
 export class SmsBoxComponent {
-    model: SMSBoxModel = new SMSBoxModel('', '', '');
+    model: SMSBoxModel = new SMSBoxModel('', '');
 
     constructor() {
 
