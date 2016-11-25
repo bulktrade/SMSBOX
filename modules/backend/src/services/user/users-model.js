@@ -1,34 +1,7 @@
 'use strict';
 
 const knex = require('knex');
-
-const rows = [
-	{
-		"name": "Bob",
-		"mood": "Sad",
-		"number": 10
-	},
-	{
-		"name": "Harry",
-		"mood": "Sad",
-		"number": 3
-	},
-	{
-		"name": "Sally",
-		"mood": "Happy",
-		"number": 20
-	},
-	{
-		"name": "Mary",
-		"mood": "Sad",
-		"number": 5
-	},
-	{
-		"name": "John",
-		"mood": "Happy",
-		"number": 15
-	}
-];
+const usersData = require('./users-data');
 
 const db = knex({
 	client: 'mysql',
@@ -57,7 +30,7 @@ db.schema.dropTableIfExists(tableName).then(function () {
 		table.string('mood');
 		table.integer('number');
 	}).then(function () {
-		return db(tableName).insert(rows);
+		return db(tableName).insert(usersData);
 	});
 });
 
