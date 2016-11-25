@@ -19,7 +19,7 @@
 						       required
 						       name="phoneNumber" #phoneNumber="ngModel" pattern="^\+(?:[0-9]?){6,14}[0-9]$"
 						       placeholder="{{'smsbox.phoneNumber' | translate}}">
-						<small class="form-text hint" *ngIf="phoneNumber.invalid && phoneNumber.dirty">
+						<small class="form-text hint phone-number-hint" *ngIf="phoneNumber.invalid && phoneNumber.dirty">
 							{{'smsbox.phoneNumberHint' | translate}}
 						</small>
 					</div>
