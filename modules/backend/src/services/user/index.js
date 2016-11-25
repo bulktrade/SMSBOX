@@ -1,14 +1,15 @@
 'use strict';
 
-const service = require('feathers-sequelize');
-const user = require('./user-model');
+const service = require('feathers-knex');
+const users = require('./user-model');
 const hooks = require('./hooks');
 
 module.exports = function(){
   const app = this;
 
   const options = {
-    Model: user(app.get('sequelize')),
+    Model: users,
+	name: 'users',
     paginate: {
       default: 5,
       max: 25

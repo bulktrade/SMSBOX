@@ -1,28 +1,64 @@
 'use strict';
 
-// user-model.js - A sequelize model
-// 
-// See http://docs.sequelizejs.com/en/latest/docs/models-definition/
-// for more of what you can do here.
+const knex = require('knex');
 
-const Sequelize = require('sequelize');
+const rows = [
+	{
+		"name": "Bob",
+		"mood": "Sad",
+		"number": 10
+	},
+	{
+		"name": "Harry",
+		"mood": "Sad",
+		"number": 3
+	},
+	{
+		"name": "Sally",
+		"mood": "Happy",
+		"number": 20
+	},
+	{
+		"name": "Mary",
+		"mood": "Sad",
+		"number": 5
+	},
+	{
+		"name": "John",
+		"mood": "Happy",
+		"number": 15
+	}
+];
 
-module.exports = function(sequelize) {
-  const user = sequelize.define('users', {
-    email: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true
-    },
-    password: {
-      type: Sequelize.STRING,
-      allowNull: false
-    }
-  }, {
-    freezeTableName: true
-  });
+const db = knex({
+	client: 'mysql',
+	useNullAsDefault: true,
+	connection: {
+		host: '127.0.0.1',
+		user: 'root',
+		password: '',
+		database: 'smsbox'
+	}
+});
 
-  user.sync();
+const tableName = 'users';
 
-  return user;
-};
+// Clean up our data. This is optional and is here
+// because of our integration tests
+db.schema.dropTableIfExists(tableName).then(function () {
+	console.log('Dropped users table');
+
+	// Initialize your table
+	return db.schema.createTable(tableName, function (table) {
+		console.log('Creating users table');
+
+		table.increments('id');
+		table.string('name');
+		table.string('mood');
+		table.integer('number');
+	}).then(function () {
+		return db(tableName).insert(rows);
+	});
+});
+
+module.exports = db;

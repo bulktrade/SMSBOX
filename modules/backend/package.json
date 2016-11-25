@@ -27,10 +27,12 @@
     "cors": "^2.8.1",
     "feathers": "^2.0.2",
     "feathers-authentication": "^0.7.12",
+    "feathers-authentication-jwt": "^0.2.0",
     "feathers-configuration": "^0.3.3",
     "feathers-errors": "^2.5.0",
     "feathers-hooks": "^1.6.1",
     "feathers-knex": "^2.5.0",
+    "feathers-memory": "^1.0.1",
     "feathers-rest": "^1.5.2",
     "feathers-sequelize": "^1.4.0",
     "feathers-socketio": "^1.4.2",
@@ -39,6 +41,7 @@
     "passport": "^0.3.2",
     "sequelize": "^3.27.0",
     "serve-favicon": "^2.3.2",
+    "sqlite3": "^3.1.8",
     "winston": "^2.3.0"
   },
   "devDependencies": {
