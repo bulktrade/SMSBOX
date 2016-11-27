@@ -26,9 +26,8 @@ db.schema.dropTableIfExists(tableName).then(function () {
 		console.log('Creating users table');
 
 		table.increments('id');
-		table.string('name');
-		table.string('mood');
-		table.integer('number');
+		table.string('email');
+		table.string('password');
 	}).then(function () {
 		return db(tableName).insert(usersData);
 	});

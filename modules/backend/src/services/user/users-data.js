@@ -1,27 +1,6 @@
 module.exports = [
 	{
-		"name": "Bob",
-		"mood": "Sad",
-		"number": 10
-	},
-	{
-		"name": "Harry",
-		"mood": "Sad",
-		"number": 3
-	},
-	{
-		"name": "Sally",
-		"mood": "Happy",
-		"number": 20
-	},
-	{
-		"name": "Mary",
-		"mood": "Sad",
-		"number": 5
-	},
-	{
-		"name": "John",
-		"mood": "Happy",
-		"number": 15
+		"email":"admin@feathersjs.com",
+		"password":"$2a$10$0Uk/Si20QcvzYkrkHZWXGe7iPy5VU9AQBnAwFBH9eNuTS/71S7mD6"
 	}
 ];

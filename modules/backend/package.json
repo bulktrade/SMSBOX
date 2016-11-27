@@ -45,6 +45,7 @@
     "winston": "^2.3.0"
   },
   "devDependencies": {
+    "feathers-primus": "^1.4.1",
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
     "request": "^2.79.0"
