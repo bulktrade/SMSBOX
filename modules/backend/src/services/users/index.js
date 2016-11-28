@@ -9,7 +9,7 @@ module.exports = function () {
 
 	const options = {
 		Model: users,
-		name: 'user',
+		name: 'users',
 		paginate: {
 			default: 5,
 			max: 25
@@ -17,10 +17,10 @@ module.exports = function () {
 	};
 
 	// Initialize our service with any options it requires
-	app.use('/user', service(options));
+	app.use('/users', service(options));
 
 	// Get our initialize service to that we can bind hooks
-	const userService = app.service('/user');
+	const userService = app.service('/users');
 
 	// Set up our before hooks
 	userService.before(hooks.before);

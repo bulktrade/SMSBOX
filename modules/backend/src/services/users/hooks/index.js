@@ -11,7 +11,7 @@ exports.before = {
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
 		auth.hasRoleOrRestrict({
-			roles: ['ADMIN', 'USER'],
+			roles: ['ADMIN'],
 			fieldName: 'permissions',
 			restrict: { approved: true }
 		})
@@ -22,7 +22,7 @@ exports.before = {
 		auth.restrictToAuthenticated(),
 		auth.restrictToOwner({ ownerField: 'id' }),
 		auth.hasRoleOrRestrict({
-			roles: ['ADMIN', 'USER'],
+			roles: ['ADMIN'],
 			fieldName: 'permissions',
 			restrict: { approved: true }
 		})
