@@ -9,13 +9,23 @@ exports.before = {
 	find: [
 		auth.verifyToken(),
 		auth.populateUser(),
-		auth.restrictToAuthenticated()
+		auth.restrictToAuthenticated(),
+		auth.hasRoleOrRestrict({
+			roles: ['ADMIN'],
+			fieldName: 'permissions',
+			restrict: { approved: true }
+		})
 	],
 	get: [
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.restrictToOwner({ ownerField: 'id' })
+		auth.restrictToOwner({ ownerField: 'id' }),
+		auth.hasRoleOrRestrict({
+			roles: ['ADMIN'],
+			fieldName: 'permissions',
+			restrict: { approved: true }
+		})
 	],
 	create: [
 		auth.hashPassword()

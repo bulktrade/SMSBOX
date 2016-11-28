@@ -28,6 +28,7 @@ db.schema.dropTableIfExists(tableName).then(function () {
 		table.increments('id');
 		table.string('email');
 		table.string('password');
+		table.string('permissions');
 	}).then(function () {
 		return db(tableName).insert(usersData);
 	});
