@@ -1,16 +1,12 @@
 'use strict';
 
 const knex = require('knex');
+const connection = require('./../../connection-properties');
 
 const db = knex({
 	client: 'mysql',
 	useNullAsDefault: true,
-	connection: {
-		host: '127.0.0.1',
-		user: 'root',
-		password: '',
-		database: 'smsbox'
-	}
+	connection: connection
 });
 
 const tableName = 'user';

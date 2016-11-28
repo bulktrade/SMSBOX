@@ -1,8 +1,8 @@
 'use strict';
 
 const knex = require('knex');
-const usersData = require('./users-data');
 const connection = require('./../../connection-properties');
+const messagesData = require('./messages-data');
 
 const db = knex({
 	client: 'mysql',
@@ -10,23 +10,24 @@ const db = knex({
 	connection: connection
 });
 
-const tableName = 'users';
+const tableName = 'message';
 
 // Clean up our data. This is optional and is here
 // because of our integration tests
 db.schema.dropTableIfExists(tableName).then(function () {
-	console.log('Dropped users table');
+	console.log('Dropped message table');
 
 	// Initialize your table
 	return db.schema.createTable(tableName, function (table) {
-		console.log('Creating users table');
+		console.log('Creating message table');
 
 		table.increments('id');
-		table.string('email');
-		table.string('password');
-		table.string('permissions');
+		table.string('telephoneNumber');
+		table.string('messageText');
+		table.date('date');
+		table.string('state');
 	}).then(function () {
-		return db(tableName).insert(usersData);
+		return db(tableName).insert(messagesData);
 	});
 });
 
