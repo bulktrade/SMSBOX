@@ -1,4 +1,5 @@
 'use strict';
+const invoices = require('./invoices');
 const messages = require('./messages');
 const user = require('./user');
 const authentication = require('./authentication');
@@ -17,4 +18,5 @@ module.exports = function() {
   app.configure(users);
   app.configure(user);
   app.configure(messages);
+  app.configure(invoices);
 };
