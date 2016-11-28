@@ -1,6 +1,6 @@
 'use strict';
 
-const service = require('feathers-sequelize');
+const service = require('feathers-knex');
 const messages = require('./messages-model');
 const hooks = require('./hooks');
 
