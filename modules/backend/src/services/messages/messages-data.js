@@ -1,23 +1,23 @@
 module.exports = [
 	{
-		"telephoneNumber": "+380983418360",
-		"messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-		"date": "2016-11-12",
-		"state": "received",
-		"sentBy": "1"
+		'TELEPHONE_NUMBER': '+380983418360',
+		'MESSAGE_TEXT': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+		'DATE': '2016-11-12',
+		'STATE': 'received',
+		'SENT_BY': '1'
 	},
 	{
-		"telephoneNumber": "+380983418360",
-		"messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-		"date": "2016-11-17",
-		"state": "outgoing",
-		"sentBy": "2"
+		'TELEPHONE_NUMBER': '+380983418360',
+		'MESSAGE_TEXT': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+		'DATE': '2016-11-17',
+		'STATE': 'outgoing',
+		'SENT_BY': '2'
 	},
 	{
-		"telephoneNumber": "+380983417361",
-		"messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-		"date": "2016-12-12",
-		"state": "received",
-		"sentBy": "1"
+		'TELEPHONE_NUMBER': '+380983417361',
+		'MESSAGE_TEXT': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+		'DATE': '2016-12-12',
+		'STATE': 'received',
+		'SENT_BY': '1'
 	}
 ];

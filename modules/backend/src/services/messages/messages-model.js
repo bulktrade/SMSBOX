@@ -10,23 +10,23 @@ const db = knex({
 	connection: connection
 });
 
-const tableName = 'message';
+const tableName = 'MESSAGE';
 
 // Clean up our data. This is optional and is here
 // because of our integration tests
 db.schema.dropTableIfExists(tableName).then(function () {
-	console.log('Dropped message table');
+	console.log('Dropped MESSAGE table');
 
 	// Initialize your table
 	return db.schema.createTable(tableName, function (table) {
-		console.log('Creating message table');
+		console.log('Creating MESSAGE table');
 
-		table.increments('id');
-		table.string('telephoneNumber');
-		table.string('messageText');
-		table.date('date');
-		table.string('state');
-		table.string('sentBy');
+		table.increments('ID');
+		table.string('TELEPHONE_NUMBER');
+		table.string('MESSAGE_TEXT');
+		table.date('DATE');
+		table.string('STATE');
+		table.string('SENT_BY');
 	}).then(function () {
 		return db(tableName).insert(messagesData);
 	});

@@ -9,19 +9,19 @@ const db = knex({
 	connection: connection
 });
 
-const tableName = 'user';
+const tableName = 'USER';
 
 // Clean up our data. This is optional and is here
 // because of our integration tests
 db.schema.dropTableIfExists(tableName).then(function () {
-	console.log('Dropped user table');
+	console.log('Dropped USER table');
 
 	// Initialize your table
 	return db.schema.createTable(tableName, function (table) {
-		console.log('Creating user table');
+		console.log('Creating USER table');
 
-		table.increments('id');
-	})
+		table.increments('ID');
+	});
 });
 
 module.exports = db;

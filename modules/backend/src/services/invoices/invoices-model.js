@@ -9,20 +9,20 @@ const db = knex({
 	connection: connection
 });
 
-const tableName = 'invoice';
+const tableName = 'INVOICE';
 
 // Clean up our data. This is optional and is here
 // because of our integration tests
 db.schema.dropTableIfExists(tableName).then(function () {
-	console.log('Dropped invoice table');
+	console.log('Dropped INVOICE table');
 
 	// Initialize your table
 	return db.schema.createTable(tableName, function (table) {
-		console.log('Creating invoice table');
+		console.log('Creating INVOICE table');
 
-		table.increments('id');
-		table.string('sentBy');
-	})
+		table.increments('ID');
+		table.string('SENT_BY');
+	});
 });
 
 module.exports = db;

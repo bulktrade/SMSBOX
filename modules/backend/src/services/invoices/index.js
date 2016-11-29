@@ -9,7 +9,7 @@ module.exports = function () {
 
 	const options = {
 		Model: invoices,
-		name: 'invoice',
+		name: 'INVOICE',
 		paginate: {
 			default: 5,
 			max: 25

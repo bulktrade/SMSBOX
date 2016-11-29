@@ -9,7 +9,7 @@ module.exports = function () {
 
 	const options = {
 		Model: messages,
-		name: 'message',
+		name: 'MESSAGE',
 		paginate: {
 			default: 5,
 			max: 25

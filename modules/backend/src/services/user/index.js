@@ -9,7 +9,7 @@ module.exports = function () {
 
 	const options = {
 		Model: users,
-		name: 'user',
+		name: 'USER',
 		paginate: {
 			default: 5,
 			max: 25
