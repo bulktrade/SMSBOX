@@ -1,4 +1,5 @@
 'use strict';
+const paymentHistories = require('./payment-histories');
 const invoices = require('./invoices');
 const messages = require('./messages');
 const user = require('./user');
@@ -19,4 +20,5 @@ module.exports = function() {
   app.configure(user);
   app.configure(messages);
   app.configure(invoices);
+  app.configure(paymentHistories);
 };
