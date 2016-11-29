@@ -7,7 +7,6 @@ import { TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-tra
 import { AdminComponentModule } from "./admin/admin.module";
 import { ThereComponentModule } from "./there/there.module";
 import { NotFoundComponent } from "./not-found/not-found.component";
-import { ConfigService } from "./config/config-service";
 import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
 import { SignupComponent } from "./signup/signup.component";
 import { SignupService } from "./signup/signup-service";
@@ -65,7 +64,6 @@ import { MessagesModule } from "primeng/components/messages/messages";
         CrudCreateResolve,
         CrudUpdateResolve,
         FormBuilder,
-        ConfigService,
         SignupService,
         GrowlService,
         {

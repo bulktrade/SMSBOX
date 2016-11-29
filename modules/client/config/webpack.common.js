@@ -168,10 +168,6 @@ module.exports = function (options) {
 		plugins: [
 			new CopyWebpackPlugin([
 				{
-					from: 'src/app/config/users.json',
-					to: 'users.json'
-				},
-				{
 					from: 'src/app/user/message/messages.json',
 					to: 'messages.json'
 				},
