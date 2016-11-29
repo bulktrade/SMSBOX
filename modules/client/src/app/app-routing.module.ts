@@ -21,6 +21,7 @@ import { IOBoxComponent } from "./user/message/iobox/iobox.component";
 import { ChatComponent } from "./user/message/chat/chat.component";
 import { CrudComponent } from "./crud/crud.component";
 import { CrudModule } from "./crud/crud.module";
+import { LoginGuard } from "./login/login.guard";
 
 const ROUTES: Routes = [
     {
@@ -34,6 +35,7 @@ const ROUTES: Routes = [
             {
                 path: 'admin',
                 component: AdminComponent,
+                canActivate: [LoginGuard],
                 data: {
                     showNavigationBar: true
                 },

@@ -26,6 +26,7 @@ import { GrowlService } from "./services/growl/growl.service";
 import { FeathersService } from "./services/feathers.service";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { TokenService } from "./services/auth/token.service";
+import { LoginGuard } from "./login/login.guard";
 
 @NgModule({
     imports: [
@@ -68,6 +69,7 @@ import { TokenService } from "./services/auth/token.service";
         SignupService,
         TokenService,
         GrowlService,
+        LoginGuard,
         {
             provide: FeathersService,
             useFactory: (http: Http) => {
