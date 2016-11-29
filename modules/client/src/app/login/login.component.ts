@@ -3,9 +3,9 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { LoginService } from "./login.service";
 import { LoginModel } from "./login.model";
-import { FeathersService } from "../services/feathers.service";
 import { GrowlService } from "../services/growl/growl.service";
 import { Response } from "@angular/http";
+import { AuthService } from "../services/auth/auth.service";
 
 @Component({
     selector: 'login',
@@ -13,7 +13,7 @@ import { Response } from "@angular/http";
     styles: [
         require('./login.component.scss')
     ],
-    providers: [GrowlService]
+    providers: [GrowlService, AuthService]
 })
 
 export class LoginComponent {
@@ -21,7 +21,7 @@ export class LoginComponent {
 
     constructor(private router: Router,
                 private location: Location,
-                private feathersService: FeathersService,
+                private authService: AuthService,
                 private growlService: GrowlService) {
     }
 
@@ -29,7 +29,7 @@ export class LoginComponent {
     }
 
     onSubmit() {
-        this.feathersService.authentication(this.model)
+        this.authService.login(this.model)
             .subscribe((res) => {
                 this.router.navigateByUrl('/admin');
             }, (err: Response) => {

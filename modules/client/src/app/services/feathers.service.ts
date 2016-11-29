@@ -26,7 +26,7 @@ export class FeathersService {
                 .subscribe((res: Response) => {
                     this.token = res.json().token;
 
-                    observer.next(res.json());
+                    observer.next(res);
                     observer.complete();
                 }, (err) => {
                     observer.error(err);

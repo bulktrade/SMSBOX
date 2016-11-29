@@ -25,6 +25,7 @@ import { CrudService } from "./crud/crud.service";
 import { GrowlService } from "./services/growl/growl.service";
 import { FeathersService } from "./services/feathers.service";
 import { MessagesModule } from "primeng/components/messages/messages";
+import { TokenService } from "./services/auth/token.service";
 
 @NgModule({
     imports: [
@@ -65,6 +66,7 @@ import { MessagesModule } from "primeng/components/messages/messages";
         CrudUpdateResolve,
         FormBuilder,
         SignupService,
+        TokenService,
         GrowlService,
         {
             provide: FeathersService,
