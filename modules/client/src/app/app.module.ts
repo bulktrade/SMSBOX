@@ -8,7 +8,6 @@ import { AdminComponentModule } from "./admin/admin.module";
 import { ThereComponentModule } from "./there/there.module";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { ConfigService } from "./config/config-service";
-import { LoginService } from "./login/login.service";
 import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
 import { SignupComponent } from "./signup/signup.component";
 import { SignupService } from "./signup/signup-service";
@@ -25,7 +24,8 @@ import { CrudCreateResolve } from "./crud/crud-create/crud-create.resolve";
 import { CrudUpdateResolve } from "./crud/crud-update/crud-update.resolve";
 import { CrudService } from "./crud/crud.service";
 import { GrowlService } from "./services/growl/growl.service";
-import { GrowlModule } from "primeng/components/growl/growl";
+import { FeathersService } from "./services/feathers.service";
+import { MessagesModule } from "primeng/components/messages/messages";
 
 @NgModule({
     imports: [
@@ -43,6 +43,7 @@ import { GrowlModule } from "primeng/components/growl/growl";
             deps: [Http]
         }),
         //BreadcrumbModule.forRoot(),
+        MessagesModule,
         CrudModule,
         EqualValidatorModule,
         AdminComponentModule,
@@ -65,9 +66,15 @@ import { GrowlModule } from "primeng/components/growl/growl";
         CrudUpdateResolve,
         FormBuilder,
         ConfigService,
-        LoginService,
         SignupService,
-        GrowlService
+        GrowlService,
+        {
+            provide: FeathersService,
+            useFactory: (http: Http) => {
+                return new FeathersService(http, 'http://localhost:3030');
+            },
+            deps: [Http]
+        }
     ],
     bootstrap: [AppComponent]
 })

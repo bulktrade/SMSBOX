@@ -16,12 +16,8 @@ import { CrudDeleteComponent } from "./crud-delete/crud-delete.component";
 import { CrudCreateComponent } from "./crud-create/crud-create.component";
 import { DynamicFormComponent } from "./dynamic-form/dynamic-form.component";
 import { CrudUpdateComponent } from "./crud-update/crud-update.component";
-import { CrudViewResolve } from "./crud-view/crud-view.resolve";
-import { CrudUpdateResolve } from "./crud-update/crud-update.resolve";
-import { CrudCreateResolve } from "./crud-create/crud-create.resolve";
 import { PaginatorModule } from "primeng/components/paginator/paginator";
 import { CrudViewService } from "./crud-view/crud.view.service";
-import { GrowlModule } from "primeng/components/growl/growl";
 
 const CRUD_DECLARATIONS = [
     CrudComponent,

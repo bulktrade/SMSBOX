@@ -355,4 +355,4 @@ module.exports = function (options) {
 		}
 
 	};
-}
+};

@@ -11,6 +11,7 @@ export class GrowlService {
     }
 
     show(message: GrowlModel) {
+        this.hide();
         this.translate.get(message.detail)
             .subscribe(value => {
                 message.detail = value;

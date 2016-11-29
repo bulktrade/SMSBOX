@@ -1,8 +1,10 @@
 {
-    "login.title": "SMSBox",
+    "login.title": "SMS Box",
     "login.username": "Username",
     "login.password": "Password",
     "login.submit": "Log in",
+    "login.userNotFound": "The credentials you supplied were not correct!",
+    "login.commonError": "An error has occurred!",
     "signup.title": "Signup",
     "signup.login": "Login",
     "signup.email": "Email",

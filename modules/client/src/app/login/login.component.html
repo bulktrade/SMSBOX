@@ -3,6 +3,7 @@
 		<div class="title">
 			{{'login.title' | translate}}
 		</div>
+		<p-messages id="error" [value]="growlService.msgs"></p-messages>
 		<form role="form" (ngSubmit)="onSubmit($event)" #loginForm="ngForm" novalidate>
 			<div class="form-horizontal">
 				<div class="form-group">
@@ -10,7 +11,7 @@
 						{{'login.username' | translate}}
 					</label>
 					<input type="text" class="form-control" required
-					       [(ngModel)]="model.username" id="username" name="username"
+					       [(ngModel)]="model.email" id="username" name="username"
 					       autocomplete="on" #username="ngModel">
 				</div>
 				<div class="form-group">
