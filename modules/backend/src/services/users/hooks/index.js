@@ -20,7 +20,6 @@ exports.before = {
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.restrictToOwner({ ownerField: 'id' }),
 		auth.hasRoleOrRestrict({
 			roles: ['ADMIN'],
 			fieldName: 'permissions',
@@ -34,19 +33,16 @@ exports.before = {
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.restrictToOwner({ ownerField: 'id' })
 	],
 	patch: [
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.restrictToOwner({ ownerField: 'id' })
 	],
 	remove: [
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.restrictToOwner({ ownerField: 'id' })
 	]
 };
 
