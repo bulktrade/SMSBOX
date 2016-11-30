@@ -31,10 +31,10 @@ exports.restrictToOwner = function(options) {
 			throw new Error('There is no current user to associate.');
 		}
 
-		options = Object.assign({}, hook.app.get('auth'), options);
+		options = Object.assign({}, defaults, hook.app.get('auth'), options);
 
 		var id = hook.params.user[options.idField];
-		var adminRoleName = 'ADMIN';
+		var adminRoleName = options.adminRole;
 
 		if (id === undefined) {
 			throw new Error('Current user is missing \'' + options.idField + '\' field.');
@@ -44,4 +44,9 @@ exports.restrictToOwner = function(options) {
 			hook.params.query[ options.as ] = id;
 		}
 	};
+};
+var defaults = {
+	idField: '_id',
+	as: 'userId',
+	adminRole: 'admin'
 };

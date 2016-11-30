@@ -11,10 +11,10 @@ exports.before = {
 		auth.restrictToAuthenticated(),
 	],
 	find: [
-		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID' })
+		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID', adminRole: 'ADMIN' })
 	],
 	get: [
-		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID' })
+		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID', adminRole: 'ADMIN' })
 	],
 	create: [],
 	update: [],
