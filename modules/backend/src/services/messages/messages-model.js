@@ -26,7 +26,7 @@ db.schema.dropTableIfExists(tableName).then(function () {
 		table.string('MESSAGE_TEXT');
 		table.date('DATE');
 		table.string('STATE');
-		table.string('SENT_BY');
+		table.string('USER_ID');
 	}).then(function () {
 		return db(tableName).insert(messagesData);
 	});

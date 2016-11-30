@@ -9,10 +9,13 @@ exports.before = {
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.queryWithCurrentUser({ idField: 'id', as: 'SENT_BY' })
 	],
-	find: [],
-	get: [],
+	find: [
+		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID' })
+	],
+	get: [
+		globalHooks.restrictToOwner({ idField: 'id', as: 'USER_ID' })
+	],
 	create: [],
 	update: [],
 	patch: [],
