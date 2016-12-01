@@ -17,17 +17,16 @@ import { TranslateService } from "ng2-translate";
 export class DynamicFormComponent {
     @Input('columnDefs') columnDefs: ColDef[];
     @Input('type') type: TypeOfDynamicForm;
+    @Input('growlService') growlService: GrowlService;
     @Input('model') model = {};
 
     @Output('submit') submit = new EventEmitter();
 
     constructor(private location: Location,
-                private growlService: GrowlService,
                 private translate: TranslateService) {
     }
 
     onSubmit() {
-        this.growlService.show({ severity: 'success', detail: 'userSettings.successMessage' });
         this.submit.emit(this.model);
     }
 

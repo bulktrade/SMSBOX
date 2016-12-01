@@ -1,3 +1,4 @@
 <div id="crud-create-window">
-	<dynamic-form [columnDefs]="columnDefs" [type]="formType" (submit)="createRecord($event)"></dynamic-form>
+	<dynamic-form [columnDefs]="columnDefs" [growlService]="growlService"
+	              [type]="formType" (submit)="createRecord($event)"></dynamic-form>
 </div>

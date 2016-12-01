@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { TranslateService } from 'ng2-translate/ng2-translate';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CrudService } from '../crud.service';
+import { Component } from "@angular/core";
+import { TranslateService } from "ng2-translate/ng2-translate";
+import { Router, ActivatedRoute } from "@angular/router";
+import { CrudService } from "../crud.service";
 import { GridOptions } from "ag-grid";
 import { CrudViewService } from "./crud-view.service";
 import { Pagination } from "../model/pagination";
@@ -25,19 +25,12 @@ export class CrudViewComponent {
                 public route: ActivatedRoute,
                 public crudViewService: CrudViewService,
                 public crudService: CrudService) {
-
-        if (!this.crudService.gridOptions) {
-            this.gridOptions = this.getGridOptions();
-            this.gridOptions.rowData = this.getRowData();
-            this.gridOptions.columnDefs = this.getColumnDefs();
-            // add buttons in the first column
-            this.gridOptions.columnDefs = this.crudViewService.addColumnDef(this.gridOptions);
-            this.gridOptions.columnDefs = this.crudViewService.addColumnCheckbox(this.gridOptions);
-
-            this.crudService.setGridOptions(this.gridOptions);
-        } else {
-            this.gridOptions = this.crudService.getGridOptions();
-        }
+        this.gridOptions = this.getGridOptions();
+        this.gridOptions.rowData = this.getRowData();
+        this.gridOptions.columnDefs = this.getColumnDefs();
+        // add buttons in the first column
+        this.gridOptions.columnDefs = this.crudViewService.addColumnDef(this.gridOptions);
+        this.gridOptions.columnDefs = this.crudViewService.addColumnCheckbox(this.gridOptions);
     }
 
     private getColumnDefs() {

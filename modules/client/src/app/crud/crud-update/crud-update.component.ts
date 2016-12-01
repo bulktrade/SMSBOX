@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
 import { TypeOfDynamicForm } from "../dynamic-form/enum/type-of-dynamic-form";
 import { CrudService } from "../crud.service";
+import { FeathersService } from "../../services/feathers.service";
+import { GrowlService } from "../../services/growl/growl.service";
 
 @Component({
     selector: 'crud-update',
@@ -15,14 +17,22 @@ import { CrudService } from "../crud.service";
 
 export class CrudUpdateComponent {
     formType: TypeOfDynamicForm = TypeOfDynamicForm.Updte;
+    id: string;
     columnDefs: ColDef[] = [];
     model = {};
 
     constructor(private route: ActivatedRoute,
-                private crudService: CrudService) {
+                private crudService: CrudService,
+                private feathersService: FeathersService,
+                private growlService: GrowlService) {
     }
 
     ngOnInit() {
+        this.route.params
+            .subscribe(params => {
+               this.id = params['id'];
+            });
+
         this.columnDefs = this.getColumnDefs();
         this.model = this.getModel() || {};
     }
@@ -36,13 +46,12 @@ export class CrudUpdateComponent {
     }
 
     updateRecord(model) {
-        if (!(model instanceof Event)){
-            this.crudService.gridOptions.rowData = this.crudService.gridOptions.rowData.map(row => {
-                if (row.id === model.id) {
-                    row = model;
-                }
-
-                return row;
+        if (!(model instanceof Event)) {
+            this.feathersService.update(this.id, model, 'users').subscribe(data => {
+                this.growlService.show({ severity: 'success', detail: 'crud.successUpdate' });
+            }, err => {
+                console.error(err);
+                this.growlService.show({ severity: 'error', detail: 'crud.errorUpdate' });
             });
         }
     }

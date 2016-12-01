@@ -1,15 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Response } from "@angular/http";
 import { Observable } from "rxjs";
-import { ColDef, GridOptions } from "ag-grid";
+import { ColDef } from "ag-grid";
 import { TranslateService } from "ng2-translate";
 import { Router } from "@angular/router";
 import { FeathersService } from "../services/feathers.service";
 
 @Injectable()
 export class CrudService {
-    public gridOptions: GridOptions;
-
     constructor(private translate: TranslateService,
                 private router: Router,
                 private feathersService: FeathersService) {
@@ -69,13 +67,5 @@ export class CrudService {
                 });
 
         });
-    }
-
-    setGridOptions(value) {
-        this.gridOptions = value;
-    }
-
-    getGridOptions(): GridOptions {
-        return this.gridOptions;
     }
 }

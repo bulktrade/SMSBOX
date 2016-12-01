@@ -32,22 +32,22 @@ exports.before = {
 	update: [
 		auth.verifyToken(),
 		auth.populateUser(),
-		auth.restrictToAuthenticated(),
+		auth.restrictToAuthenticated()
 	],
 	patch: [
 		auth.verifyToken(),
 		auth.populateUser(),
-		auth.restrictToAuthenticated(),
+		auth.restrictToAuthenticated()
 	],
 	remove: [
 		auth.verifyToken(),
 		auth.populateUser(),
-		auth.restrictToAuthenticated(),
+		auth.restrictToAuthenticated()
 	]
 };
 
 exports.after = {
-	all: [ hooks.remove('password') ],
+	all: [],
 	find: [],
 	get: [],
 	create: [],

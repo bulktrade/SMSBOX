@@ -42,8 +42,8 @@
     "userSettings.confirmPassword": "Confirm password",
     "userSettings.confirmPasswordHint": "Password and confirm password is not match",
     "userSettings.updateProfile": "Update profile",
-    "userSettings.successMessage": "Your data has been successfully updated",
-    "userSettings.dangerMessage": "Your data was not updated",
+    "userSettings.successMessage": "Data has been successfully updated",
+    "userSettings.dangerMessage": "Data was not updated",
     "smsbox.title": "SMS Box",
     "smsbox.login": "Log in",
     "smsbox.signup": "Sign up",
@@ -54,6 +54,10 @@
     "smsbox.phoneNumberHint": "Enter the phone number in the correct format",
     "crud.create": "Create",
     "crud.update": "Update",
+    "crud.successUpdate": "Data has been successfully updated",
+    "crud.errorUpdate": "Data have not updated",
+    "crud.successCreate": "Data has been successfully created",
+    "crud.errorCreate": "Data have not created",
     "crud.delete": "Delete",
     "crud.back": "Back",
     "crud.ok": "Ok",
@@ -67,5 +71,6 @@
     "dashboardChart.smsTitle": "SMS",
     "email": "Email",
     "id": "ID",
-    "permissions": "Permissions"
+    "permissions": "Permissions",
+    "password": "Password"
 }

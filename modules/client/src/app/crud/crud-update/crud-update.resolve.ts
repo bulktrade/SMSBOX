@@ -1,14 +1,17 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { CrudResolve } from '../common/crud-resolve';
-import { CrudService } from '../crud.service';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
+import { Injectable } from "@angular/core";
+import { CrudResolve } from "../common/crud-resolve";
+import { CrudService } from "../crud.service";
+import { Observable } from "rxjs";
 import { GridOptions } from "ag-grid";
+import { FeathersService } from "../../services/feathers.service";
+import { Response } from "@angular/http";
 
 @Injectable()
 export class CrudUpdateResolve extends CrudResolve {
 
-    constructor(public crudService: CrudService) {
+    constructor(private crudService: CrudService,
+                private feathersService: FeathersService) {
         super();
     }
 
@@ -21,13 +24,9 @@ export class CrudUpdateResolve extends CrudResolve {
                 .subscribe(columnDefs => {
                     gridOptions.columnDefs = columnDefs;
 
-                    this.crudService.getRowData()
-                        .subscribe(rowData => {
-                            gridOptions.rowData = rowData.filter((row) => {
-                                if (row['id'] === id) {
-                                    return row;
-                                }
-                            });
+                    this.feathersService.get(id, 'users')
+                        .subscribe((res: Response) => {
+                            gridOptions.rowData = [res.json()];
 
                             observer.next(gridOptions);
                             observer.complete();

@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
 import { TypeOfDynamicForm } from "../dynamic-form/enum/type-of-dynamic-form";
-import { CrudService } from "../crud.service";
+import { FeathersService } from "../../services/feathers.service";
+import { GrowlService } from "../../services/growl/growl.service";
 
 @Component({
     selector: 'crud-create',
@@ -16,10 +17,10 @@ import { CrudService } from "../crud.service";
 export class CrudCreateComponent {
     formType: TypeOfDynamicForm = TypeOfDynamicForm.Create;
     columnDefs: ColDef[] = [];
-    model = {};
 
     constructor(private route: ActivatedRoute,
-                private crudService: CrudService) {
+                private feathersService: FeathersService,
+                private growlService: GrowlService) {
     }
 
     ngOnInit() {
@@ -31,8 +32,13 @@ export class CrudCreateComponent {
     }
 
     createRecord(model) {
-        if (!(model instanceof Event)){
-            this.crudService.gridOptions.rowData.push(model);
+        if (!(model instanceof Event)) {
+            this.feathersService.create(model, 'users').subscribe(data => {
+                this.growlService.show({ severity: 'success', detail: 'crud.successCreate' });
+            }, err => {
+                console.error(err);
+                this.growlService.show({ severity: 'error', detail: 'crud.errorCreate' });
+            });
         }
     }
 }
