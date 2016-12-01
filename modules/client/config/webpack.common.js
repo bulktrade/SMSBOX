@@ -168,10 +168,6 @@ module.exports = function (options) {
 		plugins: [
 			new CopyWebpackPlugin([
 				{
-					from: 'src/app/admin/users/users-list.json',
-					to: 'users-list.json'
-				},
-				{
 					from: 'src/app/admin/dashboard/dashboard.json',
 					to: 'dashboard.json'
 				}

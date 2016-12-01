@@ -1,8 +1,8 @@
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Injectable } from '@angular/core';
-import { CrudResolve } from '../common/crud-resolve';
-import { CrudService } from '../crud.service';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
+import { Injectable } from "@angular/core";
+import { CrudResolve } from "../common/crud-resolve";
+import { CrudService } from "../crud.service";
+import { Observable } from "rxjs";
 import { GridOptions } from "ag-grid";
 
 @Injectable()

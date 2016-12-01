@@ -64,5 +64,8 @@
     "dashboardStatus.smsTitle": "SMS",
     "dashboardChart.usersTitle": "User",
     "dashboardChart.profitTitle": "Profit",
-    "dashboardChart.smsTitle": "SMS"
+    "dashboardChart.smsTitle": "SMS",
+    "email": "Email",
+    "id": "ID",
+    "permissions": "Permissions"
 }
