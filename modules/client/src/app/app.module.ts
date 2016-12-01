@@ -72,10 +72,10 @@ import { LoginGuard } from "./login/login.guard";
         LoginGuard,
         {
             provide: FeathersService,
-            useFactory: (http: Http) => {
-                return new FeathersService(http, 'http://localhost:3030');
+            useFactory: (http: Http, tokenService: TokenService) => {
+                return new FeathersService(http, tokenService, 'http://localhost:3030');
             },
-            deps: [Http]
+            deps: [Http, TokenService]
         }
     ],
     bootstrap: [AppComponent]

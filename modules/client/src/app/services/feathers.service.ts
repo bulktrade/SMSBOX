@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { LoginModel } from "../login/login.model";
 import { Http, Response, Headers } from "@angular/http";
 import { Observable } from "rxjs";
+import {TokenService} from "./auth/token.service";
 
 @Injectable()
 export class FeathersService {
@@ -9,9 +10,8 @@ export class FeathersService {
     private urlPrefix: string;
     private urlSuffix: string;
     private localEndpoint: string;
-    private token: string;
 
-    constructor(private http: Http, host: string) {
+    constructor(private http: Http, private tokenService: TokenService, host: string) {
         this.host = host;
         this.localEndpoint = 'auth/local';
         this.urlPrefix = this.host + '/';
@@ -37,8 +37,6 @@ export class FeathersService {
         return Observable.create((observer) => {
             this.http.post(this.urlPrefix + this.localEndpoint, model)
                 .subscribe((res: Response) => {
-                    this.token = res.json().token;
-
                     observer.next(res);
                     observer.complete();
                 }, (err) => {
@@ -60,7 +58,7 @@ export class FeathersService {
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.token);
+            headers.append('Authorization', this.tokenService.getToken());
 
             return Observable.create((observer) => {
                 this.http.get(this.urlPrefix + serviceName + this.urlSuffix + id,
@@ -88,7 +86,7 @@ export class FeathersService {
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.token);
+            headers.append('Authorization', this.tokenService.getToken());
 
             return Observable.create((observer) => {
                 this.http.get(this.urlPrefix + serviceName + this.urlSuffix,
@@ -117,7 +115,7 @@ export class FeathersService {
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.token);
+            headers.append('Authorization', this.tokenService.getToken());
 
             return Observable.create((observer) => {
                 this.http.post(this.urlPrefix + serviceName, data,
@@ -147,7 +145,7 @@ export class FeathersService {
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.token);
+            headers.append('Authorization', this.tokenService.getToken());
 
             return Observable.create((observer) => {
                 this.http.put(this.urlPrefix + serviceName + this.urlSuffix + id, data,
@@ -176,7 +174,7 @@ export class FeathersService {
 
             let headers = new Headers();
             headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.token);
+            headers.append('Authorization', this.tokenService.getToken());
 
             return Observable.create((observer) => {
                 this.http.delete(this.urlPrefix + serviceName + this.urlSuffix + id,

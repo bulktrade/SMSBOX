@@ -10,11 +10,13 @@ export class ChatService {
 
     selectMessageByTelephoneNumber(messages: MessageModel[], telephoneNumber: string): MessageModel[] {
         messages.forEach((i) => {
-            if (i.telephoneNumber === telephoneNumber) {
+            if (i.TELEPHONE_NUMBER === telephoneNumber) {
                 this.messages.push(i);
             }
         });
 
         return this.messages;
     }
+
+
 }

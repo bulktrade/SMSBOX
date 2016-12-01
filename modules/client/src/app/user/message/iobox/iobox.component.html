@@ -1,18 +1,18 @@
 <div id="message-window">
 	<ul class="list-group" [ngClass]="{'fixed-height': messages.length > 11}">
-		<li class="list-group-item" *ngFor="let message of messages" [routerLink]="[message.telephoneNumber]">
+		<li class="list-group-item" *ngFor="let message of messages" [routerLink]="[message.TELEPHONE_NUMBER]">
 			<div class="row">
 				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
 					<i class="fa fa-user-circle" aria-hidden="true"></i>
-					<span class="telephone-number">{{ message.telephoneNumber }}</span>
+					<span class="telephone-number">{{ message.TELEPHONE_NUMBER }}</span>
 					<i class="fa fa-arrow-down state" aria-hidden="true"
-					   [ngClass]="{'fa-arrow-down': message.state === 'received', 'fa-arrow-up': message.state === 'outgoing'}"></i>
+					   [ngClass]="{'fa-arrow-down': message.STATE === 'received', 'fa-arrow-up': message.STATE === 'outgoing'}"></i>
 				</div>
-				<div class="col-xs-10 col-sm-8 col-md-8 col-lg-9 body-message">
-					<span>{{ message.messageText }}</span>
+				<div class="col-xs-10 col-sm-7 col-md-7 col-lg-9 body-message">
+					<span>{{ message.MESSAGE_TEXT }}</span>
 				</div>
-				<div class="col-xs-2 col-sm-1 col-lg-1 text-right date">
-					<span>{{ message.date }}</span>
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-1 text-right date">
+					<span>{{ message.DATE }}</span>
 					<i class="fa fa-commenting pull-right chat-icon" aria-hidden="true"></i>
 				</div>
 			</div>

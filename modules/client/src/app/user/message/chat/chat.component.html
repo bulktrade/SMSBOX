@@ -7,14 +7,14 @@
 		</div>
 	</div>
 	<ol class="chat">
-		<li [ngClass]="{other: message.state === 'received', self: message.state === 'outgoing'}"
+		<li [ngClass]="{other: message.STATE === 'received', self: message.STATE === 'outgoing'}"
 		    *ngFor="let message of messages">
 
 			<div class="avatar"></div>
 
 			<div class="msg">
-				<p>{{ message.messageText }}</p>
-				<time>{{ message.date }}</time>
+				<p>{{ message.MESSAGE_TEXT }}</p>
+				<time>{{ message.DATE }}</time>
 			</div>
 		</li>
 	</ol>

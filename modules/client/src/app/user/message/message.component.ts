@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { FeathersService } from "../../services/feathers/feathers.service";
 
 @Component({
     selector: 'message',

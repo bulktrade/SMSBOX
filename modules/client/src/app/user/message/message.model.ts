@@ -1,9 +1,9 @@
-import { MessageState } from "./model/message-state";
+import {MessageState} from "./model/message-state";
 
-export class MessageModel {
-    constructor(public telephoneNumber: string,
-                public messageText: string,
-                public date: string,
-                public state: string|MessageState) {
-    }
+export interface MessageModel {
+  TELEPHONE_NUMBER: string,
+  MESSAGE_TEXT: string,
+  DATE: string,
+  STATE: string|MessageState,
+  USER_ID: string
 }
