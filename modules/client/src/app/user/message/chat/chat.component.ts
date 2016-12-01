@@ -15,7 +15,7 @@ import { MessageModel } from "../message.model";
 })
 
 export class ChatComponent {
-    telephoneNumber: string = '';
+    message: MessageModel = <MessageModel>{};
     messages: MessageModel[] = [];
 
     constructor(private messageService: MessageService,
@@ -25,16 +25,20 @@ export class ChatComponent {
     }
 
     ngOnInit() {
-        this.telephoneNumber = this.route.params['value']['telephoneNumber'];
+        this.message.TELEPHONE_NUMBER = this.route.params['value']['telephoneNumber'];
 
         this.messageService.getMessages()
             .subscribe((messages: MessageModel[]) => {
                 this.messages = this.messageService.sortMessagesByDate(
-                    this.chatService.selectMessageByTelephoneNumber(messages, this.telephoneNumber)
+                    this.chatService.selectMessageByTelephoneNumber(messages, this.message.TELEPHONE_NUMBER)
                 );
             });
     }
 
     onSubmit() {
+        this.message = this.chatService.initialMessageUntilSend(this.message);
+
+        this.messages.push(this.message);
+        this.chatService.sendMessage(this.message);
     }
 }
