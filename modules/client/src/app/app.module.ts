@@ -27,6 +27,7 @@ import { FeathersService } from "./services/feathers.service";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { TokenService } from "./services/auth/token.service";
 import { LoginGuard } from "./login/login.guard";
+import { GrowlModule } from "primeng/components/growl/growl";
 
 @NgModule({
     imports: [
@@ -50,7 +51,8 @@ import { LoginGuard } from "./login/login.guard";
         AdminComponentModule,
         UserComponentModule,
         ThereComponentModule,
-        SmsBoxComponentModule
+        SmsBoxComponentModule,
+        GrowlModule
     ],
     declarations: [
         AppComponent,

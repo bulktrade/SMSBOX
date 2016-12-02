@@ -5,6 +5,7 @@ import { CrudService } from "../crud.service";
 import { ActivatedRoute } from "@angular/router";
 import { GrowlService } from "../../services/growl/growl.service";
 import { FeathersService } from "../../services/feathers.service";
+import { Message } from "primeng/components/common/api";
 
 @Component({
     selector: 'crud-delete',
@@ -17,6 +18,7 @@ import { FeathersService } from "../../services/feathers.service";
 
 export class CrudDeleteComponent {
     id: string = null;
+    msgs: Message[] = [];
 
     constructor(private location: Location,
                 private translate: TranslateService,
@@ -27,7 +29,10 @@ export class CrudDeleteComponent {
     }
 
     ngOnInit() {
-        this.growlService.show({ severity: 'warn', detail: 'crud.confirmDeleteMsg' });
+        this.translate.get('crud.confirmDeleteMsg')
+            .subscribe(detail => {
+                this.msgs.push({ severity: 'warn', detail: detail });
+            });
 
         this.route.params.subscribe(params => {
             this.id = params['id']
@@ -37,9 +42,11 @@ export class CrudDeleteComponent {
     deleteRow() {
         this.feathersService.remove(this.id, 'users')
             .subscribe(data => {
+                this.growlService.show({ severity: 'success', detail: 'crud.successDelete' });
                 this.location.back();
             }, err => {
                 console.error(err);
+                this.growlService.show({ severity: 'error', detail: 'crud.errorDelete' });
             });
     }
 }

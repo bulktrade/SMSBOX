@@ -11,7 +11,7 @@ import { GrowlService } from "../../services/growl/growl.service";
     styles: [
         require('./crud-create.component.scss')
     ],
-    providers: []
+    providers: [GrowlService]
 })
 
 export class CrudCreateComponent {

@@ -12,7 +12,7 @@ import { GrowlService } from "../../services/growl/growl.service";
     styles: [
         require('./crud-update.component.scss')
     ],
-    providers: []
+    providers: [GrowlService]
 })
 
 export class CrudUpdateComponent {
