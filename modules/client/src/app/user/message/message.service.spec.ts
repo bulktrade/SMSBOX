@@ -1,19 +1,31 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from "@angular/core/testing";
 import { MessageService } from "./message.service";
-import { HttpModule, ResponseOptions, Response } from "@angular/http";
+import { HttpModule, ResponseOptions, Response, Http } from "@angular/http";
 import { HTTP_PROVIDERS } from "../../common/test/unit/mock/http-providers";
 import { MockBackend } from "@angular/http/testing";
 import { MessageModel } from "./message.model";
+import { TokenService } from "../../services/auth/token.service";
+import { FeathersService } from "../../services/feathers.service";
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('Message service', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 MessageService,
-                HTTP_PROVIDERS
+                HTTP_PROVIDERS,
+                TokenService,
+                {
+                    provide: FeathersService,
+                    useFactory: (http: Http, tokenService: TokenService) => {
+                        return new FeathersService(http, tokenService, 'http://localhost:3030');
+                    },
+                    deps: [Http, TokenService]
+                }
             ],
             imports: [
-                HttpModule
+                HttpModule,
+                RouterTestingModule
             ]
         });
     });
@@ -21,24 +33,25 @@ describe('Message service', () => {
     it('should get messages',
         inject([MessageService, MockBackend], (messageService: MessageService, backend: MockBackend) => {
             let messages = {
-                "messages": [
+                data: [
                     {
-                        "telephoneNumber": "+380983417360",
-                        "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                        "date": "Oct 15",
-                        "state": "received"
+                        "TELEPHONE_NUMBER": "+380983417362",
+                        "MESSAGE_TEXT": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                        "DATE": "Oct 15",
+                        "STATE": "received"
+                    },
+
+                    {
+                        "TELEPHONE_NUMBER": "+380983417362",
+                        "MESSAGE_TEXT": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                        "DATE": "Dec 15",
+                        "STATE": "outgoing"
                     },
                     {
-                        "telephoneNumber": "+380983417360",
-                        "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                        "date": "Dec 15",
-                        "state": "outgoing"
-                    },
-                    {
-                        "telephoneNumber": "+380983417361",
-                        "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                        "date": "Jun 15",
-                        "state": "received"
+                        "TELEPHONE_NUMBER": "+380983417361",
+                        "MESSAGE_TEXT": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                        "DATE": "Jun 15",
+                        "STATE": "received"
                     }
                 ]
             };
@@ -58,22 +71,22 @@ describe('Message service', () => {
     it('should sort messages',
         inject([MessageService], (messageService: MessageService) => {
             let messages: MessageModel[] = [
-                {
-                    "telephoneNumber": "+380983417360",
-                    "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                    "date": "Oct 25",
-                    "state": "received"
+                <MessageModel>{
+                    "TELEPHONE_NUMBER": "+380983417360",
+                    "MESSAGE_TEXT": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                    "DATE": "Oct 25",
+                    "STATE": "received"
                 },
-                {
-                    "telephoneNumber": "+380983417360",
-                    "messageText": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
-                    "date": "Oct 15",
-                    "state": "outgoing"
+                <MessageModel>{
+                    "TELEPHONE_NUMBER": "+380983417360",
+                    "MESSAGE_TEXT": "Lorem ipsum dolor sit amet, consectetur adipisicing elit",
+                    "DATE": "Oct 15",
+                    "STATE": "outgoing"
                 }
             ];
 
             messages = messageService.sortMessagesByDate(messages);
-            expect(new Date(messages[0].date).getDate()).toEqual(15);
+            expect(new Date(messages[0].DATE).getDate()).toEqual(15);
         }));
 
 });
