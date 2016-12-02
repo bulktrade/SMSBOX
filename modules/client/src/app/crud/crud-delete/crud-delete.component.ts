@@ -6,6 +6,7 @@ import { ActivatedRoute } from "@angular/router";
 import { GrowlService } from "../../services/growl/growl.service";
 import { FeathersService } from "../../services/feathers.service";
 import { Message } from "primeng/components/common/api";
+import { Observable } from "rxjs";
 
 @Component({
     selector: 'crud-delete',
@@ -35,12 +36,12 @@ export class CrudDeleteComponent {
             });
 
         this.route.params.subscribe(params => {
-            this.id = params['id']
+            this.id = params['id'];
         });
     }
 
     deleteRow() {
-        this.feathersService.remove(this.id, this.crudService.getFeathersServiceName())
+        this.multipleDeleleRows(this.id.split(' '))
             .subscribe(data => {
                 this.growlService.show({ severity: 'success', detail: 'crud.successDelete' });
                 this.location.back();
@@ -48,5 +49,24 @@ export class CrudDeleteComponent {
                 console.error(err);
                 this.growlService.show({ severity: 'error', detail: 'crud.errorDelete' });
             });
+    }
+
+    multipleDeleleRows(allID: string[]) {
+        let source = [];
+
+        allID.forEach(id => {
+            source.push(Observable.create((observer) => {
+                this.feathersService.remove(id, this.crudService.getFeathersServiceName())
+                    .subscribe(data => {
+                        observer.next(data);
+                        observer.complete();
+                    }, err => {
+                        observer.error(err);
+                        observer.complete();
+                    });
+            }));
+        });
+
+        return Observable.forkJoin(source);
     }
 }

@@ -44,7 +44,8 @@ export class CrudService {
                         if (columnsName.hasOwnProperty(columnName)) {
                             colDefs.push(<ColDef>{
                                 headerName: columnsName[columnName],
-                                field: columnName
+                                field: columnName,
+                                editable: true
                             });
                         }
                     }

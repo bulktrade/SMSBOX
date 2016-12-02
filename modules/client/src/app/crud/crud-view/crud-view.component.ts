@@ -5,6 +5,8 @@ import { CrudService } from "../crud.service";
 import { GridOptions } from "ag-grid";
 import { CrudViewService } from "./crud-view.service";
 import { Pagination } from "../model/pagination";
+import { FeathersService } from "../../services/feathers.service";
+import { GrowlService } from "../../services/growl/growl.service";
 
 @Component({
     selector: 'crud-view',
@@ -25,7 +27,9 @@ export class CrudViewComponent {
                 public router: Router,
                 public route: ActivatedRoute,
                 public crudViewService: CrudViewService,
-                public crudService: CrudService) {
+                public crudService: CrudService,
+                private growlService: GrowlService,
+                private feathersService: FeathersService) {
         this.gridOptions = this.getGridOptions();
         this.gridOptions.rowData = this.getRowData();
         this.gridOptions.columnDefs = this.getColumnDefs();
@@ -59,6 +63,15 @@ export class CrudViewComponent {
             },
             onRowClicked: (event) => {
                 this.crudViewService.setCurrentSelectedRow(event.data);
+            },
+            onCellValueChanged: (event) => {
+                this.feathersService.update(event.data.id, event.data, this.crudService.getFeathersServiceName())
+                    .subscribe(data => {
+                        this.growlService.show({ severity: 'success', detail: 'crud.successUpdate' });
+                    }, err => {
+                        console.error(err);
+                        this.growlService.show({ severity: 'error', detail: 'crud.errorUpdate' });
+                    });
             }
         };
     }
@@ -80,7 +93,13 @@ export class CrudViewComponent {
     }
 
     navigateToDelete() {
-        this.router.navigate([this.router.url, 'delete', this.gridOptions.api.getSelectedRows()[0].id]);
+        let allID: string[] = [];
+
+        this.gridOptions.api.getSelectedRows().forEach(i => {
+           allID.push(i.id);
+        });
+
+        this.router.navigate([this.router.url, 'delete', allID.join(' ')]);
     }
 
     navigateToCreate() {
