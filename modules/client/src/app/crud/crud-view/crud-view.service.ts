@@ -3,6 +3,10 @@ import { GridOptions, ColDef } from "ag-grid";
 import { TranslateService } from "ng2-translate";
 import { Router } from "@angular/router";
 import { Button } from "../model/button";
+import { FeathersService } from "../../services/feathers.service";
+import { Observable } from "rxjs";
+import { Response } from "@angular/http";
+import { Pagination } from "../model/pagination";
 
 @Injectable()
 export class CrudViewService {
@@ -10,7 +14,8 @@ export class CrudViewService {
     public querySelectors = null;
 
     constructor(public translate: TranslateService,
-                public router: Router) {
+                public router: Router,
+                public feathersService: FeathersService) {
     }
 
     isSelectedRecord(gridOptions: GridOptions): boolean {
@@ -199,13 +204,22 @@ export class CrudViewService {
 
     /**
      *
+     * @param skip
      * @param limit
-     * @param offset
-     * @param list
-     * @return {T[]|Uint8Array|Uint32Array|Float64Array|Int16Array|Blob|any}
+     * @returns {any}
      */
-    renderPagination(offset, limit, list) {
-        return list.slice( offset, limit );
+    renderPagination(skip, limit): Observable<Pagination> {
+        return Observable.create((observer) => {
+            this.feathersService.pagination(skip, limit, 'users')
+                .subscribe((data: Response) => {
+                    observer.next(data.json());
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
+
+        });
     }
 
     getCurrentSelectedRow() {

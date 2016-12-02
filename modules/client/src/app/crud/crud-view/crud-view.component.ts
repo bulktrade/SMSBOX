@@ -16,7 +16,8 @@ import { Pagination } from "../model/pagination";
 })
 
 export class CrudViewComponent {
-    public pagination = new Pagination(0, 10, [10, 20, 30]);
+    public pagination = new Pagination(0, 10, null, null);
+    public rowsPerPageOptions: number[] = [10, 20, 30];
     private gridOptions: GridOptions;
     private isDisabledDeleteButton: boolean = true;
 
@@ -50,10 +51,11 @@ export class CrudViewComponent {
                 this.isDisabledDeleteButton =
                     this.crudViewService.isSelectedRecord(this.gridOptions);
 
-                this.gridOptions.api.setRowData(
-                    this.crudViewService.renderPagination(this.pagination.offset,
-                        this.pagination.limit, this.gridOptions.rowData)
-                )
+                this.crudViewService.renderPagination(this.pagination.skip, this.pagination.limit)
+                    .subscribe((paginate: Pagination) => {
+                        this.pagination = paginate;
+                        this.gridOptions.api.setRowData(paginate.data);
+                    });
             },
             onRowClicked: (event) => {
                 this.crudViewService.setCurrentSelectedRow(event.data);
@@ -62,9 +64,11 @@ export class CrudViewComponent {
     }
 
     onPaginate(event) {
-        this.gridOptions.api.setRowData(
-            this.crudViewService.renderPagination(event.first, event.rows + event.first, this.gridOptions.rowData)
-        )
+        this.crudViewService.renderPagination(event.first, event.rows + event.first)
+            .subscribe((paginate: Pagination) => {
+                this.pagination = paginate;
+                this.gridOptions.api.setRowData(paginate.data);
+            });
     }
 
     private getRowData() {

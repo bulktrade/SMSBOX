@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { LoginModel } from "../login/login.model";
 import { Http, Response, Headers } from "@angular/http";
 import { Observable } from "rxjs";
-import {TokenService} from "./auth/token.service";
+import { TokenService } from "./auth/token.service";
 
 @Injectable()
 export class FeathersService {
@@ -190,5 +190,36 @@ export class FeathersService {
             });
 
         }
+    }
+
+    /**
+     *
+     * @param skip will skip the specified number of results
+     * @param limit will return only the number of results you specify
+     * @param serviceName
+     * @returns {any}
+     */
+    pagination(skip: number|string, limit: number|string, serviceName: string) {
+        if (serviceName) {
+            let query = '?$skip=' + skip + '&$limit=' + limit;
+
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('Authorization', this.tokenService.getToken());
+
+            return Observable.create((observer) => {
+                this.http.get(this.urlPrefix + serviceName + this.urlSuffix + query,
+                    { headers: headers })
+                    .subscribe((res: Response) => {
+                        observer.next(res);
+                        observer.complete();
+                    }, (err) => {
+                        observer.error(err);
+                        observer.complete();
+                    });
+
+            });
+        }
+
     }
 }

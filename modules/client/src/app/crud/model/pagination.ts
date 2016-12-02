@@ -1,6 +1,7 @@
 export class Pagination {
-    constructor(public offset: number,
+    constructor(public skip: number,
                 public limit: number,
-                public rowsPerPageOptions: number[]) {
+                public total: number,
+                public data: any) {
     }
 }

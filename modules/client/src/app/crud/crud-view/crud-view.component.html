@@ -20,8 +20,8 @@
 	             [gridOptions]="gridOptions">
 	</ag-grid-ng2>
 
-	<p-paginator class="paginator" [rows]="10" [totalRecords]="gridOptions.rowData.length"
+	<p-paginator class="paginator" [rows]="10" [totalRecords]="pagination.total"
 	             (onPageChange)="onPaginate($event)"
-	             [rowsPerPageOptions]="pagination.rowsPerPageOptions"></p-paginator>
+	             [rowsPerPageOptions]="rowsPerPageOptions"></p-paginator>
 
 </div>
