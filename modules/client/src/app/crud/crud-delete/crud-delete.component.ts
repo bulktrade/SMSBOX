@@ -40,7 +40,7 @@ export class CrudDeleteComponent {
     }
 
     deleteRow() {
-        this.feathersService.remove(this.id, 'users')
+        this.feathersService.remove(this.id, this.crudService.getFeathersServiceName())
             .subscribe(data => {
                 this.growlService.show({ severity: 'success', detail: 'crud.successDelete' });
                 this.location.back();

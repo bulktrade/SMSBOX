@@ -28,6 +28,7 @@ import { MessagesModule } from "primeng/components/messages/messages";
 import { TokenService } from "./services/auth/token.service";
 import { LoginGuard } from "./login/login.guard";
 import { GrowlModule } from "primeng/components/growl/growl";
+import { CrudMainResolve } from "./crud/crud.resolve";
 
 @NgModule({
     imports: [
@@ -67,6 +68,7 @@ import { GrowlModule } from "primeng/components/growl/growl";
         CrudViewResolve,
         CrudCreateResolve,
         CrudUpdateResolve,
+        CrudMainResolve,
         FormBuilder,
         SignupService,
         TokenService,

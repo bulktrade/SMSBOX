@@ -25,7 +25,7 @@ const CRUD_ROUTE_PROVIDER = [
         }
     },
     {
-        path: 'create',
+        path: 'create/:serviceName',
         component: CrudCreateComponent,
         resolve: { create: CrudCreateResolve },
         data: {

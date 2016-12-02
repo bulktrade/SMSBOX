@@ -8,6 +8,8 @@ import { FeathersService } from "../services/feathers.service";
 
 @Injectable()
 export class CrudService {
+    feathersServiceName: string = null;
+
     constructor(private translate: TranslateService,
                 private router: Router,
                 private feathersService: FeathersService) {
@@ -57,7 +59,7 @@ export class CrudService {
     getRowData(): Observable<Object[]> {
         return Observable.create((observer) => {
 
-            this.feathersService.find('users')
+            this.feathersService.find(this.getFeathersServiceName())
                 .subscribe((data: Response) => {
                     observer.next(data.json().data);
                     observer.complete();
@@ -67,5 +69,13 @@ export class CrudService {
                 });
 
         });
+    }
+
+    getFeathersServiceName(): string {
+        return this.feathersServiceName;
+    }
+
+    setFeathersServiceName(value: string) {
+        this.feathersServiceName = value;
     }
 }

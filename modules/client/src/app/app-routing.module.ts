@@ -22,6 +22,7 @@ import { ChatComponent } from "./user/message/chat/chat.component";
 import { CrudComponent } from "./crud/crud.component";
 import { CrudModule } from "./crud/crud.module";
 import { LoginGuard } from "./login/login.guard";
+import { CrudMainResolve } from "./crud/crud.resolve";
 
 const ROUTES: Routes = [
     {
@@ -55,15 +56,17 @@ const ROUTES: Routes = [
                         data: {
                             showInBreadcrumb: true,
                             translationKey: 'ADMIN_USER_BREADCRUMB_TITLE',
-                            showNavigationBar: true
+                            showNavigationBar: true,
+                            feathersService: 'users'
                         },
                         children: [
                             {
                                 path: '',
                                 component: CrudComponent,
                                 loadChildren: () => CrudModule,
+                                resolve: { crud: CrudMainResolve },
                                 data: {
-                                    showInBreadcrumb: false,
+                                    showInBreadcrumb: false
                                 }
                             }
                         ]

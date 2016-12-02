@@ -84,6 +84,6 @@ export class CrudViewComponent {
     }
 
     navigateToCreate() {
-        this.router.navigate([this.router.url, 'create']);
+        this.router.navigate([this.router.url, 'create', this.crudService.getFeathersServiceName()]);
     }
 }

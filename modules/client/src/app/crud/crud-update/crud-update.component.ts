@@ -47,7 +47,7 @@ export class CrudUpdateComponent {
 
     updateRecord(model) {
         if (!(model instanceof Event)) {
-            this.feathersService.update(this.id, model, 'users').subscribe(data => {
+            this.feathersService.update(this.id, model, this.crudService.getFeathersServiceName()).subscribe(data => {
                 this.growlService.show({ severity: 'success', detail: 'crud.successUpdate' });
             }, err => {
                 console.error(err);

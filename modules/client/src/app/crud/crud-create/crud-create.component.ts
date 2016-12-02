@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { TypeOfDynamicForm } from "../dynamic-form/enum/type-of-dynamic-form";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
+import { CrudService } from "../crud.service";
 
 @Component({
     selector: 'crud-create',
@@ -19,6 +20,7 @@ export class CrudCreateComponent {
     columnDefs: ColDef[] = [];
 
     constructor(private route: ActivatedRoute,
+                private crudService: CrudService,
                 private feathersService: FeathersService,
                 private growlService: GrowlService) {
     }
@@ -33,7 +35,7 @@ export class CrudCreateComponent {
 
     createRecord(model) {
         if (!(model instanceof Event)) {
-            this.feathersService.create(model, 'users').subscribe(data => {
+            this.feathersService.create(model, this.crudService.getFeathersServiceName()).subscribe(data => {
                 this.growlService.show({ severity: 'success', detail: 'crud.successCreate' });
             }, err => {
                 console.error(err);

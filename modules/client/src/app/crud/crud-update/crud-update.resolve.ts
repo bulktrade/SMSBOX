@@ -24,7 +24,7 @@ export class CrudUpdateResolve extends CrudResolve {
                 .subscribe(columnDefs => {
                     gridOptions.columnDefs = columnDefs;
 
-                    this.feathersService.get(id, 'users')
+                    this.feathersService.get(id, this.crudService.getFeathersServiceName())
                         .subscribe((res: Response) => {
                             gridOptions.rowData = [res.json()];
 

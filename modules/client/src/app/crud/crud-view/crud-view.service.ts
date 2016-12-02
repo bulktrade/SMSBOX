@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { GridOptions, ColDef } from "ag-grid";
 import { TranslateService } from "ng2-translate";
 import { Router } from "@angular/router";
@@ -7,6 +7,7 @@ import { FeathersService } from "../../services/feathers.service";
 import { Observable } from "rxjs";
 import { Response } from "@angular/http";
 import { Pagination } from "../model/pagination";
+import { CrudService } from "../crud.service";
 
 @Injectable()
 export class CrudViewService {
@@ -15,6 +16,7 @@ export class CrudViewService {
 
     constructor(public translate: TranslateService,
                 public router: Router,
+                public crudService: CrudService,
                 public feathersService: FeathersService) {
     }
 
@@ -210,7 +212,7 @@ export class CrudViewService {
      */
     renderPagination(skip, limit): Observable<Pagination> {
         return Observable.create((observer) => {
-            this.feathersService.pagination(skip, limit, 'users')
+            this.feathersService.pagination(skip, limit, this.crudService.getFeathersServiceName())
                 .subscribe((data: Response) => {
                     observer.next(data.json());
                     observer.complete();

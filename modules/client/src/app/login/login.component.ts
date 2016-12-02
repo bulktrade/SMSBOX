@@ -38,7 +38,7 @@ export class LoginComponent {
                         this.growlService.show({ severity: 'error', detail: 'login.userNotFound' });
                         break;
                     default:
-                        console.log(err);
+                        console.error(err);
                         this.growlService.show({ severity: 'error', detail: 'login.commonError' });
                         break;
                 }
