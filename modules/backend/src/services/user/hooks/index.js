@@ -51,7 +51,7 @@ exports.before = {
 };
 
 exports.after = {
-	all: [ hooks.remove('password') ],
+	all: [],
 	find: [],
 	get: [],
 	create: [],

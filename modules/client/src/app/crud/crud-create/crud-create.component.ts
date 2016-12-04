@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
-import { TypeOfDynamicForm } from "../dynamic-form/enum/type-of-dynamic-form";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
 import { CrudService } from "../crud.service";
@@ -16,7 +15,6 @@ import { CrudService } from "../crud.service";
 })
 
 export class CrudCreateComponent {
-    formType: TypeOfDynamicForm = TypeOfDynamicForm.Create;
     columnDefs: ColDef[] = [];
 
     constructor(private route: ActivatedRoute,

@@ -1,9 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, Input, Output, EventEmitter, NgModule, ModuleWithProviders } from "@angular/core";
+import { Location, CommonModule } from "@angular/common";
 import { ColDef } from "ag-grid";
-import { TypeOfDynamicForm } from "./enum/type-of-dynamic-form";
 import { GrowlService } from "../../services/growl/growl.service";
-import { TranslateService } from "ng2-translate";
+import { TranslateService, TranslateModule } from "ng2-translate";
+import { Button } from "../model/button";
+import { FormsModule } from "@angular/forms";
+import { MessagesModule } from "primeng/components/messages/messages";
+import { ButtonModule } from "primeng/components/button/button";
 
 @Component({
     selector: 'dynamic-form',
@@ -16,7 +19,7 @@ import { TranslateService } from "ng2-translate";
 
 export class DynamicFormComponent {
     @Input('columnDefs') columnDefs: ColDef[];
-    @Input('type') type: TypeOfDynamicForm;
+    @Input('buttonModel') buttonModel: Button;
     @Input('growlService') growlService: GrowlService;
     @Input('model') model = {};
 
@@ -34,3 +37,18 @@ export class DynamicFormComponent {
         this.growlService.hide();
     }
 }
+
+@NgModule({
+    imports: [CommonModule, FormsModule, TranslateModule, MessagesModule, ButtonModule],
+    exports: [DynamicFormComponent],
+    declarations: [DynamicFormComponent],
+})
+export class DynamicFormModule {
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: DynamicFormModule,
+            providers: []
+        };
+    }
+}
+

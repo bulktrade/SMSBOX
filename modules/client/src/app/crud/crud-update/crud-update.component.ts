@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
-import { TypeOfDynamicForm } from "../dynamic-form/enum/type-of-dynamic-form";
 import { CrudService } from "../crud.service";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
@@ -16,7 +15,6 @@ import { GrowlService } from "../../services/growl/growl.service";
 })
 
 export class CrudUpdateComponent {
-    formType: TypeOfDynamicForm = TypeOfDynamicForm.Updte;
     id: string;
     columnDefs: ColDef[] = [];
     model = {};
@@ -30,7 +28,7 @@ export class CrudUpdateComponent {
     ngOnInit() {
         this.route.params
             .subscribe(params => {
-               this.id = params['id'];
+                this.id = params['id'];
             });
 
         this.columnDefs = this.getColumnDefs();

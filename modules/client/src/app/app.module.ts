@@ -14,7 +14,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { LoginComponent } from "./login/login.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { CommonModule } from "@angular/common";
-import { UserComponentModule } from "./user/user.module";
+import { UserModule } from "./user/user.module";
 import { CubeGridComponent } from "./common/spinner/cube-grid/cube-grid.component";
 import { EqualValidatorModule } from "./common/equal-validator.directive";
 import { CrudModule } from "./crud/crud.module";
@@ -29,6 +29,7 @@ import { TokenService } from "./services/auth/token.service";
 import { LoginGuard } from "./login/login.guard";
 import { GrowlModule } from "primeng/components/growl/growl";
 import { CrudMainResolve } from "./crud/crud.resolve";
+import { CommonService } from "./services/common.service";
 
 @NgModule({
     imports: [
@@ -50,7 +51,7 @@ import { CrudMainResolve } from "./crud/crud.resolve";
         CrudModule,
         EqualValidatorModule,
         AdminComponentModule,
-        UserComponentModule,
+        UserModule,
         ThereComponentModule,
         SmsBoxComponentModule,
         GrowlModule
@@ -73,6 +74,7 @@ import { CrudMainResolve } from "./crud/crud.resolve";
         SignupService,
         TokenService,
         GrowlService,
+        CommonService,
         LoginGuard,
         {
             provide: FeathersService,

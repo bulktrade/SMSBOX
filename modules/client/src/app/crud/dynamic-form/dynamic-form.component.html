@@ -28,9 +28,10 @@
 					<button pButton type="button" icon="fa-chevron-left" id="backButton" (click)="location.back()"
 					        label="{{ 'crud.back' | translate }}"></button>
 				</div>
-				<div class="ui-grid-col-2" [ngSwitch]="type">
-					<button *ngSwitchCase="0" pButton type="submit" id="createButton" [disabled]="dynamicForm.invalid" icon="fa-plus" label="{{ 'crud.create' | translate }}"></button>
-					<button *ngSwitchCase="1" pButton type="submit" id="updateButton" [disabled]="dynamicForm.invalid" icon="fa-pencil" label="{{ 'crud.update' | translate }}"></button>
+				<div class="ui-grid-col-2">
+					<button pButton type="submit" id="{{ buttonModel.nameButton }}"
+					        [disabled]="dynamicForm.invalid" icon="{{ buttonModel.iconName }}"
+					        label="{{ buttonModel.nameButton | translate }}"></button>
 				</div>
 				<div class="ui-grid-col-4"></div>
 			</div>

@@ -1,4 +1,5 @@
 <div id="crud-update-window">
 	<dynamic-form [columnDefs]="columnDefs" [model]="model"
-	              [growlService]="growlService" [type]="formType" (submit)="updateRecord($event)"></dynamic-form>
+	              [growlService]="growlService" [buttonModel]="{nameButton: 'crud.update', iconName: 'fa-pencil'}"
+	              (submit)="updateRecord($event)"></dynamic-form>
 </div>

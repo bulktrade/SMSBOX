@@ -25,7 +25,7 @@
 							<label for="firstname" class="col-sm-2 col-form-label">{{'userSettings.firstname' |
 								translate}}</label>
 							<div class="col-sm-10">
-								<input type="text" [(ngModel)]="model.firstname" class="form-control" id="firstname"
+								<input type="text" [(ngModel)]="model.firstName" class="form-control" id="firstname"
 								       name="firstname" #firstname="ngModel"
 								       placeholder="{{'userSettings.firstname' | translate}}">
 							</div>
@@ -83,10 +83,12 @@
 							</div>
 						</div>
 						<div class="info">
-							<alert type="danger" dismissible="true" *ngIf="messageModel.errorMessage" (close)="messageModel.errorMessage=false">
+							<alert type="danger" dismissible="true" *ngIf="messageModel.errorMessage"
+							       (close)="messageModel.errorMessage=false">
 								{{ 'userSettings.dangerMessage' | translate }}
 							</alert>
-							<alert type="success" dismissible="true" *ngIf="messageModel.successMessage" (close)="messageModel.successMessage=false">
+							<alert type="success" dismissible="true" *ngIf="messageModel.successMessage"
+							       (close)="messageModel.successMessage=false">
 								{{ 'userSettings.successMessage' | translate }}
 							</alert>
 						</div>

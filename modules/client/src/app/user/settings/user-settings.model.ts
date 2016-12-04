@@ -1,6 +1,6 @@
 export class UserSettingsModel {
     constructor(public gender: string,
-                public firstname: string,
+                public firstName: string,
                 public surname: string,
                 public emailAddress: string,
                 public mobilePhoneNumber: string,

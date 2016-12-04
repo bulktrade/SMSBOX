@@ -13,7 +13,7 @@ export class CrudCreateResolve extends CrudResolve {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return Observable.create((observer) => {
-            this.crudService.getColumnDefs()
+            this.crudService.getColumnDefs(this.crudService.getFeathersServiceName())
                 .subscribe(columnDefs => {
 
                     observer.next(columnDefs);

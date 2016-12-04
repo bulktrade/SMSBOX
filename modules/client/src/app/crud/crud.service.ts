@@ -15,16 +15,31 @@ export class CrudService {
                 private feathersService: FeathersService) {
     }
 
-    getColumnDefs(): Observable<ColDef[]> {
+    getColumnDefs(serviceName: string): Observable<ColDef[]> {
         return Observable.create((observer) => {
 
-            this.getRowData()
+            this.getRowData(serviceName)
                 .subscribe((data) => {
                     this.translateColumns(Object.keys(data[0]))
                         .subscribe((res: ColDef[]) => {
                             observer.next(res);
                             observer.complete();
                         });
+                }, err => {
+                    observer.error(err);
+                    observer.complete();
+                });
+
+        });
+    }
+
+    getRowData(serviceName: string): Observable<Object[]> {
+        return Observable.create((observer) => {
+
+            this.feathersService.find(serviceName)
+                .subscribe((data: Response) => {
+                    observer.next(data.json().data);
+                    observer.complete();
                 }, err => {
                     observer.error(err);
                     observer.complete();
@@ -51,21 +66,6 @@ export class CrudService {
                     }
 
                     observer.next(colDefs);
-                    observer.complete();
-                });
-
-        });
-    }
-
-    getRowData(): Observable<Object[]> {
-        return Observable.create((observer) => {
-
-            this.feathersService.find(this.getFeathersServiceName())
-                .subscribe((data: Response) => {
-                    observer.next(data.json().data);
-                    observer.complete();
-                }, err => {
-                    observer.error(err);
                     observer.complete();
                 });
 

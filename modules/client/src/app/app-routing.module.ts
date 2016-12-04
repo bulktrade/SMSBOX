@@ -162,7 +162,7 @@ const ROUTES: Routes = [
                             showInBreadcrumb: true,
                             translationKey: 'USER_SETTINGS_BREADCRUMB_TITLE',
                             showNavigationBar: true
-                        },
+                        }
                     }
                 ]
             },

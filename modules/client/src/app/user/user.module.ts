@@ -21,6 +21,7 @@ import {BaAmChart} from "../chart/theme/components/baAmChart/baAmChart.component
 import {LineChartService} from "../chart/lineChart.service";
 import {BaThemeConfigProvider} from "../chart/theme/theme.configProvider";
 import { HttpModule } from "@angular/http";
+import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 
 const DECLARATION = [
     UserComponent,
@@ -45,7 +46,8 @@ const DECLARATION = [
         EqualValidatorModule,
         AlertModule,
         Ng2BootstrapModule,
-        HttpModule
+        HttpModule,
+        DynamicFormModule
     ],
     declarations: [
         DECLARATION
@@ -61,6 +63,6 @@ const DECLARATION = [
     ]
 })
 
-export class UserComponentModule {
+export class UserModule {
 
 }

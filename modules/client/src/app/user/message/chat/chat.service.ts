@@ -2,16 +2,14 @@ import { Injectable } from "@angular/core";
 import { MessageModel } from "../message.model";
 import { FeathersService } from "../../../services/feathers.service";
 import { MessageState } from "../model/message-state";
-import { TokenService } from "../../../services/auth/token.service";
-
-var jwtDecode = require('jwt-decode');
+import { CommonService } from "../../../services/common.service";
 
 @Injectable()
 export class ChatService {
     messages: MessageModel[] = [];
 
     constructor(private feathersService: FeathersService,
-                private tokenService: TokenService) {
+                private commonService: CommonService) {
     }
 
     selectMessageByTelephoneNumber(messages: MessageModel[], telephoneNumber: string): MessageModel[] {
@@ -29,7 +27,7 @@ export class ChatService {
 
         message.DATE = String(this.getCurrentData());
         message.STATE = MessageState.Outgoing;
-        message.USER_ID = jwtDecode(this.tokenService.getToken()).id;
+        message.USER_ID = this.commonService.getIDCurrentUser();
 
         return result;
     }

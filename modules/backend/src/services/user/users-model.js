@@ -2,6 +2,7 @@
 
 const knex = require('knex');
 const connection = require('./../../connection-properties');
+const usersData = require('./users-data');
 
 const db = knex({
 	client: 'mysql',
@@ -20,8 +21,16 @@ db.schema.dropTableIfExists(tableName).then(function () {
 	return db.schema.createTable(tableName, function (table) {
 		console.log('Creating USER table');
 
-		table.increments('ID');
-	});
+		table.increments('id');
+		table.string('gender');
+		table.string('firstName');
+		table.string('surname');
+		table.string('emailAddress');
+		table.string('mobilePhoneNumber');
+		table.string('password');
+	}).then(function () {
+        return db(tableName).insert(usersData);
+    });
 });
 
 module.exports = db;
