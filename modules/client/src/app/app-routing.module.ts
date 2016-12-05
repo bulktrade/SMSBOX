@@ -23,6 +23,7 @@ import { CrudComponent } from "./crud/crud.component";
 import { CrudModule } from "./crud/crud.module";
 import { LoginGuard } from "./login/login.guard";
 import { CrudMainResolve } from "./crud/crud.resolve";
+import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 
 const ROUTES: Routes = [
     {
@@ -158,6 +159,7 @@ const ROUTES: Routes = [
                     {
                         path: 'settings',
                         component: UserSettingsComponent,
+                        resolve: { userSettings: UserSettingsResolve },
                         data: {
                             showInBreadcrumb: true,
                             translationKey: 'USER_SETTINGS_BREADCRUMB_TITLE',

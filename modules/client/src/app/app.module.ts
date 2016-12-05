@@ -30,6 +30,7 @@ import { LoginGuard } from "./login/login.guard";
 import { GrowlModule } from "primeng/components/growl/growl";
 import { CrudMainResolve } from "./crud/crud.resolve";
 import { CommonService } from "./services/common.service";
+import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 
 @NgModule({
     imports: [
@@ -70,6 +71,7 @@ import { CommonService } from "./services/common.service";
         CrudCreateResolve,
         CrudUpdateResolve,
         CrudMainResolve,
+        UserSettingsResolve,
         FormBuilder,
         SignupService,
         TokenService,

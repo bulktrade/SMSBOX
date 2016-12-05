@@ -6,104 +6,140 @@
 		<div class="inner-wrap">
 			<breadcrumb></breadcrumb>
 
-			<div class="card">
-				<h3 class="card-header titlePage">{{'userSettings.title' |
-					translate}}</h3>
-				<div class="card-block">
-					<form role="form" (ngSubmit)="onSubmit(settingsForm)" #settingsForm="ngForm" novalidate>
-						<div class="form-group row">
-							<label for="gender" class="col-sm-2 col-form-label">{{'userSettings.gender' |
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" id="gender" name="gender" #gender="ngModel"
-								       [(ngModel)]="model.gender"
-								       placeholder="{{'userSettings.gender' | translate}}"
-								       autocomplete="false">
+			<form role="form" (ngSubmit)="onSubmit(settingsForm)" #settingsForm="ngForm" novalidate>
+
+				<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0">
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.gender' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.gender" #gender="ngModel"
+							       required name="gender" type="text" id="gender">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="gender.invalid&&gender.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.gender' | translate) + ' ' + ('userSettings.required' | translate) }}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="firstname" class="col-sm-2 col-form-label">{{'userSettings.firstname' |
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="text" [(ngModel)]="model.firstName" class="form-control" id="firstname"
-								       name="firstname" #firstname="ngModel"
-								       placeholder="{{'userSettings.firstname' | translate}}">
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.firstName' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.firstName" #firstName="ngModel"
+							       required name="firstName" type="text" id="firstName">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="firstName.invalid&&firstName.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.firstName' | translate) + ' ' + ('userSettings.required' | translate)
+								}}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="surname" class="col-sm-2 col-form-label">{{'userSettings.surname' |
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="text" [(ngModel)]="model.surname" class="form-control" id="surname"
-								       name="surname" #surname="ngModel"
-								       placeholder="{{'userSettings.surname' | translate}}">
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.surname' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.surname" #surname="ngModel"
+							       required name="surname" type="text" id="surname">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="surname.invalid&&surname.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.surname' | translate) + ' ' + ('userSettings.required' | translate) }}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="emailAddress" class="col-sm-2 col-form-label">{{'userSettings.emailAddress' |
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="text" [(ngModel)]="model.emailAddress" class="form-control"
-								       id="emailAddress" name="emailAddress" #emailAddress="ngModel"
-								       placeholder="{{'userSettings.emailAddress' | translate}}">
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.emailAddress' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.emailAddress"
+							       #emailAddress="ngModel"
+							       required name="emailAddress" type="text" id="emailAddress">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="emailAddress.invalid&&emailAddress.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.emailAddress' | translate) + ' ' + ('userSettings.required' |
+								translate) }}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="mobilePhoneNumber" class="col-sm-2 col-form-label">
-								{{'userSettings.mobilePhoneNumber'| translate}}</label>
-							<div class="col-sm-10">
-								<input type="text" [(ngModel)]="model.mobilePhoneNumber" class="form-control"
-								       id="mobilePhoneNumber" name="mobilePhoneNumber" #mobilePhoneNumber="ngModel"
-								       placeholder="{{'userSettings.mobilePhoneNumber' | translate}}">
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.mobilePhoneNumber' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.mobilePhoneNumber"
+							       #mobilePhoneNumber="ngModel"
+							       required name="mobilePhoneNumber" type="text" id="mobilePhoneNumber">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="mobilePhoneNumber.invalid&&mobilePhoneNumber.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.mobilePhoneNumber' | translate) + ' ' + ('userSettings.required' |
+								translate) }}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="password" class="col-sm-2 col-form-label">{{'userSettings.password' |
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="password" [(ngModel)]="model.password" class="form-control" id="password"
-								       name="password" #password="ngModel"
-								       placeholder="{{'userSettings.password' | translate}}"
-								       validateEqual="confirmPassword" reverse="true">
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.password' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.password" #password="ngModel"
+							       required name="password" type="text" id="password"
+							       validateEqual="confirmPassword" reverse="true">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' | translate)
+								}}
 							</div>
 						</div>
-						<div class="form-group row">
-							<label for="confirmPassword" class="col-sm-2 col-form-label">{{'userSettings.confirmPassword'
-								|
-								translate}}</label>
-							<div class="col-sm-10">
-								<input type="password" [(ngModel)]="model.confirmPassword" class="form-control"
-								       [ngClass]="{invalid: confirmPassword.invalid}"
-								       id="confirmPassword" name="confirmPassword" #confirmPassword="ngModel"
-								       placeholder="{{'userSettings.confirmPassword' | translate}}"
-								       validateEqual="password" reverse="false">
-								<small class="form-text text-muted hint" *ngIf="confirmPassword.invalid">
-									{{'userSettings.confirmPasswordHint' | translate}}
-								</small>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.confirmPassword' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.confirmPassword"
+							       #confirmPassword="ngModel"
+							       required name="confirmPassword" type="text" id="confirmPassword"
+							       validateEqual="password" reverse="false">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ 'userSettings.confirmPasswordHint' | translate }}
 							</div>
 						</div>
-						<div class="info">
-							<alert type="danger" dismissible="true" *ngIf="messageModel.errorMessage"
-							       (close)="messageModel.errorMessage=false">
-								{{ 'userSettings.dangerMessage' | translate }}
-							</alert>
-							<alert type="success" dismissible="true" *ngIf="messageModel.successMessage"
-							       (close)="messageModel.successMessage=false">
-								{{ 'userSettings.successMessage' | translate }}
-							</alert>
+					</div>
+					<div class="ui-grid-row">
+						<div class="info ui-grid-col-12">
+							<p-messages id="infoMessage" [value]="growlService.msgs"></p-messages>
 						</div>
-						<div class="form-group row">
-							<div class="col-sm-12 col-md-12 col-lg-12">
-								<button type="submit"
-								        class="btn btn-material-primary pull-right col-xs-12 col-sm-2 updateProfile"
-								        [disabled]="!settingsForm.form.valid">{{'userSettings.updateProfile' |
-									translate}}
-								</button>
-							</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2"></div>
+						<div class="ui-grid-col-6">
+							<button pButton type="submit" id="updateProfile"
+							        [disabled]="settingsForm.form.invalid" icon="fa-pencil"
+							        label="{{ 'userSettings.updateProfile' | translate }}"></button>
 						</div>
-					</form>
+						<div class="ui-grid-col-4"></div>
+					</div>
 				</div>
-			</div>
+
+			</form>
 
 		</div>
 	</div>

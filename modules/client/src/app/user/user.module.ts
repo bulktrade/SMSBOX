@@ -22,6 +22,8 @@ import {LineChartService} from "../chart/lineChart.service";
 import {BaThemeConfigProvider} from "../chart/theme/theme.configProvider";
 import { HttpModule } from "@angular/http";
 import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
+import { MessagesModule } from "primeng/components/messages/messages";
+import { ButtonModule } from "primeng/components/button/button";
 
 const DECLARATION = [
     UserComponent,
@@ -47,7 +49,9 @@ const DECLARATION = [
         AlertModule,
         Ng2BootstrapModule,
         HttpModule,
-        DynamicFormModule
+        DynamicFormModule,
+        MessagesModule,
+        ButtonModule
     ],
     declarations: [
         DECLARATION

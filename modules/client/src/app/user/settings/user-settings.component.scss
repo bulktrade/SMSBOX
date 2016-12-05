@@ -1,28 +1,3 @@
 #settingsWindow {
 
-    .card {
-        border: 1px solid #d1d0d0;
-
-        .card-header {
-            margin-top: 0;
-        }
-    }
-
-    .info {
-        text-align: center;
-        margin: 22px 15px 15px 15px;
-    }
-
-    .form-group {
-        > div {
-            label {
-                padding: 0 !important;
-            }
-        }
-
-        .invalid {
-            border-color: #d9534f;
-        }
-    }
-
 }
