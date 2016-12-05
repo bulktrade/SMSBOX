@@ -24,6 +24,7 @@ import { HttpModule } from "@angular/http";
 import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { ButtonModule } from "primeng/components/button/button";
+import { PanelModule } from "primeng/components/panel/panel";
 
 const DECLARATION = [
     UserComponent,
@@ -51,7 +52,8 @@ const DECLARATION = [
         HttpModule,
         DynamicFormModule,
         MessagesModule,
-        ButtonModule
+        ButtonModule,
+        PanelModule
     ],
     declarations: [
         DECLARATION

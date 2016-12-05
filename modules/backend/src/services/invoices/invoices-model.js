@@ -21,7 +21,7 @@ db.schema.dropTableIfExists(tableName).then(function () {
 		console.log('Creating INVOICE table');
 
 		table.increments('ID');
-		table.string('SENT_BY');
+		table.string('USER_ID');
 	});
 });
 
