@@ -1,14 +1,14 @@
 'use strict';
 
 const service = require('feathers-knex');
-const users = require('./users-model');
+const model = require('./users-model');
 const hooks = require('./hooks');
 
 module.exports = function () {
 	const app = this;
 
 	const options = {
-		Model: users,
+	    Model: model,
 		name: 'users',
 		paginate: {
 			default: 10,

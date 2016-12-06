@@ -14,6 +14,7 @@ const bodyParser = require('body-parser');
 const socketio = require('feathers-socketio');
 const middleware = require('./middleware');
 const services = require('./services');
+const db  = require('./db');
 
 const app = feathers();
 

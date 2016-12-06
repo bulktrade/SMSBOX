@@ -9,7 +9,7 @@ exports.before = {
 		auth.verifyToken(),
 		auth.populateUser(),
 		auth.restrictToAuthenticated(),
-		auth.queryWithCurrentUser({ idField: 'ID', as: 'SENT_BY' })
+		auth.queryWithCurrentUser({ idField: 'ID', as: 'USER_ID' })
 	],
 	find: [],
 	get: [],
