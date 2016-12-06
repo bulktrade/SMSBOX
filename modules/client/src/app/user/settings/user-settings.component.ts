@@ -10,7 +10,7 @@ import { GrowlService } from "../../services/growl/growl.service";
     styles: [
         require('./user-settings.component.scss')
     ],
-    providers: [GrowlService]
+    providers: []
 })
 
 export class UserSettingsComponent {

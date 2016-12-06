@@ -98,7 +98,7 @@
 							</div>
 							<div class="ui-grid-col-6">
 								<input pInputText class="form-control" [(ngModel)]="model.password" #password="ngModel"
-								       required name="password" type="text" id="password"
+								       required name="password" type="password" id="password"
 								       validateEqual="confirmPassword" reverse="true">
 							</div>
 							<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
@@ -117,7 +117,7 @@
 							<div class="ui-grid-col-6">
 								<input pInputText class="form-control" [(ngModel)]="model.confirmPassword"
 								       #confirmPassword="ngModel"
-								       required name="confirmPassword" type="text" id="confirmPassword"
+								       required name="confirmPassword" type="password" id="confirmPassword"
 								       validateEqual="password" reverse="false">
 							</div>
 							<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
@@ -125,11 +125,6 @@
 									<i class="fa fa-close"></i>
 									{{ 'userSettings.confirmPasswordHint' | translate }}
 								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="info ui-grid-col-12">
-								<p-messages id="infoMessage" [value]="growlService.msgs"></p-messages>
 							</div>
 						</div>
 						<div class="ui-grid-row">

@@ -4,6 +4,7 @@ import { ActivatedRoute } from "@angular/router";
 import { CrudService } from "../crud.service";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
+import { Response } from "@angular/http";
 
 @Component({
     selector: 'crud-update',
@@ -11,7 +12,7 @@ import { GrowlService } from "../../services/growl/growl.service";
     styles: [
         require('./crud-update.component.scss')
     ],
-    providers: [GrowlService]
+    providers: []
 })
 
 export class CrudUpdateComponent {
@@ -32,7 +33,19 @@ export class CrudUpdateComponent {
             });
 
         this.columnDefs = this.getColumnDefs();
+        this.columnDefs = this.crudService.hideColumnDefs(this.columnDefs, ['id']);
+
         this.model = this.getModel() || {};
+    }
+
+    hidePassword(model) {
+        let result = model;
+
+        if (model.hasOwnProperty('password')) {
+            result.password = undefined;
+        }
+
+        return result;
     }
 
     getColumnDefs() {
@@ -40,7 +53,7 @@ export class CrudUpdateComponent {
     }
 
     getModel() {
-        return this.route.snapshot.data['update'].rowData[0] || {};
+        return Object.assign({}, this.route.snapshot.data['update'].rowData[0] || {});
     }
 
     updateRecord(model) {
@@ -51,6 +64,7 @@ export class CrudUpdateComponent {
                 console.error(err);
                 this.growlService.show({ severity: 'error', detail: 'crud.errorUpdate' });
             });
+
         }
     }
 }

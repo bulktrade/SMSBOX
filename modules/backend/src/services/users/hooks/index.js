@@ -5,7 +5,7 @@ const hooks = require('feathers-hooks');
 const auth = require('feathers-authentication').hooks;
 
 exports.before = {
-	all: [],
+	all: [auth.hashPassword()],
 	find: [
 		auth.verifyToken(),
 		auth.populateUser(),
@@ -26,9 +26,7 @@ exports.before = {
 			restrict: { approved: true }
 		})
 	],
-	create: [
-		auth.hashPassword()
-	],
+	create: [],
 	update: [
 		auth.verifyToken(),
 		auth.populateUser(),

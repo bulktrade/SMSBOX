@@ -33,6 +33,20 @@ export class CrudService {
         });
     }
 
+    hideColumnDefs(columnDefs: ColDef[], hideColumns: string[]): ColDef[] {
+        let result: ColDef[] = columnDefs;
+
+        hideColumns.forEach(hideColumn => {
+            result.forEach((columnDef, index, object) => {
+                if (columnDef.field === hideColumn) {
+                    object.splice(index, 1);
+                }
+            });
+        });
+
+        return result;
+    }
+
     getRowData(serviceName: string): Observable<Object[]> {
         return Observable.create((observer) => {
 

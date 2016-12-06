@@ -2,26 +2,71 @@
 	<form #dynamicForm="ngForm" novalidate (ngSubmit)="onSubmit()">
 
 		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0">
-			<div class="ui-grid-row" *ngFor="let item of columnDefs">
-				<div class="ui-grid-col-2">
-					{{ item.headerName }}
-				</div>
-				<div class="ui-grid-col-6">
-					<input pInputText class="form-control" [(ngModel)]="model[item.field]"
-					       #field="ngModel" required name="{{ item.field }}" type="text" id="{{ item.field }}">
-				</div>
-				<div class="ui-grid-col-4" *ngIf="field.invalid&&field.dirty">
-					<div class="ui-message ui-messages-error ui-corner-all">
-						<i class="fa fa-close"></i>
-						{{ item.headerName + ' ' + ('crud.required' | translate) }}
+
+			<div *ngFor="let item of columnDefs">
+				<div [ngSwitch]="item.field">
+
+					<div *ngSwitchDefault>
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ item.headerName }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="model[item.field]"
+								       #field="ngModel" required name="{{ item.field }}" type="text"
+								       id="{{ item.field }}">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="field.invalid&&field.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ item.headerName + ' ' + ('crud.required' | translate) }}
+								</div>
+							</div>
+						</div>
 					</div>
+
+					<div *ngSwitchCase="'password'">
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ 'userSettings.password' | translate }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="passwordValue"
+								       (ngModelChange)="model['password']=$event;" #password="ngModel"
+								       name="password" type="password" id="password"
+								       validateEqual="confirmPassword" reverse="true">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' |
+									translate)
+									}}
+								</div>
+							</div>
+						</div>
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ 'userSettings.confirmPassword' | translate }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="model.confirmPassword"
+								       #confirmPassword="ngModel"
+								       name="confirmPassword" type="password" id="confirmPassword"
+								       validateEqual="password" reverse="false">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ 'userSettings.confirmPasswordHint' | translate }}
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
-			<div class="ui-grid-row">
-				<div class="info ui-grid-col-12">
-					<p-messages id="infoMessage" [value]="growlService.msgs"></p-messages>
-				</div>
-			</div>
+
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-4"></div>
 				<div class="ui-grid-col-2">
@@ -39,3 +84,6 @@
 
 	</form>
 </div>
+
+
+<!--padding: 4px 10px;-->

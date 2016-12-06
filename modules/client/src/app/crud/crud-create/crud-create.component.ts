@@ -11,7 +11,7 @@ import { CrudService } from "../crud.service";
     styles: [
         require('./crud-create.component.scss')
     ],
-    providers: [GrowlService]
+    providers: []
 })
 
 export class CrudCreateComponent {
@@ -25,6 +25,7 @@ export class CrudCreateComponent {
 
     ngOnInit() {
         this.columnDefs = this.getColumnDefs();
+        this.columnDefs = this.crudService.hideColumnDefs(this.columnDefs, ['id']);
     }
 
     getColumnDefs() {

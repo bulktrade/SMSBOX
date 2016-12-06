@@ -39,8 +39,8 @@ export class ChatService {
     getCurrentData(): string {
         let currentData = new Date();
 
-        return currentData.getFullYear() + '-' + currentData.getMonth()
-            + '-' + currentData.getDay();
+        return currentData.getFullYear() + '-' + (Number(currentData.getMonth()) + 1)
+            + '-' + currentData.getDate();
     }
 
 }

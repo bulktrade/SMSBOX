@@ -1,12 +1,12 @@
 import { Component, Input, Output, EventEmitter, NgModule, ModuleWithProviders } from "@angular/core";
 import { Location, CommonModule } from "@angular/common";
 import { ColDef } from "ag-grid";
-import { GrowlService } from "../../services/growl/growl.service";
 import { TranslateService, TranslateModule } from "ng2-translate";
 import { Button } from "../model/button";
 import { FormsModule } from "@angular/forms";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { ButtonModule } from "primeng/components/button/button";
+import { EqualValidatorModule } from "../../common/equal-validator.directive";
 
 @Component({
     selector: 'dynamic-form',
@@ -14,13 +14,12 @@ import { ButtonModule } from "primeng/components/button/button";
     styles: [
         require('./dynamic-form.component.scss')
     ],
-    providers: [GrowlService],
+    providers: [],
 })
 
 export class DynamicFormComponent {
     @Input('columnDefs') columnDefs: ColDef[];
     @Input('buttonModel') buttonModel: Button;
-    @Input('growlService') growlService: GrowlService;
     @Input('model') model = {};
 
     @Output('submit') submit = new EventEmitter();
@@ -33,13 +32,17 @@ export class DynamicFormComponent {
         this.submit.emit(this.model);
     }
 
-    ngOnDestroy() {
-        this.growlService.hide();
-    }
 }
 
 @NgModule({
-    imports: [CommonModule, FormsModule, TranslateModule, MessagesModule, ButtonModule],
+    imports: [
+        CommonModule,
+        FormsModule,
+        TranslateModule,
+        MessagesModule,
+        ButtonModule,
+        EqualValidatorModule
+    ],
     exports: [DynamicFormComponent],
     declarations: [DynamicFormComponent],
 })
@@ -51,4 +54,3 @@ export class DynamicFormModule {
         };
     }
 }
-
