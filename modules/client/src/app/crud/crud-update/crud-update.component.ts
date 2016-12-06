@@ -34,18 +34,7 @@ export class CrudUpdateComponent {
 
         this.columnDefs = this.getColumnDefs();
         this.columnDefs = this.crudService.hideColumnDefs(this.columnDefs, ['id']);
-
         this.model = this.getModel() || {};
-    }
-
-    hidePassword(model) {
-        let result = model;
-
-        if (model.hasOwnProperty('password')) {
-            result.password = undefined;
-        }
-
-        return result;
     }
 
     getColumnDefs() {
