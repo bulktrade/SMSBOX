@@ -13,16 +13,17 @@ before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - cd ./modules/client
-  - npm install
-  - npm run start
-  - npm run test
-  - npm run e2e && cd ./../..
   - sleep 3
 
 install:
   - nvm install 6
   - nvm use 6
+  - cd ./modules/client
+  - npm install
+  - npm run start
+  - npm run test
+  - npm run e2e
+  - cd ./../..
 
 notifications:
   email:
