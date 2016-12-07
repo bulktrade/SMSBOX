@@ -1,5 +1,4 @@
-<div id="navigation" class="container" [ngClass]="{hideContentStyle : hideContentStyle}"
-     (renderNavigationBar)="renderNavigationBar($event)">
+<div id="navigation">
 	<router-outlet></router-outlet>
 
 	<p-growl [value]="growlService.msgs"></p-growl>

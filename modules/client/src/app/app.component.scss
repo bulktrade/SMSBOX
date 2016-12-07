@@ -8,6 +8,26 @@ signup {
     height: 100%;
 }
 
+.menubar {
+  background: #009688;
+}
+
+p-menubar {
+  width: 100%;
+  display: flex;
+
+  > div {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .ui-menuitem-text {
+    font-size: 17px;
+    color: #fff;
+  }
+}
+
 .ag-cell-focus {
   outline: none;
 }
@@ -49,10 +69,13 @@ navigation {
     height: 100%;
 }
 
+.main-content-padding {
+  padding: 20px;
+  background: #fff;
+}
+
 .main-wrap {
-    background: #fff;
-    padding: 20px;
-    margin: 60px 0 25px 0;
+    margin: 25px 0;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
 
