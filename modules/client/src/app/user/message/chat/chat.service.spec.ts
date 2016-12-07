@@ -5,12 +5,14 @@ import { FeathersService } from "../../../services/feathers.service";
 import { HttpModule, Http } from "@angular/http";
 import { RouterTestingModule } from "@angular/router/testing";
 import { TokenService } from "../../../services/auth/token.service";
+import { CommonService } from "../../../services/common.service";
 
 describe('Chat service', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
                 ChatService,
+                CommonService,
                 TokenService,
                 {
                     provide: FeathersService,
