@@ -12,6 +12,11 @@ $color-11: rgba(113,101,197,0.2);
 $color-12: #945637;
 $color-13: rgba(148,86,55,0.2);
 
+#dashboard-window {
+  background-color: transparent;
+  padding: 20px;
+}
+
 .charts {
   > div {
     padding: 0px 3px;

@@ -16,15 +16,16 @@ import { AlertModule, Ng2BootstrapModule } from "ng2-bootstrap";
 import { IOBoxComponent } from "./message/iobox/iobox.component";
 import { ChatComponent } from "./message/chat/chat.component";
 import { MessageService } from "./message/message.service";
-import {ChartComponentModule, LineChart} from "../chart/lineChart.component";
-import {BaAmChart} from "../chart/theme/components/baAmChart/baAmChart.component";
-import {LineChartService} from "../chart/lineChart.service";
-import {BaThemeConfigProvider} from "../chart/theme/theme.configProvider";
+import { LineChart } from "../chart/lineChart.component";
+import { BaAmChart } from "../chart/theme/components/baAmChart/baAmChart.component";
+import { LineChartService } from "../chart/lineChart.service";
+import { BaThemeConfigProvider } from "../chart/theme/theme.configProvider";
 import { HttpModule } from "@angular/http";
 import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { ButtonModule } from "primeng/components/button/button";
 import { PanelModule } from "primeng/components/panel/panel";
+import { MenubarModule } from "primeng/components/menubar/menubar";
 
 const DECLARATION = [
     UserComponent,
@@ -45,7 +46,6 @@ const DECLARATION = [
         BreadcrumbModule,
         TranslateModule,
         FormsModule,
-        NavigationBarComponentModule,
         EqualValidatorModule,
         AlertModule,
         Ng2BootstrapModule,
@@ -53,7 +53,8 @@ const DECLARATION = [
         DynamicFormModule,
         MessagesModule,
         ButtonModule,
-        PanelModule
+        PanelModule,
+        MenubarModule
     ],
     declarations: [
         DECLARATION

@@ -69,14 +69,9 @@ form {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     #smsbox-window {
         height: auto;
-    }
-
-    .main-wrap {
-        width: 100%;
-        margin: 0;
     }
 
     .form-group {

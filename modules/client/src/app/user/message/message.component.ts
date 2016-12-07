@@ -4,7 +4,7 @@ import { FeathersService } from "../../services/feathers/feathers.service";
 @Component({
     selector: 'message',
     template: `
-        <div class="main-wrap">
+        <div id="message-window" class="main-content-padding">
             <breadcrumb></breadcrumb>
             <router-outlet></router-outlet>
         </div>

@@ -1,144 +1,140 @@
-<div id="settingsWindow">
+<div id="settingsWindow" class="main-content-padding">
 
-	<navigation-bar></navigation-bar>
-
-	<div class="main-wrap">
-		<div class="inner-wrap">
-			<breadcrumb></breadcrumb>
-			<p-panel header="{{ 'userSettings.title' | translate }}" [style]="{'margin-bottom':'20px'}">
-				<form role="form" (ngSubmit)="onSubmit(settingsForm)" #settingsForm="ngForm" novalidate>
-					<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0">
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.gender' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.gender" #gender="ngModel"
-								       required name="gender" type="text" id="gender">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="gender.invalid&&gender.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.gender' | translate) + ' ' + ('userSettings.required' | translate)
-									}}
-								</div>
-							</div>
+	<div class="inner-wrap">
+		<breadcrumb></breadcrumb>
+		<p-panel header="{{ 'userSettings.title' | translate }}">
+			<form role="form" (ngSubmit)="onSubmit(settingsForm)" #settingsForm="ngForm" novalidate>
+				<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0">
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.gender' | translate }}
 						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.firstName' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.firstName"
-								       #firstName="ngModel"
-								       required name="firstName" type="text" id="firstName">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="firstName.invalid&&firstName.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.firstName' | translate) + ' ' + ('userSettings.required' |
-									translate)
-									}}
-								</div>
-							</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.gender" #gender="ngModel"
+							       required name="gender" type="text" id="gender">
 						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.surname' | translate }}
+						<div class="ui-grid-col-4" *ngIf="gender.invalid&&gender.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.gender' | translate) + ' ' + ('userSettings.required' | translate)
+								}}
 							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.surname" #surname="ngModel"
-								       required name="surname" type="text" id="surname">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="surname.invalid&&surname.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.surname' | translate) + ' ' + ('userSettings.required' |
-									translate) }}
-								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.emailAddress' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.emailAddress"
-								       #emailAddress="ngModel"
-								       required name="emailAddress" type="text" id="emailAddress">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="emailAddress.invalid&&emailAddress.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.emailAddress' | translate) + ' ' + ('userSettings.required' |
-									translate) }}
-								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.mobilePhoneNumber' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.mobilePhoneNumber"
-								       #mobilePhoneNumber="ngModel"
-								       required name="mobilePhoneNumber" type="text" id="mobilePhoneNumber">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="mobilePhoneNumber.invalid&&mobilePhoneNumber.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.mobilePhoneNumber' | translate) + ' ' + ('userSettings.required' |
-									translate) }}
-								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.password' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.password" #password="ngModel"
-								       required name="password" type="password" id="password"
-								       validateEqual="confirmPassword" reverse="true">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' |
-									translate)
-									}}
-								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2">
-								{{ 'userSettings.confirmPassword' | translate }}
-							</div>
-							<div class="ui-grid-col-6">
-								<input pInputText class="form-control" [(ngModel)]="model.confirmPassword"
-								       #confirmPassword="ngModel"
-								       required name="confirmPassword" type="password" id="confirmPassword"
-								       validateEqual="password" reverse="false">
-							</div>
-							<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
-								<div class="ui-message ui-messages-error ui-corner-all">
-									<i class="fa fa-close"></i>
-									{{ 'userSettings.confirmPasswordHint' | translate }}
-								</div>
-							</div>
-						</div>
-						<div class="ui-grid-row">
-							<div class="ui-grid-col-2"></div>
-							<div class="ui-grid-col-6">
-								<button pButton type="submit" id="updateProfile"
-								        [disabled]="settingsForm.form.invalid" icon="fa-pencil"
-								        label="{{ 'userSettings.updateProfile' | translate }}"></button>
-							</div>
-							<div class="ui-grid-col-4"></div>
 						</div>
 					</div>
-				</form>
-			</p-panel>
-		</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.firstName' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.firstName"
+							       #firstName="ngModel"
+							       required name="firstName" type="text" id="firstName">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="firstName.invalid&&firstName.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.firstName' | translate) + ' ' + ('userSettings.required' |
+								translate)
+								}}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.surname' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.surname" #surname="ngModel"
+							       required name="surname" type="text" id="surname">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="surname.invalid&&surname.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.surname' | translate) + ' ' + ('userSettings.required' |
+								translate) }}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.emailAddress' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.emailAddress"
+							       #emailAddress="ngModel"
+							       required name="emailAddress" type="text" id="emailAddress">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="emailAddress.invalid&&emailAddress.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.emailAddress' | translate) + ' ' + ('userSettings.required' |
+								translate) }}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.mobilePhoneNumber' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.mobilePhoneNumber"
+							       #mobilePhoneNumber="ngModel"
+							       required name="mobilePhoneNumber" type="text" id="mobilePhoneNumber">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="mobilePhoneNumber.invalid&&mobilePhoneNumber.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.mobilePhoneNumber' | translate) + ' ' + ('userSettings.required' |
+								translate) }}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.password' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.password" #password="ngModel"
+							       required name="password" type="password" id="password"
+							       validateEqual="confirmPassword" reverse="true">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' |
+								translate)
+								}}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2">
+							{{ 'userSettings.confirmPassword' | translate }}
+						</div>
+						<div class="ui-grid-col-6">
+							<input pInputText class="form-control" [(ngModel)]="model.confirmPassword"
+							       #confirmPassword="ngModel"
+							       required name="confirmPassword" type="password" id="confirmPassword"
+							       validateEqual="password" reverse="false">
+						</div>
+						<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
+							<div class="ui-message ui-messages-error ui-corner-all">
+								<i class="fa fa-close"></i>
+								{{ 'userSettings.confirmPasswordHint' | translate }}
+							</div>
+						</div>
+					</div>
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-2"></div>
+						<div class="ui-grid-col-6">
+							<button pButton type="submit" id="updateProfile"
+							        [disabled]="settingsForm.form.invalid" icon="fa-pencil"
+							        label="{{ 'userSettings.updateProfile' | translate }}"></button>
+						</div>
+						<div class="ui-grid-col-4"></div>
+					</div>
+				</div>
+			</form>
+		</p-panel>
 	</div>
 </div>

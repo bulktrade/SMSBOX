@@ -10,7 +10,6 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
 import { SignupComponent } from "./signup/signup.component";
 import { SignupService } from "./signup/signup-service";
-import { NavigationComponent } from "./navigation/navigation.component";
 import { LoginComponent } from "./login/login.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { CommonModule } from "@angular/common";
@@ -62,7 +61,6 @@ import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
         NotFoundComponent,
         SignupComponent,
         LoginComponent,
-        NavigationComponent,
         CubeGridComponent
     ],
     providers: [
