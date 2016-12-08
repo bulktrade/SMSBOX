@@ -16,7 +16,7 @@ describe('Crud update', () => {
 
     it('should update a first record', () => {
         crudUpdatePage.updateNameInputFields();
-        crudUpdatePage.clickOnUpdatebutton();
+        crudUpdatePage.clickOnUpdateButton();
         expect(crudUpdatePage.isPresentInfoMessage()).toBeTruthy();
     });
 });

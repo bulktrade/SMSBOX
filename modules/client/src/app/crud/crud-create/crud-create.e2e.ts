@@ -16,7 +16,7 @@ describe('Crud create', () => {
 
     it('should create a new user', () => {
         crudCreatePage.fillInputFields();
-        crudCreatePage.clickOnCreateButton();
+        crudCreatePage.clickOnCreateRecordButton();
         expect(crudCreatePage.isPresentInfoMessage()).toBeTruthy();
     });
 

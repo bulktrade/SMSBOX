@@ -13,20 +13,20 @@ describe('User settings', () => {
 
     it('should fill input fields', () => {
         us.fillInputFields();
-        us.getValueGarden()
+        us.getFirstName()
             .then(val => {
-                let result = 'field: 0';
+                let result = 'Karl';
                 expect(val).toEqual(result);
             })
-    });
-
-    it('should show an error message', () => {
-        us.setValueConfirmPassword();
-        expect(us.isPresentHint()).toBeTruthy();
     });
 
     it('should show a success message', () => {
         us.clickOnUpdateProfileButton();
         expect(us.isPresentAlert()).toBeTruthy();
+    });
+
+    it('should show an error message', () => {
+        us.sendKeysToConfirmPassword('');
+        expect(us.isPresentHint()).toBeTruthy();
     });
 });

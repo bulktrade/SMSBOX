@@ -5,11 +5,11 @@ export class CrudUpdatePage {
 
     crudViewTag = element(by.tagName('crud-view'));
     crudCreateTag = element(by.tagName('crud-update'));
-    updateButton = element(by.id('updateButton'));
+    updateButton = element(by.id('crud.update'));
     updateIcon = element(by.css('.ag-body-container > div:first-of-type .mode_edit-icon'));
-    infoMessage = element(by.id('infoMessage'));
+    infoMessage = element(by.className('ui-growl'));
     backButton = element(by.id('backButton'));
-    nameInputField = element(by.id('name'));
+    firstField = element(by.id('firstName'));
 
     constructor() {
     }
@@ -19,9 +19,9 @@ export class CrudUpdatePage {
     }
 
     updateNameInputFields() {
-        browser.wait(EC.elementToBeClickable(this.nameInputField), this.timeout);
-        this.nameInputField.clear();
-        this.nameInputField.sendKeys('Harry');
+        browser.wait(EC.elementToBeClickable(this.firstField), this.timeout);
+        this.firstField.clear();
+        this.firstField.sendKeys('Harry');
     }
 
     isPresentCrudViewTag() {
@@ -44,7 +44,7 @@ export class CrudUpdatePage {
         this.updateIcon.click();
     }
 
-    clickOnUpdatebutton() {
+    clickOnUpdateButton() {
         browser.wait(EC.elementToBeClickable(this.updateButton), this.timeout);
         this.updateButton.click();
     }

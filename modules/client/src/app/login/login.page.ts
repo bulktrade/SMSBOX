@@ -15,9 +15,9 @@ export class LoginPage {
     }
 
     login() {
-        let model: LoginModel = new LoginModel('admin', 'admin');
+        let model: LoginModel = new LoginModel('admin@smsc.io', 'admin');
 
-        this.setValueToUsernameField(model.username);
+        this.setValueToUsernameField(model.email);
         this.setValueToPasswordField(model.password);
         this.clickOnLoginButton();
     }
