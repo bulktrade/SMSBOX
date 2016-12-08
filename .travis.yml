@@ -14,16 +14,17 @@ before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
+  - npm start&
+  - sleep 15
 
 install:
   - nvm install 6
   - nvm use 6
-  - cd ./modules/client
-  - npm install
-  - npm run start
-  - npm run test
-  - npm run e2e
-  - cd ./../..
+  - cd modules/client && npm install
+
+script:
+  - npm test
+  - npm e2e
 
 notifications:
   email:
