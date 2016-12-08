@@ -23,8 +23,8 @@ install:
   - cd modules/client && npm install
 
 script:
-  - npm test
-  - npm e2e
+  - npm run test
+  - npm run e2e
 
 notifications:
   email:
