@@ -5,7 +5,6 @@ import { SMSBoxModel } from "./smsbox.model";
     selector: 'smsbox',
     template: require('./smsbox.component.html'),
     styles: [
-        require('../common/content.scss'),
         require('./smsbox.component.scss')
     ]
 })

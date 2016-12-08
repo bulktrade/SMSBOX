@@ -11,7 +11,8 @@ import { AuthService } from "../services/auth/auth.service";
     selector: 'login',
     template: require('./login.component.html'),
     styles: [
-        require('./login.component.scss')
+        require('./login.component.scss'),
+        require('./../common/style/login-form.scss')
     ],
     providers: [AuthService]
 })

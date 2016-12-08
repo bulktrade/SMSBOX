@@ -6,7 +6,6 @@ import { AdminDashboardModel } from "./admin-dashboard.model";
     selector: 'dashboard',
     template: require('./admin-dashboard.component.html'),
     styles: [
-        require('../../common/content.scss'),
         require('./admin-dashboard.component.scss')
     ],
     providers: [AdminDashboardService]

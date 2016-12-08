@@ -4,7 +4,6 @@ import {Component} from "@angular/core";
     selector: 'settings',
     template: require('./admin-settings.component.html'),
     styles: [
-        require('../../common/content.scss'),
         require('./admin-settings.component.scss')
     ]
 })
