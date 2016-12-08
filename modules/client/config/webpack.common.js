@@ -20,6 +20,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const ProvidePlugin = require('webpack/lib/ProvidePlugin');
+const bourbon = require('node-bourbon').includePaths;
 
 /*
  * Webpack Constants
@@ -146,17 +147,18 @@ module.exports = function (options) {
 					loader: 'file'
 				},
 
-				{
-					test: /\.scss$/,
-					loaders: ["raw", "sass"]
-				},
+                {
+                    test: /\.scss$/,
+                    exclude: /node_modules/,
+                    loader: 'raw-loader!sass-loader?includePaths[]=' + bourbon
+                },
 
 				{ test: /\.(jpe?g|png|gif|svg|eot|woff|ttf|svg|woff2)$/, loader: "file?name=[name].[ext]" },
 
 				// Bootstrap 4
 				{ test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' }
 
-			],
+			]
 
 		},
 
