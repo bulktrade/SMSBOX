@@ -13,7 +13,7 @@ import { AuthService } from "../services/auth/auth.service";
     styles: [
         require('./login.component.scss')
     ],
-    providers: [GrowlService, AuthService]
+    providers: [AuthService]
 })
 
 export class LoginComponent {
