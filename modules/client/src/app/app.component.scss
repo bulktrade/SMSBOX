@@ -3,6 +3,19 @@
     padding: 0;
 }
 
+.ui-menu a.ui-state-hover {
+  background: #015a52 !important;
+}
+
+.ui-submenu-icon {
+  color: #fff;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+  background: #009688 !important;
+  border-color: #009688 !important;
+}
+
 smsbox {
   height: 100%;
 }
@@ -17,7 +30,6 @@ signup {
 }
 
 p-menubar {
-  width: 100%;
   display: flex;
 
   > div {
