@@ -13,7 +13,7 @@ export class CrudCreatePage {
         { element: element(by.id('email')), data: 'ylain' },
         { element: element(by.id('permissions')), data: 'USER' },
         { element: element(by.id('password')), data: 'qweF' },
-        { element: element(by.id('email')), data: 'qweF' },
+        { element: element(by.id('confirmPassword')), data: 'qweF' },
     ];
 
     constructor() {
