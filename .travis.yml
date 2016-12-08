@@ -20,7 +20,7 @@ install:
   - nvm use 6
   - cd ./modules/client
   - npm install
-  - npm run start &
+  - npm run start
   - npm run test
   - npm run e2e
   - cd ./../..
