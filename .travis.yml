@@ -4,6 +4,12 @@ dist: trusty
 addons:
   sonarqube: true
 
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS smsbox;'
+
 cache:
   directories:
     - modules/client/node_modules
