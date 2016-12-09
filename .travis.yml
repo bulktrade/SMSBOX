@@ -31,9 +31,8 @@ install:
 script:
   - npm run lint
   - npm test
-  - npm run build:prod
-  - npm run server:prod:ci &
-  - sleep 5
+  - npm run start &
+  - sleep 150
   - cd ../backend && npm run start &
   - sleep 5
   - cd ../client && npm run e2e
