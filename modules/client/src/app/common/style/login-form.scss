@@ -283,6 +283,13 @@ body {
           transform: translate(-12%, -50%) scale(0.75);
         }
       }
+
+      &.has-data {
+        ~ label {
+          color: #9d9d9d;
+          transform: translate(-12%, -50%) scale(0.75);
+        }
+      }
     }
 
     label {
@@ -511,6 +518,12 @@ body {
         }
 
         &:valid {
+          ~ label {
+            color: $white;
+          }
+        }
+
+        &.has-data {
           ~ label {
             color: $white;
           }

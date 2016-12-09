@@ -1,60 +1,46 @@
-<div class="wrap">
-	<div id="signup" class="container">
-		<div class="title">
-			{{'signup.title' | translate}}
-		</div>
-		<form role="form" (ngSubmit)="onSubmit($event)" #signupForm="ngForm" novalidate>
-			<div class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label">
-						{{'signup.login' | translate}}
-					</label>
-					<input type="text" class="form-control" required
+<div id="login-window">
+	<div class="container">
+		<div class="card"></div>
+		<div class="card">
+			<h1 class="title">{{'signup.title' | translate}}</h1>
+			<form role="form" (ngSubmit)="onSubmit($event)" #signupForm="ngForm" novalidate>
+				<div class="input-container">
+					<input type="text" required id="login" [ngClass]="{'has-data': model.login}"
 					       [(ngModel)]="model.login" name="login"
-					       [ngClass]="{error: login.invalid}"
 					       autocomplete="on" #login="ngModel" pattern="[A-Za-z0-9_]{4,}">
+					<label for="login">{{'signup.login' | translate}}</label>
+					<div class="bar"></div>
 				</div>
-				<div class="form-group">
-					<label class="control-label">
-						{{'signup.email' | translate}}
-					</label>
-					<input type="text" class="form-control" required
+				<div class="input-container">
+					<input type="text" required id="email" [ngClass]="{'has-data': model.email}"
 					       [(ngModel)]="model.email" name="email"
 					       autocomplete="on" #email="ngModel"
-					       [ngClass]="{error: email.invalid}"
-					       pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+					       pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"/>
+					<label for="email">{{"signup.email" | translate}}</label>
+					<div class="bar"></div>
 				</div>
-				<div class="form-group">
-					<label class="control-label">
-						{{'signup.password' | translate}}
-					</label>
-					<input type="password" class="form-control" required
+				<div class="input-container">
+					<input type="password" required id="password" [ngClass]="{'has-data': model.password}"
 					       [(ngModel)]="model.password" name="password"
-					       [ngClass]="{error: password.invalid}"
 					       validateEqual="confirmPassword" reverse="true"
-					       autocomplete="on" #password="ngModel" maxlength="64">
+					       autocomplete="on" #password="ngModel" maxlength="64"/>
+					<label for="password">{{"signup.password" | translate}}</label>
+					<div class="bar"></div>
 				</div>
-				<div class="form-group">
-					<label class="control-label">
-						{{'signup.confirmPassword' | translate}}
-					</label>
-					<input type="password" class="form-control" required
+				<div class="input-container">
+					<input type="password" required id="confirmPassword" [ngClass]="{'has-data': model.confirmPassword}"
 					       [(ngModel)]="model.confirmPassword" name="confirmPassword"
-					       [ngClass]="{error: confirmPassword.invalid}"
 					       validateEqual="password" reverse="false"
-					       autocomplete="on" #confirmPassword="ngModel" maxlength="64">
+					       autocomplete="on" #confirmPassword="ngModel" maxlength="64"/>
+					<label for="confirmPassword">{{"signup.confirmPassword" | translate}}</label>
+					<div class="bar"></div>
 				</div>
-				<div class="form-group">
-					<button type="button" (click)="back()" class="backButton btn pull-left col-xs-12 col-sm-4 col-md-4">
-						{{'BACK_BUTTON' | translate}}
-					</button>
-
-					<button type="submit" class="submitButton btn btn-material-primary pull-right col-xs-12 col-sm-4 col-md-4"
-					        [disabled]="!signupForm.form.valid">
-						{{'signup.submit' | translate}}
+				<div class="button-container">
+					<button type="submit" class="submitButton" [disabled]="signupForm.form.invalid">
+						<span>{{'signup.submit' | translate}}</span>
 					</button>
 				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>

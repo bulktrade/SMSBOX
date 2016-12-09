@@ -7,7 +7,8 @@ import { SignupModel } from "./signup.model";
     selector: 'signup',
     template: require('./signup.component.html'),
     styles: [
-        require('./signup.component.scss')
+        require('./signup.component.scss'),
+        require('./../common/style/login-form.scss')
     ]
 })
 
