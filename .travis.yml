@@ -29,10 +29,9 @@ install:
   - cd ../backend && npm install && cd ../client
 
 script:
-  - npm run lint
   - npm test
   - npm run start &
-  - sleep 150
+  - sleep 50
   - cd ../backend && npm run start &
   - sleep 5
   - cd ../client && npm run e2e
