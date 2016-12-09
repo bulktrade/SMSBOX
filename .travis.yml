@@ -20,7 +20,7 @@ install:
   - nvm install 6
   - nvm use 6
   - cd modules/client && npm install
-  - cd ../backend && npm install
+  - cd ../backend && npm install && cd ../client
 
 script:
   - npm run lint
