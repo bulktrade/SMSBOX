@@ -1,13 +1,7 @@
 sudo: true
-dist: trusty
 
 addons:
   sonarqube: true
-  apt:
-      sources:
-        - google-chrome
-      packages:
-        - google-chrome-stable
 
 cache:
   directories:
@@ -15,7 +9,7 @@ cache:
     - .autoconf
     - $HOME/.m2
 
-before_script:
+before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -26,11 +20,12 @@ install:
   - nvm use 6
   - cd modules/client && npm install
 
+before_script:
+  - npm start&
+  - sleep 25
+
 script:
-  - npm run lint
-  - npm test
-  - npm run start
-  - sleep 30
+  - npm run test
   - npm run e2e
 
 notifications:
