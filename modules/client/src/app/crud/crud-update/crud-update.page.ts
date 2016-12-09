@@ -6,10 +6,10 @@ export class CrudUpdatePage {
     crudViewTag = element(by.tagName('crud-view'));
     crudCreateTag = element(by.tagName('crud-update'));
     updateButton = element(by.id('crud.update'));
-    updateIcon = element(by.css('.ag-body-container > div:first-of-type .mode_edit-icon'));
+    updateIcon = element(by.css('.ag-body-container > div:nth-of-type(3) .mode_edit-icon'));
     infoMessage = element(by.className('ui-growl'));
     backButton = element(by.id('backButton'));
-    firstField = element(by.id('firstName'));
+    firstField = element(by.id('email'));
 
     constructor() {
     }

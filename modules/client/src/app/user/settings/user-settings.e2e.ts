@@ -3,11 +3,8 @@ import { UserSettingsPage } from "./user-settings.page";
 describe('User settings', () => {
     let us = new UserSettingsPage();
 
-    beforeEach(() => {
-        us.get();
-    });
-
     it('should have a <settings>', () => {
+        us.get();
         expect(us.isPresentSettings()).toBeTruthy();
     });
 
@@ -26,7 +23,7 @@ describe('User settings', () => {
     });
 
     it('should show an error message', () => {
-        us.sendKeysToConfirmPassword('');
+        us.sendKeysToConfirmPassword('fsafJer23');
         expect(us.isPresentHint()).toBeTruthy();
     });
 });

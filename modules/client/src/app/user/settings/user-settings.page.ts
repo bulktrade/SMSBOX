@@ -5,7 +5,7 @@ export class UserSettingsPage {
 
     settingsTag = element(by.tagName('settings'));
     hint = element(by.className('hint'));
-    updateProfileButton = element(by.className('updateProfile'));
+    updateProfileButton = element(by.id('updateProfile'));
     alert = element(by.className('ui-growl'));
     firstNameField = element(by.id('firstName'));
     passwordField = element(by.id('password'));
