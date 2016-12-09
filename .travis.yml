@@ -1,40 +1,36 @@
 sudo: required
+dist: trusty
 
 addons:
-  sonarqube: true
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
 
-cache:
-  directories:
-    - modules/client/node_modules
-    - .autoconf
-    - $HOME/.m2
+language: node_js
 
-before_install:
-  - export CHROME_BIN=chromium-browser
+node_js:
+  - "6"
+
+# Matrix failure enabled for https://github.com/TheLarkInn/LazyParseWebpackPlugin/issues/6
+matrix:
+  fast_finish: true
+  allow_failures:
+  - node_js: "4"
+
+install:
+  - npm install
+
+before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
 
-install:
-  - nvm install 6
-  - nvm use 6
-  - cd modules/client && npm install
-
-before_script:
-  - npm start&
-  - sleep 25
-
 script:
-  - ./bin/deploy.sh
-
-notifications:
-  email:
-    recipients:
-      - info@smsc.io
-      - dimakuba124@gmail.com
-    on_success: always
-    on_failure: always
-
-addons:
-  sonarqube: true
-  sauce_connect: true
+  - npm run lint
+  - npm test
+  - npm run build:prod
+  - npm run server:prod:ci &
+  - sleep 3
+  - npm run e2e
