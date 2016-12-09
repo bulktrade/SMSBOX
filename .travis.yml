@@ -10,15 +10,9 @@ addons:
 
 language: node_js
 
-node_js:
-  - "6"
-
-matrix:
-  fast_finish: true
-  allow_failures:
-  - node_js: "6"
-
 install:
+  - nvm install 6
+  - nvm use 6
   - cd modules/client && npm install
 
 before_script:
