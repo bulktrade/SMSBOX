@@ -13,7 +13,7 @@
     "build:dev": "webpack --config config/webpack/webpack.dev.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
     "build:prod": "webpack --config config/webpack/webpack.prod.js  --progress --profile --bail",
-    "build:universal": "webpack --config config/webpack/webpack.common.universal.js --progress --profile --color",
+    "build:universal": "webpack --config config/webpack/webpack.universal.js --progress --profile --color",
     "prebuild:universal": "npm run clean:dist",
     "build": "npm run build:dev",
     "ci": "npm run lint && npm test && npm run e2e",
