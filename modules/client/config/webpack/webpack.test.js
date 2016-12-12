@@ -2,7 +2,7 @@
  * @author: @AngularClass
  */
 
-const helpers = require('./helpers');
+const helpers = require('./../helpers');
 const path = require('path');
 
 /**

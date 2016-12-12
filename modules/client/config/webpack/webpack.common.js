@@ -3,7 +3,7 @@
  */
 
 const webpack = require('webpack');
-const helpers = require('./helpers');
+const helpers = require('./../helpers');
 const autoprefixer = require('autoprefixer');
 
 /*
@@ -15,7 +15,7 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
-const HtmlElementsPlugin = require('./html-elements-plugin');
+const HtmlElementsPlugin = require('./../html-elements-plugin/index');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
@@ -279,7 +279,7 @@ module.exports = function (options) {
 			 * Dependencies: HtmlWebpackPlugin
 			 */
 			new HtmlElementsPlugin({
-				headTags: require('./head-config.common')
+				headTags: require('./../head-config.common.js')
 			}),
 
 			/**

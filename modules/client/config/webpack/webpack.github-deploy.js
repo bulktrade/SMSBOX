@@ -1,8 +1,8 @@
 /**
  * @author: @AngularClass
  */
-const helpers = require('./helpers');
-const ghDeploy = require('./github-deploy');
+const helpers = require('./../helpers');
+const ghDeploy = require('./../github-deploy/index');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const ghpages = require('gh-pages');
 const webpackConfig = ghDeploy.getWebpackConfigModule(); // the settings that are common to prod and dev
