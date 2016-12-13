@@ -1,13 +1,14 @@
 var webpack = require('webpack');
 var path = require('path');
 var clone = require('js.clone');
+var helpers = require('./helpers');
 var webpackMerge = require('webpack-merge');
 
 export var commonPlugins = [
   new webpack.ContextReplacementPlugin(
     // The (\\|\/) piece accounts for path separators in *nix and Windows
     /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-    root('./src'),
+    helpers.root('./src'),
     {
       // your Angular Async Route paths relative to this root directory
     }
@@ -33,7 +34,7 @@ export var commonConfig = {
         extensions: ['.ts', '.js', '.json'],
 
         // An array of directory names to be resolved to the current directory
-        modules: [root('src'), 'node_modules'],
+        modules: [helpers.root('src'), 'node_modules'],
 
     },
   // context: __dirname,
@@ -87,7 +88,7 @@ export var commonConfig = {
             {
                 test: /\.html$/,
                 loader: 'raw-loader',
-                exclude: [root('src/index.html')]
+                exclude: [helpers.root('src/index.html')]
             },
 
             /* File loader for supporting images, for example, in CSS files.
@@ -125,7 +126,7 @@ export var clientConfig = {
   target: 'web',
   entry: './src/client',
   output: {
-    path: root('dist/client')
+    path: helpers.root('dist/client')
   },
   node: {
     global: true,
@@ -147,7 +148,7 @@ export var serverConfig = {
   entry: './src/server', // use the entry file of the node server if everything is ts rather than es5
   output: {
     filename: 'index.js',
-    path: root('dist/server'),
+    path: helpers.root('dist/server'),
     libraryTarget: 'commonjs2'
   },
   module: {
