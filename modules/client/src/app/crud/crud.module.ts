@@ -16,7 +16,6 @@ import { CrudCreateComponent } from "./crud-create/crud-create.component";
 import { DynamicFormModule } from "./dynamic-form/dynamic-form.component";
 import { CrudUpdateComponent } from "./crud-update/crud-update.component";
 import { PaginatorModule } from "primeng/components/paginator/paginator";
-import { CrudViewService } from "./crud-view/crud.view.service";
 
 const CRUD_DECLARATIONS = [
     CrudComponent,

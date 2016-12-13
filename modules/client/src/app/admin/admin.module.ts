@@ -11,8 +11,8 @@ import { AdminSettingsComponent } from "./settings/admin-settings.component";
 import { BreadcrumbModule } from "../breadcrumb/breadcrumb.component";
 import { UsersComponent } from "./users/admin-users.component";
 import { ChartModule } from "primeng/components/chart/chart";
-import { ButtonModule } from "primeng/components/button/button";
-import { MenubarModule } from "primeng/components/menubar/menubar";
+// import { ButtonModule } from "primeng/components/button/button";
+// import { MenubarModule } from "primeng/components/menubar/menubar";
 
 const ADMIN_DECLARATION = [
     AdminComponent,
@@ -32,8 +32,8 @@ const ADMIN_DECLARATION = [
         ReactiveFormsModule,
         BreadcrumbModule,
         ChartModule,
-        ButtonModule,
-        MenubarModule
+        // ButtonModule,
+        // MenubarModule
     ],
     declarations: [
         ADMIN_DECLARATION

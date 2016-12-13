@@ -6,7 +6,6 @@ import { MessageComponent } from "./message/message.component";
 import { UserSettingsComponent } from "./settings/user-settings.component";
 import { UserDashboardComponent } from "./dashboard/user-dashboard.component";
 import { BreadcrumbModule } from "../breadcrumb/breadcrumb.component";
-import { NavigationBarComponentModule } from "../navigation/navigationBar/navigation-bar.component";
 import { TranslateModule } from "ng2-translate";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";

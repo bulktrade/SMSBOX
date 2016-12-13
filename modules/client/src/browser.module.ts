@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UniversalModule, isBrowser, isNode } from 'angular2-universal/node'; // for AoT we need to manually split universal packages
+import { UniversalModule, isBrowser, isNode, AUTO_PREBOOT } from 'angular2-universal/browser'; // for AoT we need to manually split universal packages
+import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload';
+
 
 // Will be merged into @angular/platform-browser in a later release
 // see https://github.com/angular/angular/pull/12322
@@ -9,15 +11,22 @@ import { Meta } from './angular2-meta';
 import { AppComponent } from "./app/app.component";
 import { AppModule } from "./app/app.module";
 
-export function getLRU() {
-  return new Map();
+// import * as LRU from 'modern-lru';
+
+export function getLRU(lru?: any) {
+  // use LRU for node
+  // return lru || new LRU(10);
+  return lru || new Map();
 }
 export function getRequest() {
-  return Zone.current.get('req') || {};
+  // the request object only lives on the server
+  return { cookie: document.cookie };
 }
 export function getResponse() {
-  return Zone.current.get('res') || {};
+  // the response object is sent as the index.html and lives on the server
+  return {};
 }
+
 
 // TODO(gdi2290): refactor into Universal
 export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
@@ -29,8 +38,9 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     UniversalModule, // BrowserModule, HttpModule, and JsonpModule are included
 
     FormsModule,
-    RouterModule.forRoot([], { useHash: false }),
+    RouterModule.forRoot([], { useHash: false, preloadingStrategy: IdlePreload }),
 
+    IdlePreloadModule.forRoot(),
     AppModule,
   ],
   providers: [
@@ -43,6 +53,8 @@ export const UNIVERSAL_KEY = 'UNIVERSAL_CACHE';
     { provide: 'LRU', useFactory: getLRU, deps: [] },
 
     Meta,
+
+    // { provide: AUTO_PREBOOT, useValue: false } // turn off auto preboot complete
   ]
 })
 export class MainModule {

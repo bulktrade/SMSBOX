@@ -41,8 +41,8 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var Zone: {current: any};
 interface GlobalEnvironment {
-  ENV: string;
-  HMR: boolean;
+  ENV;
+  HMR;
   SystemJS: SystemJS;
   System: SystemJS;
 }
