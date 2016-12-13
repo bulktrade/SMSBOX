@@ -4,7 +4,7 @@ const clone = require('js.clone');
 const webpackMerge = require('webpack-merge');
 const V8LazyParseWebpackPlugin = require('v8-lazy-parse-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-import webpackConfig, { root,  includeClientPackages } from './webpack.config';
+import webpackConfig, { root,  includeClientPackages } from './webpack.universal';
 // const CompressionPlugin = require('compression-webpack-plugin');
 
 

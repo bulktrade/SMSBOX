@@ -19,6 +19,26 @@ function root(args) {
     return path.join.apply(path, [ROOT].concat(args));
 }
 
+// Helpers
+function includeClientPackages(packages, localModule) {
+    return function(context, request, cb) {
+        if (localModule instanceof RegExp && localModule.test(request)) {
+            return cb();
+        }
+        if (packages instanceof RegExp && packages.test(request)) {
+            return cb();
+        }
+        if (Array.isArray(packages) && packages.indexOf(request) !== -1) {
+            return cb();
+        }
+        if (!path.isAbsolute(request) && request.charAt(0) !== '.') {
+            return cb(null, 'commonjs ' + request);
+        }
+        return cb();
+    };
+}
+
 exports.hasProcessFlag = hasProcessFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
+exports.includeClientPackages = includeClientPackages;
 exports.root = root;
