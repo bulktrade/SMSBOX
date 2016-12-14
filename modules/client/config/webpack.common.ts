@@ -35,10 +35,11 @@ export const commonConfig = {
              */
             {
                 test: /\.ts$/,
-                loaders: [
+                use: [
                     '@angularclass/hmr-loader',
                     'awesome-typescript-loader',
-                    'angular2-template-loader'
+                    'angular2-template-loader',
+                    'angular-router-loader'
                 ],
                 exclude: [/\.(spec|e2e)\.ts$/]
             },
@@ -58,7 +59,11 @@ export const commonConfig = {
              * Returns file content as string
              *
              */
-            { test: /(\.css$)/, loaders: ['style-loader', 'css-loader', 'postcss-loader'] },
+            // { test: /(\.css$)/, loaders: 'raw-loader' },
+            {
+                test: /\.css$/,
+                use: ['to-string-loader', 'css-loader']
+            },
 
             /* Raw loader support for *.html
              * Returns file content as string
@@ -112,5 +117,24 @@ export const commonPlugins = [
     new webpack.LoaderOptionsPlugin({
 
     }),
+
+    new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery",
+        Tether: "tether",
+        "window.Tether": "tether",
+        Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
+        Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+        Button: "exports-loader?Button!bootstrap/js/dist/button",
+        Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
+        Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
+        Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+        Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
+        Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+        Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
+        Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
+        Util: "exports-loader?Util!bootstrap/js/dist/util",
+    })
 
 ];

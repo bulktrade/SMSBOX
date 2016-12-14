@@ -17,9 +17,6 @@ export var serverConfig = {
             { test: /@angular(\\|\/)material/, use: "imports-loader?window=>global" }
         ],
     },
-    externals: helpers.includeClientPackages(
-        /@angularclass|@angular|angular2-|ng2-|ng-|@ng-|angular-|@ngrx|ngrx-|@angular2|ionic|@ionic|-angular2|-ng2|-ng/
-    ),
     node: {
         global: true,
         crypto: true,
