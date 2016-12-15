@@ -1,70 +1,96 @@
-import { NgModule } from "@angular/core";
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-translate";
-import { BrowserModule } from "@angular/platform-browser";
-import { AppComponent } from "./app.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpModule, Http } from "@angular/http";
-import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
-import { AppRoutingModule } from "./app-routing.module";
-import { CommonModule } from "@angular/common";
-import { UserModule } from "./user/user.module";
-import { AdminComponentModule } from "./admin/admin.module";
+import { NgModule, ApplicationRef } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
+/*
+ * Platform and Environment providers/directives/pipes
+ */
+import { ENV_PROVIDERS } from './environment';
+import { ROUTES } from './app.routes';
+// App is our top level component
+import { AppComponent } from './app.component';
+import { APP_RESOLVER_PROVIDERS } from './app.resolver';
+import { AppState, InternalStateType } from './app.service';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
+import { NoContentComponent } from './no-content';
+import { XLarge } from './home/x-large';
+
+// Application wide providers
+const APP_PROVIDERS = [
+  ...APP_RESOLVER_PROVIDERS,
+  AppState
+];
+
+type StoreType = {
+  state: InternalStateType,
+  restoreInputValues: () => void,
+  disposeOldHosts: () => void
+};
+
+/**
+ * `AppModule` is the main entry point into Angular2's bootstraping process
+ */
 @NgModule({
-    imports: [
-        CommonModule,
-        BrowserModule,
-        FormsModule,
-        ReactiveFormsModule,
-        HttpModule,
-        AppRoutingModule,
-        TranslateModule.forRoot({
-            provide: TranslateLoader,
-            useFactory: (http: Http) => {
-                return new TranslateStaticLoader(http, '../assets/i18n', '.json')
-            },
-            deps: [Http]
-        }),
-        //BreadcrumbModule.forRoot(),
-        // MessagesModule,
-        // CrudModule,
-        // EqualValidatorModule,
-        // AdminComponentModule,
-        // UserModule,
-        // ThereComponentModule,
-        SmsBoxComponentModule,
-        // GrowlModule
-    ],
-    declarations: [
-        AppComponent,
-        // NotFoundComponent,
-        // SignupComponent,
-        // LoginComponent,
-        // CubeGridComponent
-    ],
-    providers: [
-        // CrudService,
-        // CrudViewResolve,
-        // CrudCreateResolve,
-        // CrudUpdateResolve,
-        // CrudMainResolve,
-        // UserSettingsResolve,
-        // FormBuilder,
-        // SignupService,
-        // TokenService,
-        // GrowlService,
-        // CommonService,
-        // LoginGuard,
-        // {
-        //     provide: FeathersService,
-        //     useFactory: (http: Http, tokenService: TokenService) => {
-        //         return new FeathersService(http, tokenService, 'http://localhost:3030');
-        //     },
-        //     deps: [Http, TokenService]
-        // }
-    ],
-    bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ],
+  declarations: [
+    AppComponent,
+    AboutComponent,
+    HomeComponent,
+    NoContentComponent,
+    XLarge
+  ],
+  imports: [ // import Angular's modules
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot(ROUTES, { useHash: true })
+  ],
+  providers: [ // expose our Services and Providers into Angular's dependency injection
+    ENV_PROVIDERS,
+    APP_PROVIDERS
+  ]
 })
-
 export class AppModule {
+  constructor(public appRef: ApplicationRef, public appState: AppState) {}
+
+  hmrOnInit(store: StoreType) {
+    if (!store || !store.state) return;
+    console.log('HMR store', JSON.stringify(store, null, 2));
+    // set state
+    this.appState._state = store.state;
+    // set input values
+    if ('restoreInputValues' in store) {
+      let restoreInputValues = store.restoreInputValues;
+      setTimeout(restoreInputValues);
+    }
+
+    this.appRef.tick();
+    delete store.state;
+    delete store.restoreInputValues;
+  }
+
+  hmrOnDestroy(store: StoreType) {
+    const cmpLocation = this.appRef.components.map(cmp => cmp.location.nativeElement);
+    // save state
+    const state = this.appState._state;
+    store.state = state;
+    // recreate root elements
+    store.disposeOldHosts = createNewHosts(cmpLocation);
+    // save input values
+    store.restoreInputValues  = createInputTransfer();
+    // remove styles
+    removeNgStyles();
+  }
+
+  hmrAfterDestroy(store: StoreType) {
+    // display new elements
+    store.disposeOldHosts();
+    delete store.disposeOldHosts;
+  }
+
 }
+
