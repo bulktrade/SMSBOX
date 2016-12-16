@@ -6,6 +6,10 @@
 .main-wrap {
     margin: auto;
     width: 850px;
+
+    > div {
+        display: block;
+    }
 }
 
 .title {
@@ -33,7 +37,7 @@
         text-decoration: none;
         display: inline-block;
 
-        &:hover{
+        &:hover {
             color: inherit;
         }
 
