@@ -20,6 +20,7 @@ import '@angularclass/hmr';
 // Other
 import 'jquery';
 import 'bootstrap-loader';
+import 'chart.js';
 
 // RxJS
 import 'rxjs/add/operator/map';

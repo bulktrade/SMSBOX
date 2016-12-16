@@ -3,8 +3,9 @@
 
 	<div id="user-dashboard" class="row">
 
-		<div *ngFor="let box of dashboardBoxes" [ngSwitch]="box.type">
-			<div class="dashboard-box status col-sm-4" *ngSwitchCase="'status'">
+		<div *ngFor="let box of dashboardBoxes" [ngSwitch]="box.type"
+		     [ngClass]="{'col-sm-4': box.type === 'status', 'col-sm-6': box.type === 'chart'}">
+			<div class="dashboard-box status" *ngSwitchCase="'status'">
 				<div class="wrap">
 					<div class="title" [ngStyle]="{'color': box.colorScheme, 'border-bottom-color': box.colorScheme}">
 	                        <span>
@@ -22,7 +23,7 @@
 				</div>
 			</div>
 
-			<div class="dashboard-box chart col-sm-6" *ngSwitchCase="'chart'">
+			<div class="dashboard-box chart" *ngSwitchCase="'chart'">
 				<div class="wrap">
 					<div class="title" [ngStyle]="{'color': box.colorScheme, 'border-bottom-color': box.colorScheme}">
 								<span>

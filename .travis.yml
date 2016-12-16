@@ -29,12 +29,12 @@ install:
   - cd ../backend && npm install && cd ../client
 
 script:
-#  - npm test
+  - npm test
   - npm run start &
   - sleep 50
   - cd ../backend && npm run start &
   - sleep 5
-#  - cd ../client && npm run e2e
+  - cd ../client && npm run e2e
 
 notifications:
   email:

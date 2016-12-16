@@ -10,6 +10,7 @@ exports.config = {
 
   // use `npm run e2e`
   specs: [
+    helpers.root('src/app/login/login.e2e.ts'),
     helpers.root('src/**/**.e2e.ts'),
     helpers.root('src/**/*.e2e.ts')
   ],

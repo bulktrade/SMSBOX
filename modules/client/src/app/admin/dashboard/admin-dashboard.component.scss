@@ -7,6 +7,15 @@ $color-9: rgba(0, 0, 0, 0.1);
 }
 
 #user-dashboard {
+    > div {
+        padding: 0;
+
+        &:last-child {
+            max-width: 100%;
+            flex: initial;
+        }
+    }
+
     .dashboard-box {
         padding: 0 3px;
         margin-bottom: 10px;
@@ -84,12 +93,6 @@ $color-9: rgba(0, 0, 0, 0.1);
                     height: 250px;
                 }
             }
-        }
-    }
-
-    > div:last-child {
-        > div {
-            width: 100%;
         }
     }
 }
