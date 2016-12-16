@@ -1,0 +1,27 @@
+<div id="crud-view-window">
+
+	<div class="row top-panel">
+		<div class="search-panel">
+			<div class="row">
+				<input id="search" placeholder="{{ 'crud.search' | translate }}" type="text" size="30" pInputText [(ngModel)]="text"
+				       (ngModelChange)="onFilterChanged($event, gridOptions)"/>
+				<i class="fa fa-search" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div class="crud-panel">
+			<button pButton type="text" icon="fa-plus" id="createButton" (click)="navigateToCreate()"
+			        label="{{ 'crud.create' | translate }}"></button>
+			<button pButton type="text" icon="fa-trash-o" (click)="navigateToDelete()"
+			        [disabled]="isDisabledDeleteButton" class="delete-button"
+			        label="{{ 'crud.delete' | translate }}"></button>
+		</div>
+	</div>
+	<ag-grid-ng2 #agGrid style="width: 100%; height: 280px;" class="ag-fresh"
+	             [gridOptions]="gridOptions">
+	</ag-grid-ng2>
+
+	<p-paginator class="paginator" [rows]="10" [totalRecords]="pagination.total"
+	             (onPageChange)="onPaginate($event)"
+	             [rowsPerPageOptions]="rowsPerPageOptions"></p-paginator>
+
+</div>

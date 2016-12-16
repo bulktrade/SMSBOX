@@ -17,6 +17,7 @@ import '@angular/router';
 // AngularClass
 import '@angularclass/hmr';
 
+// Other
 import 'jquery';
 import 'bootstrap-loader';
 

@@ -1,0 +1,29 @@
+<div id="admin-view-window" class="main-content-padding">
+	<breadcrumb></breadcrumb>
+	<div id="admin">
+		<div class="titlePage">
+			{{"TITLE" | translate}}
+		</div>
+		<form [formGroup]="form" (ngSubmit)="onSubmit()">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2">
+						{{"RECIPIENT" | translate}}
+					</label>
+					<input type="text" class="form-control" formControlName="recipient">
+				</div>
+				<div class="form-group">
+					<label class="control-label  col-sm-2">
+						{{"SMS_BODY_TEXT" | translate}}
+					</label>
+					<textarea rows="5" class="form-control" formControlName="bodyText"></textarea>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-material-primary col-sm-offset-10 col-sm-2">
+						{{"BTN_SEND" | translate}}
+					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

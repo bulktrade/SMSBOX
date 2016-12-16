@@ -1,0 +1,86 @@
+#smsbox-window {
+    display: flex;
+    height: 100%;
+}
+
+.main-wrap {
+    margin: auto;
+    width: 850px;
+}
+
+.title {
+    padding-left: 0;
+}
+
+.top-title {
+    button {
+        font-size: 15px;
+    }
+
+    i {
+        padding-left: 7px;
+        cursor: pointer;
+    }
+}
+
+.login {
+    text-align: right;
+    padding-right: 0;
+
+    a {
+        margin-left: 10px;
+        padding: 8px;
+        text-decoration: none;
+        display: inline-block;
+
+        &:hover{
+            color: inherit;
+        }
+
+        &.signup {
+            background-color: #22ad22;
+            color: #fff;
+        }
+    }
+}
+
+.top-title {
+    background-color: #009688;
+    color: #fff;
+    padding: 20px;
+    font-size: 20px;
+}
+
+form {
+    margin-top: 20px;
+
+    textarea {
+        height: 90px;
+    }
+
+    .form-group {
+        > div {
+            padding-right: 0;
+        }
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #smsbox-window {
+        height: auto;
+    }
+
+    .form-group {
+        label {
+            padding-left: 0;
+        }
+
+        > div {
+            padding: 0;
+        }
+    }
+}

@@ -1,0 +1,74 @@
+#message-window {
+    color: #697882;
+
+    .fixed-height {
+        height: 481px;
+    }
+
+    .list-group {
+        margin-bottom: 0;
+        overflow: auto;
+
+        .list-group-item {
+            border-radius: 0;
+            cursor: pointer;
+
+            &:hover {
+                .chat-icon {
+                    margin-right: 0 !important;
+                }
+
+                .date {
+                    span {
+                        display: none;
+                    }
+                }
+            }
+
+            .row {
+                .state {
+                    margin-left: 3px;
+
+                    &.fa-arrow-down {
+                        color: green;
+                    }
+
+                    &.fa-arrow-up {
+                        color: #5f5fff;
+                    }
+                }
+
+                .body-message {
+                    display: inline-block;
+                    white-space: nowrap;
+                    overflow: hidden !important;
+                    text-overflow: ellipsis;
+                }
+
+                .chat-icon {
+                    margin-right: -40px;
+                }
+
+                .date {
+                    overflow: hidden;
+                    padding-right: 0;
+                }
+
+                > div {
+                    color: #697882;
+                    padding-left: 0;
+
+                    > i {
+                        padding-right: 5px;
+                    }
+                }
+            }
+
+            .telephone-number {
+
+            }
+
+        }
+
+    }
+}

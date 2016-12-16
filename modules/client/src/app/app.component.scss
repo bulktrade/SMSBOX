@@ -1,0 +1,169 @@
+//  Bootstrap settings
+.container, .row {
+    padding: 0;
+}
+
+.ui-menu a.ui-state-hover {
+  background: #015a52 !important;
+}
+
+.ui-submenu-icon {
+  color: #fff;
+}
+
+.ui-menu .ui-menu-parent .ui-menu-child {
+  background: #009688 !important;
+  border-color: #009688 !important;
+}
+
+smsbox {
+  height: 100%;
+}
+
+login,
+signup {
+    height: 100%;
+}
+
+.menubar {
+  background: #009688;
+  height: 42px;
+}
+
+p-menubar {
+  display: flex;
+
+  > div {
+    width: 100% !important;
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .ui-menuitem-text {
+    font-size: 17px;
+    color: #fff;
+  }
+}
+
+.ag-cell-focus {
+  outline: none;
+}
+
+.ui-growl {
+  right: inherit !important;
+}
+
+notFound {
+  height: 100%;
+}
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.ag-selection-checkbox {
+    > img {
+        padding-left: 2px;
+    }
+}
+
+.mode_edit-icon {
+    padding: 0 3px 0 2px;
+}
+
+.hint {
+    color: #d9534f;
+}
+
+.paginator {
+    > div {
+        border-color: #929292;
+    }
+}
+
+navigation {
+    height: 100%;
+}
+
+.main-content-padding {
+  padding: 20px;
+  background: #fff;
+}
+
+.main-wrap {
+    margin: 25px 0;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.btn-material-primary {
+    background: #009688;
+    color: rgba(255,255,255, 0.84);
+    border-radius: 2px;
+    outline: none !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+
+    &:hover {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+
+    &:active {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+
+    &:focus {
+        color: rgba(255,255,255, 0.84);
+        background: #00aa9a;
+    }
+}
+
+.backButton {
+    background: #555;
+    color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    outline: none !important;
+
+    &:hover {
+        color: #fff;
+        background: #3e3e3e;
+    }
+
+    &:active {
+        background: #313131;
+    }
+
+    &:focus {
+        color: #fff;
+        background: #313131;
+    }
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: transparent;
+}
+
+.container-fluid > .navbar-collapse, .container-fluid > .navbar-header, .container > .navbar-collapse, .container > .navbar-header, .navbar-nav {
+    margin: 0;
+}
+
+//  Major rules
+body {
+    background-color: #E9ECF3 !important;
+}
+
+.titlePage {
+    padding: 20px;
+    color: #fff;
+    background-color: #009688;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .main-wrap {
+        margin: 10px 0 30px 0;
+    }
+}

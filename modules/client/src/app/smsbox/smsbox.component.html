@@ -1,0 +1,48 @@
+<div id="smsbox-window">
+	<div class="main-wrap main-content-padding">
+		<div class="row">
+			<div class="top-title">
+				<div class="row">
+					<div class="title col-xs-5 col-sm-3">{{'smsbox.title' | translate}}</div>
+					<div class="login col-xs-7 col-sm-9">
+						<i class="fa fa-user login-button" [routerLink]="['/login']" title="{{'smsbox.login' | translate}}" aria-hidden="true"></i>
+						<i class="fa fa-sign-in signup-button" [routerLink]="['/signup']" title="{{'smsbox.signup' | translate}}" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<form role="form" (ngSubmit)="onSubmit()" #smsboxForm="ngForm" novalidate>
+				<div class="form-group row">
+					<label for="phoneNumber" class="col-sm-2 col-form-label">{{'smsbox.phoneNumber' |
+						translate}}</label>
+					<div class="col-sm-10">
+						<input type="text" [(ngModel)]="model.phoneNumber" class="form-control" id="phoneNumber"
+						       required
+						       name="phoneNumber" #phoneNumber="ngModel" pattern="^\+(?:[0-9]?){6,14}[0-9]$"
+						       placeholder="{{'smsbox.phoneNumber' | translate}}">
+						<small class="form-text hint phone-number-hint" *ngIf="phoneNumber.invalid && phoneNumber.dirty">
+							{{'smsbox.phoneNumberHint' | translate}}
+						</small>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="body" class="col-sm-2 col-form-label">{{'smsbox.body' |
+						translate}}</label>
+					<div class="col-sm-10 col-xl-10">
+						<textarea type="text" [(ngModel)]="model.body" class="form-control" id="body"
+						          name="body" #body="ngModel" placeholder="{{'smsbox.body' | translate}}">
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<button type="submit"
+						        class="btn btn-material-primary pull-right col-xs-12 col-sm-2 updateProfile"
+						        [disabled]="!smsboxForm.form.valid">{{'smsbox.sendButton' |
+							translate}}
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
