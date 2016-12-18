@@ -1,9 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
-import { MessageService } from "./message.service";
 import { HttpModule, ResponseOptions, Response } from "@angular/http";
-import { HTTP_PROVIDERS } from "../../common/test/unit/mock/http-providers";
 import { MockBackend } from "@angular/http/testing";
-import { MessageModel } from "./message.model";
+import { HTTP_PROVIDERS } from "../../test/unit/mock/http-providers";
 import { DashboardService } from "./dashboard.service";
 
 describe('Dashboard service', () => {

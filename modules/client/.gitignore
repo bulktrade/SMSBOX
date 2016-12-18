@@ -64,3 +64,4 @@ npm-debug.log
 *.swp
 
 ./npm-debug.log
+./npm-debug.log*
