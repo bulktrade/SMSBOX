@@ -43,8 +43,6 @@ app.set('views', VIEWDIR);
 app.set('view engine', 'html');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-
-
 function ngApp(req, res) {
   res.render('index', {
     req,

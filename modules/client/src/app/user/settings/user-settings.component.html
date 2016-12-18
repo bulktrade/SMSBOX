@@ -127,9 +127,10 @@
 					<div class="ui-grid-row">
 						<div class="ui-grid-col-2"></div>
 						<div class="ui-grid-col-6">
-							<button pButton type="submit" id="updateProfile"
-							        [disabled]="settingsForm.form.invalid" icon="fa-pencil"
-							        label="{{ 'userSettings.updateProfile' | translate }}"></button>
+							<button type="submit" class="btn btn-primary" id="updateProfile"
+							        [disabled]="settingsForm.form.invalid">
+								{{ 'userSettings.updateProfile' | translate }}
+							</button>
 						</div>
 						<div class="ui-grid-col-4"></div>
 					</div>

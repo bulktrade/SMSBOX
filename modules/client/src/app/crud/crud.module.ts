@@ -9,7 +9,6 @@ import { CommonModule } from "@angular/common";
 import { TranslateModule } from "ng2-translate";
 import { PanelModule } from "primeng/components/panel/panel";
 import { InputTextModule } from "primeng/components/inputtext/inputtext";
-import { ButtonModule } from "primeng/components/button/button";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { CrudDeleteComponent } from "./crud-delete/crud-delete.component";
 import { CrudCreateComponent } from "./crud-create/crud-create.component";
@@ -37,7 +36,6 @@ const CRUD_MODULES = [
     PanelModule,
     InputTextModule,
     MessagesModule,
-    ButtonModule,
     PaginatorModule
 ];
 

@@ -58,10 +58,7 @@ module.exports = function (options) {
     filename: 'index.js',
     libraryTarget: 'commonjs2'
   };
-// This filters out all node_module packages from the compile process, except the ones listed here.
-  serverConfig.externals = includeClientPackages([
-      // might want to add material files here.
-  ]),
+
   serverConfig.plugins = [
             new webpack.IgnorePlugin(/vertx/),
             new ForkCheckerPlugin(),

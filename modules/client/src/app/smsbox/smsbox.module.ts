@@ -4,7 +4,6 @@ import { RouterModule } from "@angular/router";
 import { TranslateModule } from "ng2-translate";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { ButtonModule } from "primeng/components/button/button";
 
 const DECLARATIONS = [
     SmsBoxComponent
@@ -16,7 +15,6 @@ const DECLARATIONS = [
         RouterModule,
         FormsModule,
         TranslateModule,
-        // ButtonModule
     ],
     declarations: [
         ...DECLARATIONS

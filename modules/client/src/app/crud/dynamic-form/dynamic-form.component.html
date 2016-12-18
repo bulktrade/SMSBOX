@@ -70,13 +70,15 @@
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-4"></div>
 				<div class="ui-grid-col-2">
-					<button pButton type="button" icon="fa-chevron-left" id="backButton" (click)="location.back()"
-					        label="{{ 'crud.back' | translate }}"></button>
+					<button type="button" class="btn btn-primary btn-primary" id="backButton">
+						{{ 'crud.back' | translate }}
+					</button>
 				</div>
 				<div class="ui-grid-col-2">
-					<button pButton type="submit" id="{{ buttonModel.nameButton }}"
-					        [disabled]="dynamicForm.invalid" icon="{{ buttonModel.iconName }}"
-					        label="{{ buttonModel.nameButton | translate }}"></button>
+					<button type="submit" class="btn btn-primary"
+					        [disabled]="dynamicForm.invalid" id="{{ buttonModel.nameButton }}">
+						{{ buttonModel.nameButton | translate }}
+					</button>
 				</div>
 				<div class="ui-grid-col-4"></div>
 			</div>
@@ -84,6 +86,3 @@
 
 	</form>
 </div>
-
-
-<!--padding: 4px 10px;-->

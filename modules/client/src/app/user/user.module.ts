@@ -23,7 +23,6 @@ import { BaThemeConfigProvider } from "../chart/theme/theme.configProvider";
 import { HttpModule } from "@angular/http";
 import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 import { MessagesModule } from "primeng/components/messages/messages";
-import { ButtonModule } from "primeng/components/button/button";
 import { PanelModule } from "primeng/components/panel/panel";
 import { MenubarModule } from "primeng/components/menubar/menubar";
 
@@ -35,8 +34,8 @@ const DECLARATION = [
     UserDashboardComponent,
     IOBoxComponent,
     ChatComponent,
-    BaAmChart,
-    LineChart
+    // BaAmChart,
+    // LineChart
 ];
 
 @NgModule({
@@ -52,7 +51,6 @@ const DECLARATION = [
         HttpModule,
         DynamicFormModule,
         MessagesModule,
-        ButtonModule,
         PanelModule,
         MenubarModule
     ],

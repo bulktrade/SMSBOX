@@ -5,7 +5,6 @@ import { TranslateService, TranslateModule } from "ng2-translate";
 import { Button } from "../model/button";
 import { FormsModule } from "@angular/forms";
 import { MessagesModule } from "primeng/components/messages/messages";
-import { ButtonModule } from "primeng/components/button/button";
 import { EqualValidatorModule } from "../../common/equal-validator.directive";
 
 @Component({
@@ -40,7 +39,6 @@ export class DynamicFormComponent {
         FormsModule,
         TranslateModule,
         MessagesModule,
-        ButtonModule,
         EqualValidatorModule
     ],
     exports: [DynamicFormComponent],
