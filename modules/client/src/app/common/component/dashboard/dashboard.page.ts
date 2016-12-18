@@ -1,6 +1,6 @@
 import { EC } from "../../common/test/integration/expected-conditions";
 
-export class AdminDashboardPage {
+export class DashboardPage {
     timeout: number = 5000;
 
     dashboardTag = element(by.tagName('dashboard'));

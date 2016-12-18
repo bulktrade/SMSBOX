@@ -1,7 +1,7 @@
-import { AdminDashboardPage } from "./admin-dashboard.page";
+import { DashboardPage } from "./dashboard.page";
 
-describe('Admin dashboard component', () => {
-    let dashboard = new AdminDashboardPage();
+describe('Dashboard component', () => {
+    let dashboard = new DashboardPage();
 
     beforeEach(() => {
         dashboard.get();

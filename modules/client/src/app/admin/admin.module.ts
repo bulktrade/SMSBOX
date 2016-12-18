@@ -12,6 +12,7 @@ import { UsersComponent } from "./users/admin-users.component";
 import { ChartModule } from "primeng/components/chart/chart";
 import { MenubarModule } from "primeng/components/menubar/menubar";
 import { CommonModule } from "@angular/common";
+import { DashboardModule } from "../common/component/dashboard/dashboard.module";
 
 const ADMIN_DECLARATION = [
     AdminComponent,
@@ -31,7 +32,8 @@ const ADMIN_DECLARATION = [
         ReactiveFormsModule,
         BreadcrumbModule,
         ChartModule,
-        MenubarModule
+        MenubarModule,
+        DashboardModule
     ],
     declarations: [
         ADMIN_DECLARATION

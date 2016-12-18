@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
-import { AdminDashboardModel } from "./admin-dashboard.model";
+import { AdminDashboardModel } from "./dashboard.model";
 import { Response, Http } from "@angular/http";
 
 @Injectable()
-export class AdminDashboardService {
+export class DashboardService {
 
     constructor(private http: Http) { }
 

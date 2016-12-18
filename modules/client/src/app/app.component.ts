@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from "@angular/core";
-import {TranslateService} from "ng2-translate";
+import { Component, ViewEncapsulation } from "@angular/core";
+import { TranslateService } from "ng2-translate";
 import { GrowlService } from "./services/growl/growl.service";
 
 @Component({

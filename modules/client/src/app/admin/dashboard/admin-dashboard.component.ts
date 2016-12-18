@@ -1,24 +1,26 @@
-import {Component} from "@angular/core";
-import { AdminDashboardService } from "./admin-dashboard.service";
-import { AdminDashboardModel } from "./admin-dashboard.model";
-import { DASHBOARD_BOXES } from "./dashboard";
+import { Component } from "@angular/core";
+import { AdminDashboardModel } from "../../common/component/dashboard/dashboard.model";
+import { DashboardService } from "../../common/component/dashboard/dashboard.service";
 
 @Component({
-    selector: 'dashboard',
+    selector: 'admin-dashboard',
     template: require('./admin-dashboard.component.html'),
     styles: [
         require('./admin-dashboard.component.scss')
     ],
-    providers: [AdminDashboardService]
+    providers: [DashboardService]
 })
 
 export class AdminDashboardComponent {
-    dashboardBoxes: AdminDashboardModel[] = [];
+    dashboardBoxes: AdminDashboardModel[];
 
-    constructor(public dashboardService: AdminDashboardService) {
+    constructor(private dashboardService: DashboardService) {
     }
 
     ngOnInit() {
-        this.dashboardBoxes = DASHBOARD_BOXES;
+        this.dashboardService.getDashboardBoxes()
+            .subscribe(boxes => {
+                this.dashboardBoxes = boxes;
+            });
     }
 }

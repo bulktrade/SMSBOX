@@ -25,6 +25,7 @@ import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { PanelModule } from "primeng/components/panel/panel";
 import { MenubarModule } from "primeng/components/menubar/menubar";
+import { DashboardModule } from "../common/component/dashboard/dashboard.module";
 
 const DECLARATION = [
     UserComponent,
@@ -52,7 +53,8 @@ const DECLARATION = [
         DynamicFormModule,
         MessagesModule,
         PanelModule,
-        MenubarModule
+        MenubarModule,
+        DashboardModule
     ],
     declarations: [
         DECLARATION

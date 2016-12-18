@@ -4,13 +4,13 @@ import { HttpModule, ResponseOptions, Response } from "@angular/http";
 import { HTTP_PROVIDERS } from "../../common/test/unit/mock/http-providers";
 import { MockBackend } from "@angular/http/testing";
 import { MessageModel } from "./message.model";
-import { AdminDashboardService } from "./admin-dashboard.service";
+import { DashboardService } from "./dashboard.service";
 
 describe('Dashboard service', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [
-                AdminDashboardService,
+                DashboardService,
                 HTTP_PROVIDERS
             ],
             imports: [
@@ -20,7 +20,7 @@ describe('Dashboard service', () => {
     });
 
     it('should get messages',
-        inject([AdminDashboardService, MockBackend], (dashboardService: AdminDashboardService, backend: MockBackend) => {
+        inject([DashboardService, MockBackend], (dashboardService: DashboardService, backend: MockBackend) => {
             let messages = [
                 {
                     "type": "status",

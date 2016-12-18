@@ -1,0 +1,38 @@
+<div id="dashboard-window" class="row">
+
+	<div *ngFor="let box of dashboardBoxes" [ngSwitch]="box.type"
+	     [ngClass]="{'col-sm-4': box.type === 'status', 'col-sm-6': box.type === 'chart'}">
+		<div class="dashboard-box status" *ngSwitchCase="'status'">
+			<div class="wrap">
+				<div class="title" [ngStyle]="{'color': box.colorScheme, 'border-bottom-color': box.colorScheme}">
+	                        <span>
+	                            {{ box.title | translate }}
+	                        </span>
+					<i class="fa" ngClass="{{ box.iconName }}"></i>
+				</div>
+				<div class="data">
+					<div class="wrap">
+						<div class="data-title">
+							{{ box.data }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="dashboard-box chart" *ngSwitchCase="'chart'">
+			<div class="wrap">
+				<div class="title" [ngStyle]="{'color': box.colorScheme, 'border-bottom-color': box.colorScheme}">
+								<span>
+								{{ box.title | translate }}
+								</span>
+					<i class="fa" ngClass="{{ box.iconName }}"></i>
+				</div>
+				<div class="data">
+					<p-chart type="line" [data]="box.data"></p-chart>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
