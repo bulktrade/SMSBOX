@@ -20,7 +20,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
@@ -33,7 +33,7 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
-  return webpackMerge(commonConfig({env: ENV}), {
+  return webpackMerge(commonConfig({ env: ENV }), {
 
     /**
      * Developer tool to enhance debugging
@@ -119,26 +119,26 @@ module.exports = function (options) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-        new LoaderOptionsPlugin({
-            debug: true,
-            options: {
-                context: helpers.root(),
-                output: {
-                    path: helpers.root('dist')
-                },
-                /**
-                 * Static analysis linter for TypeScript advanced options configuration
-                 * Description: An extensible linter for the TypeScript language.
-                 *
-                 * See: https://github.com/wbuchwalter/tslint-loader
-                 */
-                tslint: {
-                    emitErrors: false,
-                    failOnHint: false,
-                    resourcePath: 'src'
-                }
-            }
-        })
+      new LoaderOptionsPlugin({
+        debug: true,
+        options: {
+          context: helpers.root(),
+          output: {
+            path: helpers.root('dist')
+          },
+          /**
+           * Static analysis linter for TypeScript advanced options configuration
+           * Description: An extensible linter for the TypeScript language.
+           *
+           * See: https://github.com/wbuchwalter/tslint-loader
+           */
+          tslint: {
+            emitErrors: false,
+            failOnHint: false,
+            resourcePath: 'src'
+          }
+        }
+      })
 
     ],
 
@@ -177,4 +177,4 @@ module.exports = function (options) {
     }
 
   });
-}
+};

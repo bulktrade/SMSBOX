@@ -202,9 +202,12 @@ module.exports = function (env) {
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
       new LoaderOptionsPlugin({
-        debug: false,
+        debug: true,
         options: {
-
+          context: helpers.root(),
+          output: {
+            path: helpers.root('dist')
+          },
           /**
            * Static analysis linter for TypeScript advanced options configuration
            * Description: An extensible linter for the TypeScript language.
@@ -212,32 +215,12 @@ module.exports = function (env) {
            * See: https://github.com/wbuchwalter/tslint-loader
            */
           tslint: {
-            emitErrors: true,
-            failOnHint: true,
+            emitErrors: false,
+            failOnHint: false,
             resourcePath: 'src'
-          },
-
-
-          /**
-           * Html loader advanced options
-           *
-           * See: https://github.com/webpack/html-loader#advanced-options
-           */
-          // TODO: Need to workaround Angular 2's html syntax => #id [bind] (event) *ngFor
-          htmlLoader: {
-            minimize: true,
-            removeAttributeQuotes: false,
-            caseSensitive: true,
-            customAttrSurround: [
-              [/#/, /(?:)/],
-              [/\*/, /(?:)/],
-              [/\[?\(?/, /(?:)/]
-            ],
-            customAttrAssign: [/\)?\]?=/]
-          },
-
+          }
         }
-      }),
+      })
 
     ],
 
@@ -257,4 +240,4 @@ module.exports = function (env) {
     }
 
   });
-}
+};
