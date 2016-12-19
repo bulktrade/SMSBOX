@@ -3,6 +3,10 @@
     .bottom-panel {
         display: flex;
         justify-content: flex-end;
+
+        #back-button {
+            margin-right: 7px;
+        }
     }
 
 }
