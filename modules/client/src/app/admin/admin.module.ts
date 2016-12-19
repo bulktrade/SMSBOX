@@ -35,18 +35,14 @@ const ADMIN_DECLARATION = [
         MenubarModule,
         DashboardModule
     ],
-    declarations: [
-        ADMIN_DECLARATION
-    ],
-    exports: [
-        ADMIN_DECLARATION
-    ],
+    declarations: [ADMIN_DECLARATION],
+    exports: [ADMIN_DECLARATION],
     providers: [
         TranslateService,
         FormBuilder
     ]
 })
 
-export class AdminComponentModule {
+export class AdminModule {
 
 }

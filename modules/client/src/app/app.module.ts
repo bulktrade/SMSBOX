@@ -4,7 +4,7 @@ import { AppComponent } from "./app.component";
 import { FormsModule, FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, Http } from "@angular/http";
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from "ng2-translate";
-import { AdminComponentModule } from "./admin/admin.module";
+import { AdminModule } from "./admin/admin.module";
 import { ThereComponentModule } from "./there/there.module";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
@@ -32,6 +32,7 @@ import { CommonService } from "./services/common.service";
 import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 import { InternalStateType, AppState } from "./app.service";
 import { createNewHosts, createInputTransfer, removeNgStyles } from "@angularclass/hmr";
+import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
 
 type StoreType = {
     state: InternalStateType,
@@ -54,11 +55,11 @@ type StoreType = {
             },
             deps: [Http]
         }),
-        //BreadcrumbModule.forRoot(),
+        BreadcrumbModule,
         MessagesModule,
         CrudModule,
         EqualValidatorModule,
-        AdminComponentModule,
+        AdminModule,
         UserModule,
         ThereComponentModule,
         SmsBoxComponentModule,
@@ -97,7 +98,8 @@ type StoreType = {
 })
 
 export class AppModule {
-    constructor(public appRef: ApplicationRef, public appState: AppState) {}
+    constructor(public appRef: ApplicationRef, public appState: AppState) {
+    }
 
     hmrOnInit(store: StoreType) {
         if (!store || !store.state) return;
@@ -123,7 +125,7 @@ export class AppModule {
         // recreate root elements
         store.disposeOldHosts = createNewHosts(cmpLocation);
         // save input values
-        store.restoreInputValues  = createInputTransfer();
+        store.restoreInputValues = createInputTransfer();
         // remove styles
         removeNgStyles();
     }

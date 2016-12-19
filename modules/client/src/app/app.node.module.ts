@@ -12,7 +12,7 @@ import { MessagesModule } from "primeng/components/messages/messages";
 import { PaginatorModule } from "primeng/components/paginator/paginator";
 import { GrowlModule } from "primeng/components/growl/growl";
 import { TranslateLoader, TranslateModule, TranslateStaticLoader } from "ng2-translate";
-import { AdminComponentModule } from "./admin/admin.module";
+import { AdminModule } from "./admin/admin.module";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
@@ -63,7 +63,7 @@ type StoreType = {
         MessagesModule,
         CrudModule,
         EqualValidatorModule,
-        AdminComponentModule,
+        AdminModule,
         UserModule,
         ThereComponentModule,
         SmsBoxComponentModule,

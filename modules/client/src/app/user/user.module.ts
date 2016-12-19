@@ -16,10 +16,6 @@ import { AlertModule, Ng2BootstrapModule } from "ng2-bootstrap";
 import { IOBoxComponent } from "./message/iobox/iobox.component";
 import { ChatComponent } from "./message/chat/chat.component";
 import { MessageService } from "./message/message.service";
-import { LineChart } from "../chart/lineChart.component";
-import { BaAmChart } from "../chart/theme/components/baAmChart/baAmChart.component";
-import { LineChartService } from "../chart/lineChart.service";
-import { BaThemeConfigProvider } from "../chart/theme/theme.configProvider";
 import { HttpModule } from "@angular/http";
 import { DynamicFormModule } from "../crud/dynamic-form/dynamic-form.component";
 import { MessagesModule } from "primeng/components/messages/messages";
@@ -35,8 +31,6 @@ const DECLARATION = [
     UserDashboardComponent,
     IOBoxComponent,
     ChatComponent,
-    // BaAmChart,
-    // LineChart
 ];
 
 @NgModule({
@@ -64,8 +58,6 @@ const DECLARATION = [
     ],
     providers: [
         UserSettingsService,
-        LineChartService,
-        BaThemeConfigProvider,
         MessageService
     ]
 })
