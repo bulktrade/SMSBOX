@@ -2,7 +2,6 @@
  * @author: @AngularClass
  */
 const webpack = require('webpack');
-const path = require('path');
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
@@ -24,7 +23,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
+const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
@@ -36,65 +35,67 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
+
+var serverPlugins = [
+  new webpack.IgnorePlugin(/vertx/),
+  new ForkCheckerPlugin(),
+  new ContextReplacementPlugin(
+    // The (\\|\/) piece accounts for path separators in *nix and Windows
+    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+    helpers.root('src') // location of your src
+  ),
+  new LoaderOptionsPlugin({}),
+];
+
 module.exports = function (options) {
-  var serverConfig = commonConfig({ env: ENV });
-  serverConfig.target = "node";
-  serverConfig.node = {
-    global: false,
-    __dirname: false,
-    __filename: false,
-    process: false,
-    Buffer: false
-  };
-
-  serverConfig.entry = [
-    './src/polyfills.node',
-    './src/vendor.node',
-    './src/main.node'
-  ];
-
-  serverConfig.output = {
-    path: helpers.root('dist/server'),
-    filename: 'index.js',
-    libraryTarget: 'commonjs2'
-  };
-
-  serverConfig.module.rules.push(
-    {
-      test: /ag-grid\/dist\/lib\/(widgets\/agCheckbox)|(gridCore)\.js$/,
-      loader: 'string-replace-loader',
-      query: {
-        search: /HTMLElement/g,
-        replace: 'function(){}'
-      }
+  let serverConfig = webpackMerge(commonConfig({ env: ENV }), {
+    entry: [
+      './src/polyfills.node',
+      './src/vendor.node',
+      './src/main.node'
+    ],
+    output: {
+      path: helpers.root('dist/server'),
+      filename: 'index.js',
+      libraryTarget: 'commonjs2'
     },
-
-    {
-      test: /angular2-platform-node\/__private_imports__\.js$/,
-      loader: 'string-replace-loader',
-      query: {
-        search: /__.(SelectorMatcher|CssSelector)/g,
-        replace: ''
-      }
+    target: "node",
+    node: {
+      global: false,
+      __dirname: false,
+      __filename: false,
+      process: false,
+      Buffer: false
+    },
+    module: {
+      rules: [
+        {
+          test: /ag-grid\/dist\/lib\/(widgets\/agCheckbox)|(gridCore)\.js$/,
+          loader: 'string-replace-loader',
+          query: {
+            search: /HTMLElement/g,
+            replace: 'function(){}'
+          }
+        },
+        {
+          test: /angular2-platform-node\/__private_imports__\.js$/,
+          loader: 'string-replace-loader',
+          query: {
+            search: /__.(SelectorMatcher|CssSelector)/g,
+            replace: ''
+          }
+        }
+      ]
     }
-  );
+  });
 
-  serverConfig.plugins = [
-            new webpack.IgnorePlugin(/vertx/),
-            new ForkCheckerPlugin(),
-            new ContextReplacementPlugin(
-                // The (\\|\/) piece accounts for path separators in *nix and Windows
-                /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-                helpers.root('src') // location of your src
-            ),
-            new LoaderOptionsPlugin({}),
-  ];
+  serverConfig.plugins = serverPlugins;
 
   return serverConfig;
 };
 
 function includeClientPackages(packages) {
-  return function(context, request, cb) {
+  return function (context, request, cb) {
     if (packages && packages.indexOf(request) !== -1) {
       return cb();
     }
@@ -104,9 +105,10 @@ function includeClientPackages(packages) {
 
 // Helpers
 function checkNodeImport(context, request, cb) {
-    // the css loader-requires must be resolved at compile time, as angular2-template-loader generates source-location specific paths back to node-modules/css-loader.
-if (!path.isAbsolute(request) && request.charAt(0) !== '.'  && request.charAt(0) !== '!') {
-    cb(null, 'commonjs ' + request); return;
+  // the css loader-requires must be resolved at compile time, as angular2-template-loader generates source-location specific paths back to node-modules/css-loader.
+  if (!path.isAbsolute(request) && request.charAt(0) !== '.' && request.charAt(0) !== '!') {
+    cb(null, 'commonjs ' + request);
+    return;
   }
   cb();
 }
