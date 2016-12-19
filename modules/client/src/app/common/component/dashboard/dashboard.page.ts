@@ -4,8 +4,8 @@ export class DashboardPage {
     timeout: number = 5000;
 
     dashboardTag = element(by.tagName('dashboard'));
-    dashboardBoxes = element.all(by.css('#user-dashboard > div'));
-    titleOfThirdBox = element(by.css('#user-dashboard > div:nth-of-type(3) .title'));
+    dashboardBoxes = element.all(by.css('#dashboard-window > div'));
+    titleOfThirdBox = element(by.css('#dashboard-window > div:nth-of-type(3) .title'));
 
     get() {
         browser.get('/admin/dashboard');
