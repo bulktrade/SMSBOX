@@ -5,13 +5,8 @@
         padding-bottom: 0.5em;
         padding-top: 0.5em;
 
-        .delete-button {
-            background-color: #F44336;
-            border-color: #ec4f44;
-
-            &:hover {
-                background-color: #f02618;
-            }
+        #createButton {
+            margin-right: 5px;
         }
 
         .search-panel {

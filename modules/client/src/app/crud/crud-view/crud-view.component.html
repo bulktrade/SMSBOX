@@ -10,12 +10,12 @@
 			</div>
 		</div>
 		<div class="crud-panel">
-			<button type="button" class="btn btn-primary" id="createButton" (click)="navigateToCreate()">
-				{{ 'crud.create' | translate }}
+			<button type="button" class="btn btn-primary btn-sm" id="createButton" (click)="navigateToCreate()">
+				<span class="fa fa-plus"></span> {{ 'crud.create' | translate }}
 			</button>
-			<button type="button" class="btn btn-primary delete-button" (click)="navigateToDelete()"
+			<button type="button" class="btn btn-danger btn-sm delete-button" (click)="navigateToDelete()"
 			        [disabled]="isDisabledDeleteButton">
-				{{ 'crud.delete' | translate }}
+				<span class="fa fa-trash"></span> {{ 'crud.delete' | translate }}
 			</button>
 		</div>
 	</div>
