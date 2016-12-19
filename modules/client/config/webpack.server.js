@@ -59,6 +59,26 @@ module.exports = function (options) {
     libraryTarget: 'commonjs2'
   };
 
+  serverConfig.module.rules.push(
+    {
+      test: /ag-grid\/dist\/lib\/(widgets\/agCheckbox)|(gridCore)\.js$/,
+      loader: 'string-replace-loader',
+      query: {
+        search: /HTMLElement/g,
+        replace: 'function(){}'
+      }
+    },
+
+    {
+      test: /angular2-platform-node\/__private_imports__\.js$/,
+      loader: 'string-replace-loader',
+      query: {
+        search: /__.(SelectorMatcher|CssSelector)/g,
+        replace: ''
+      }
+    }
+  );
+
   serverConfig.plugins = [
             new webpack.IgnorePlugin(/vertx/),
             new ForkCheckerPlugin(),
