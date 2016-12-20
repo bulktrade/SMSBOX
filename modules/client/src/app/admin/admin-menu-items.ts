@@ -14,5 +14,9 @@ export const ADMIN_ITEMS = [
     {
         label: 'Settings',
         routerLink: ['/admin', 'settings']
+    },
+    {
+        label: 'Users',
+        routerLink: ['/admin', 'user']
     }
 ];

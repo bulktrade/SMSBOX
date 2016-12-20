@@ -5,51 +5,51 @@ const hooks = require('feathers-hooks');
 const auth = require('feathers-authentication').hooks;
 
 exports.before = {
-	all: [auth.hashPassword()],
-	find: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated(),
-		auth.hasRoleOrRestrict({
-			roles: ['ADMIN'],
-			fieldName: 'permissions',
-			restrict: { approved: true }
-		})
-	],
-	get: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated(),
-		auth.hasRoleOrRestrict({
-			roles: ['ADMIN'],
-			fieldName: 'permissions',
-			restrict: { approved: true }
-		})
-	],
-	create: [],
-	update: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated()
-	],
-	patch: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated()
-	],
-	remove: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated()
-	]
+  all: [ auth.hashPassword() ],
+  find: [
+    auth.verifyToken(),
+    auth.populateUser(),
+    auth.restrictToAuthenticated(),
+    auth.hasRoleOrRestrict({
+      roles: [ 'ADMIN' ],
+      fieldName: 'permissions',
+      restrict: { approved: true }
+    })
+  ],
+  get: [
+    auth.verifyToken(),
+    auth.populateUser(),
+    auth.restrictToAuthenticated(),
+    auth.hasRoleOrRestrict({
+      roles: [ 'ADMIN' ],
+      fieldName: 'permissions',
+      restrict: { approved: true }
+    })
+  ],
+  create: [],
+  update: [
+    auth.verifyToken(),
+    auth.populateUser(),
+    auth.restrictToAuthenticated()
+  ],
+  patch: [
+    auth.verifyToken(),
+    auth.populateUser(),
+    auth.restrictToAuthenticated()
+  ],
+  remove: [
+    auth.verifyToken(),
+    auth.populateUser(),
+    auth.restrictToAuthenticated()
+  ]
 };
 
 exports.after = {
-	all: [],
-	find: [],
-	get: [],
-	create: [],
-	update: [],
-	patch: [],
-	remove: []
+  all: [ hooks.remove('password') ],
+  find: [],
+  get: [],
+  create: [],
+  update: [],
+  patch: [],
+  remove: []
 };
