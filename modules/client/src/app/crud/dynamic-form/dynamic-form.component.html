@@ -31,15 +31,13 @@
 				<div class="ui-grid-col-6 ui-input-field">
 					<input pInputText class="form-control" [(ngModel)]="passwordValue"
 					       (ngModelChange)="model['password']=$event;" #password="ngModel"
-					       name="password" type="password" id="password"
+					       name="password" type="password" id="password" required
 					       validateEqual="confirmPassword" reverse="true">
 				</div>
 				<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
 					<div class="ui-message ui-messages-error ui-corner-all">
 						<i class="fa fa-close"></i>
-						{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' |
-						translate)
-						}}
+						{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' | translate) }}
 					</div>
 				</div>
 			</div>
@@ -50,7 +48,7 @@
 				<div class="ui-grid-col-6 ui-input-field">
 					<input pInputText class="form-control" [(ngModel)]="modelConfirmPassword"
 					       #confirmPassword="ngModel"
-					       name="confirmPassword" type="password" id="confirmPassword"
+					       name="confirmPassword" type="password" id="confirmPassword" required
 					       validateEqual="password" reverse="false">
 				</div>
 				<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
