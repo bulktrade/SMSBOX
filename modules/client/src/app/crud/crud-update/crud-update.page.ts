@@ -6,6 +6,8 @@ export class CrudUpdatePage {
     crudViewTag = element(by.tagName('crud-view'));
     crudCreateTag = element(by.tagName('crud-update'));
     updateButton = element(by.id('crud.update'));
+    passwordField = element(by.id('password'));
+    confirmPasswordField = element(by.id('confirmPassword'));
     updateIcon = element(by.css('.ag-body-container > div:nth-of-type(3) .mode_edit-icon'));
     infoMessage = element(by.className('ui-growl'));
     backButton = element(by.id('backButton'));
@@ -21,7 +23,10 @@ export class CrudUpdatePage {
     updateNameInputFields() {
         browser.wait(EC.elementToBeClickable(this.firstField), this.timeout);
         this.firstField.clear();
+
         this.firstField.sendKeys('Harry');
+        this.passwordField.sendKeys('123f');
+        this.confirmPasswordField.sendKeys('123f');
     }
 
     isPresentCrudViewTag() {
