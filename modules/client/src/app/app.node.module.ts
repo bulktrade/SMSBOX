@@ -6,10 +6,7 @@ import { CommonModule } from "@angular/common";
 import { InternalStateType, AppState } from "./app.service";
 import { createNewHosts, createInputTransfer, removeNgStyles } from "@angularclass/hmr";
 import { UniversalModule, isNode, isBrowser } from "angular2-universal";
-import { PanelModule } from "primeng/components/panel/panel";
-import { InputTextModule } from "primeng/components/inputtext/inputtext";
 import { MessagesModule } from "primeng/components/messages/messages";
-import { PaginatorModule } from "primeng/components/paginator/paginator";
 import { GrowlModule } from "primeng/components/growl/growl";
 import { TranslateLoader, TranslateModule, TranslateStaticLoader } from "ng2-translate";
 import { AdminModule } from "./admin/admin.module";
@@ -36,6 +33,7 @@ import { UserModule } from "./user/user.module";
 import { CrudModule } from "./crud/crud.module";
 import { EqualValidatorModule } from "./common/equal-validator.directive";
 import { AppRoutingModule } from "./app-routing.module";
+import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
 
 type StoreType = {
     state: InternalStateType,
@@ -58,7 +56,7 @@ type StoreType = {
             },
             deps: [Http]
         }),
-        //BreadcrumbModule.forRoot(),
+        BreadcrumbModule,
         RouterModule,
         MessagesModule,
         CrudModule,
@@ -104,7 +102,8 @@ type StoreType = {
 })
 
 export class AppModule {
-    constructor(public appRef: ApplicationRef, public appState: AppState) {}
+    constructor(public appRef: ApplicationRef, public appState: AppState) {
+    }
 
     hmrOnInit(store: StoreType) {
         if (!store || !store.state) return;
@@ -130,7 +129,7 @@ export class AppModule {
         // recreate root elements
         store.disposeOldHosts = createNewHosts(cmpLocation);
         // save input values
-        store.restoreInputValues  = createInputTransfer();
+        store.restoreInputValues = createInputTransfer();
         // remove styles
         removeNgStyles();
     }
