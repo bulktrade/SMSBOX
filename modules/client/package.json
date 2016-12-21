@@ -131,6 +131,7 @@
     "expose-loader": "^0.7.1",
     "extract-text-webpack-plugin": "^2.0.0-beta",
     "file-loader": "^0.9.0",
+    "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",
     "gh-pages": "^0.12.0",
     "html-loader": "^0.4.3",

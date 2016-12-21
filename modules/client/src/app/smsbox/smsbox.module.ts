@@ -4,6 +4,8 @@ import { RouterModule } from "@angular/router";
 import { TranslateModule } from "ng2-translate";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { DropdownModule } from "primeng/components/dropdown/dropdown";
+import { LanguageSelectorModule } from "../language-selector/language-selector.component";
 
 const DECLARATIONS = [
     SmsBoxComponent
@@ -15,6 +17,8 @@ const DECLARATIONS = [
         RouterModule,
         FormsModule,
         TranslateModule,
+        DropdownModule,
+        LanguageSelectorModule
     ],
     declarations: [
         ...DECLARATIONS

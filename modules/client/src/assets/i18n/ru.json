@@ -41,5 +41,12 @@
   "userSettings.confirmPasswordHint": "Password and confirm password is not match",
   "userSettings.updateProfile": "Update profile",
   "userSettings.successMessage": "Your data has been updated",
-  "userSettings.dangerMessage": "Your data was not updated"
+  "userSettings.dangerMessage": "Your data was not updated",
+  "smsbox.title": "SMS Box",
+  "smsbox.login": "Войти",
+  "smsbox.signup": "Зарегистрироваться",
+  "smsbox.phoneNumber": "Номер телефона",
+  "smsbox.body": "Сообщение",
+  "smsbox.sendButton": "Отправить",
+  "smsbox.phoneNumberHint": "Введите номер телефона в правильном формате"
 }

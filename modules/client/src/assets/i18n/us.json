@@ -79,5 +79,6 @@
     "email": "Email",
     "id": "ID",
     "permissions": "Permissions",
-    "password": "Password"
+    "password": "Password",
+    "language.us": "English"
 }

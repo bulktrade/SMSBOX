@@ -11,6 +11,7 @@ import { GrowlService } from "./services/growl/growl.service";
     `,
     styles: [
         require('./app.component.scss'),
+        require('flag-icon-css/css/flag-icon.css'),
         require('webpack-material-design-icons/material-design-icons.css'),
         require('font-awesome/css/font-awesome.css'),
         require('primeng/resources/themes/omega/theme.css'),
@@ -23,7 +24,5 @@ import { GrowlService } from "./services/growl/growl.service";
 export class AppComponent {
     constructor(private translate: TranslateService,
                 private growlService: GrowlService) {
-        translate.setDefaultLang('en');
-        translate.use('en');
     }
 }
