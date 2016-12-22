@@ -1,7 +1,7 @@
 import { EC } from "../common/test/integration/expected-conditions";
 
 export class LanguagePage {
-    dropdownText = element(by.className('dropdown-toggle'));
+    dropdownText = element(by.className('dropdown-text'));
     languageSelectorTag = element(by.tagName('language-selector'));
     russianLanguageItem = element(by.className('flag-icon-ru'));
     englishLanguageItem = element(by.className('flag-icon-us'));
