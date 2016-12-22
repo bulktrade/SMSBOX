@@ -12,7 +12,7 @@ describe('SMS Box', () => {
     });
 
     it('should be disabled "Update profile" button', () => {
-        expect(smsbox.isEnabledUpdateProfileButton()).toBeFalsy();
+        expect(smsbox.isEnabledSendMessageButton()).toBeFalsy();
     });
 
     it('should show error message', () => {
@@ -22,6 +22,6 @@ describe('SMS Box', () => {
 
     it('should not show error message', () => {
         smsbox.sendKeysToPhoneNumberField('+098746235');
-        expect(smsbox.isEnabledUpdateProfileButton()).toBeTruthy();
+        expect(smsbox.isEnabledSendMessageButton()).toBeTruthy();
     });
 });

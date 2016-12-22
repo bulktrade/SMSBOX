@@ -4,7 +4,7 @@ export class SMSBoxPage {
     timeout: number = 5000;
 
     smsboxTag = element(by.tagName('smsbox'));
-    updateProfileButton = element(by.className('updateProfile'));
+    sendMessageButton = element(by.className('sendMessage'));
     phoneNumberField = element(by.id('phoneNumber'));
     messageBodyField = element(by.id('body'));
     phoneNumberHint = element(by.className('phone-number-hint'));
@@ -23,9 +23,9 @@ export class SMSBoxPage {
         return this.phoneNumberHint.isPresent();
     }
 
-    isEnabledUpdateProfileButton() {
-        browser.wait(EC.presenceOf(this.updateProfileButton), this.timeout);
-        return this.updateProfileButton.isEnabled();
+    isEnabledSendMessageButton() {
+        browser.wait(EC.presenceOf(this.sendMessageButton), this.timeout);
+        return this.sendMessageButton.isEnabled();
     }
 
     sendKeysToPhoneNumberField(value: string) {
