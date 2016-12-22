@@ -1,14 +1,29 @@
 #navbar-window {
+    background: #009688;
+    padding-bottom: 2px;
+
     language-selector {
         position: relative;
-        top: 28px;
+        top: 22px;
     }
 
     .container {
         display: flex;
 
-        .menu-bar-wrap {
+        .left-panel {
             flex-grow: 7;
+        }
+
+        .right-panel {
+            display: flex;
+            align-items: center;
+
+            .logout-button {
+                color: #fff;
+                padding-left: 3px;
+                cursor: pointer;
+            }
+
         }
     }
 }

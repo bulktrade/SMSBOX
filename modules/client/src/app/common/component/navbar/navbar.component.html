@@ -1,8 +1,12 @@
-<div id="navbar-window" class="menubar">
+<div id="navbar-window">
 	<div class="container">
-		<div class="menu-bar-wrap">
+		<div class="left-panel">
 			<p-menubar [model]="items"></p-menubar>
 		</div>
-		<language-selector [languages]="languages"></language-selector>
+		<div class="right-panel">
+			<language-selector [languages]="languages"></language-selector>
+			<i class="fa fa-sign-out logout-button" (click)="logout()" title="{{ 'navbar.logout' | translate }}"
+			   aria-hidden="true"></i>
+		</div>
 	</div>
 </div>

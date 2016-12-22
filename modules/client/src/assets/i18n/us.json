@@ -81,5 +81,6 @@
     "permissions": "Permissions",
     "password": "Password",
     "language.title": "Language",
-    "language.us": "English"
+    "language.us": "English",
+    "navbar.logout": "Logout"
 }
