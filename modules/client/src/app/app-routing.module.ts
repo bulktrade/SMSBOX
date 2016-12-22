@@ -99,6 +99,7 @@ const ROUTES: Routes = [
     {
         path: 'user',
         component: UserComponent,
+        canActivate: [LoginGuard],
         data: {
             showInBreadcrumb: false,
             showNavigationBar: true

@@ -1,0 +1,14 @@
+#navbar-window {
+    language-selector {
+        position: relative;
+        top: 28px;
+    }
+
+    .container {
+        display: flex;
+
+        .menu-bar-wrap {
+            flex-grow: 7;
+        }
+    }
+}
