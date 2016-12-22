@@ -74,7 +74,7 @@ a {
     line-height: 32px;
     background-color: #eee;
     border: 1px solid #ccc;
-    width: 140px;
+    width: 110px;
 
     > li {
         &:hover {
@@ -114,4 +114,10 @@ a {
     opacity: 1;
     visibility: visible;
     top: 42px;
+}
+
+@media screen and (max-width: 768px){
+    .language-header {
+        display: none;
+    }
 }

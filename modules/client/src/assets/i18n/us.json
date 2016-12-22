@@ -80,5 +80,6 @@
     "id": "ID",
     "permissions": "Permissions",
     "password": "Password",
+    "language.title": "Language",
     "language.us": "English"
 }

@@ -30,7 +30,7 @@
   "404_PAGE_TITLE": "Oops! You're lost.",
   "404_PAGE_TEXT": "We can not find the page you're looking for.",
   "404_PAGE_LINK_TITLE": "Return home",
-  "userSettings.title": "Personal Settings",
+  "userSettings.title": "Личные настройки",
   "userSettings.gender": "Gender",
   "userSettings.firstname": "First name",
   "userSettings.surname": "Surname",
@@ -48,5 +48,6 @@
   "smsbox.phoneNumber": "Номер телефона",
   "smsbox.body": "Сообщение",
   "smsbox.sendButton": "Отправить",
-  "smsbox.phoneNumberHint": "Введите номер телефона в правильном формате"
+  "smsbox.phoneNumberHint": "Введите номер телефона в правильном формате",
+  "language.title": "Язык"
 }

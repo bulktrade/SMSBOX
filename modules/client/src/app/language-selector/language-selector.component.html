@@ -1,7 +1,7 @@
 <div id="language-selector" class="dropdown">
 
 	<div class="dropdown-text" (click)="$event.stopPropagation();toggle=!toggle">
-		<span>Language:&nbsp;</span>
+		<span class="language-header">{{ 'language.title' | translate }}:&nbsp;</span>
 		<span class="flag-icon flag-icon-{{ defaultLanguage.languageCode }}"></span>
 	</div>
 
