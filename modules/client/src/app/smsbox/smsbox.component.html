@@ -5,11 +5,9 @@
 				<div class="row">
 					<div class="title col-xs-5 col-sm-3">{{'smsbox.title' | translate}}</div>
 					<div class="login col-xs-7 col-sm-9">
-
-						<language-selector [languages]="languages"></language-selector>
-
 						<i class="fa fa-user login-button" [routerLink]="['/login']" title="{{'smsbox.login' | translate}}" aria-hidden="true"></i>
 						<i class="fa fa-sign-in signup-button" [routerLink]="['/signup']" title="{{'smsbox.signup' | translate}}" aria-hidden="true"></i>
+						<language-selector class="language-selector" [languages]="languages"></language-selector>
 					</div>
 				</div>
 			</div>

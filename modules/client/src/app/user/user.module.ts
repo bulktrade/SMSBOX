@@ -22,6 +22,7 @@ import { MessagesModule } from "primeng/components/messages/messages";
 import { PanelModule } from "primeng/components/panel/panel";
 import { MenubarModule } from "primeng/components/menubar/menubar";
 import { DashboardModule } from "../common/component/dashboard/dashboard.module";
+import { LanguageSelectorModule } from "../language-selector/language-selector.component";
 
 const DECLARATION = [
     UserComponent,
@@ -48,7 +49,8 @@ const DECLARATION = [
         MessagesModule,
         PanelModule,
         MenubarModule,
-        DashboardModule
+        DashboardModule,
+        LanguageSelectorModule
     ],
     declarations: [
         DECLARATION

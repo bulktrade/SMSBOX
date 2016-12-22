@@ -13,6 +13,7 @@ import { ChartModule } from "primeng/components/chart/chart";
 import { MenubarModule } from "primeng/components/menubar/menubar";
 import { CommonModule } from "@angular/common";
 import { DashboardModule } from "../common/component/dashboard/dashboard.module";
+import { LanguageSelectorModule } from "../language-selector/language-selector.component";
 
 const ADMIN_DECLARATION = [
     AdminComponent,
@@ -33,7 +34,8 @@ const ADMIN_DECLARATION = [
         BreadcrumbModule,
         ChartModule,
         MenubarModule,
-        DashboardModule
+        DashboardModule,
+        LanguageSelectorModule,
     ],
     declarations: [ADMIN_DECLARATION],
     exports: [ADMIN_DECLARATION],

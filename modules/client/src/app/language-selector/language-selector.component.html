@@ -1,15 +1,18 @@
 <div id="language-selector" class="dropdown">
 
-	<input class="dropdown-toggle" type="text">
-	<div class="dropdown-text">
+	<div class="dropdown-text" (click)="$event.stopPropagation();toggle=!toggle">
+		<span>Language:&nbsp;</span>
 		<span class="flag-icon flag-icon-{{ defaultLanguage.languageCode }}"></span>
-		{{ defaultLanguage.languageName | translate }}
 	</div>
 
-	<ul class="dropdown-content">
+	<ul class="dropdown-content" [ngClass]="{'dropdown-content-show': toggle}">
 		<template let-language ngFor [ngForOf]="languages">
-			<li (click)="changeLanguage(language)"><a><span
-				class="flag-icon flag-icon-{{ language.languageCode }}"></span> {{ language.languageName }}</a></li>
+			<li (click)="changeLanguage(language)">
+				<a>
+					<span class="flag-icon flag-icon-{{ language.languageCode }}"></span>
+					<span class="language-name">{{ language.languageName }}</span>
+				</a>
+			</li>
 		</template>
 	</ul>
 

@@ -12,39 +12,29 @@ a {
     position: relative;
     display: inline-block;
     text-align: left;
-    width: 132px;
 }
 
 .dropdown-text {
+    padding-right: 9px;
     cursor: pointer;
-    font-size: 16px;
-    position: absolute;
+    font-size: 13px;
     text-indent: 10px;
-    line-height: 32px;
-    background-color: #eee;
-    border: 1px solid #ccc;
+    line-height: 25px;
     border-radius: 3px;
-    box-shadow: 0 1px 0 rgba(255,255,255, .9) inset, 0 1px 3px rgba(0,0,0, .1);
     width: 100%;
-}
-
-.dropdown-text:after {
-    position: absolute;
-    right: 6px;
-    top: 15px;
-    content: '';
-    width: 0px;
-    height: 0px;
-    border-style: solid;
-    border-width: 5px 4px 0 4px;
-    border-color: #555 transparent transparent transparent;
 }
 
 .dropdown-text,
 .dropdown-content a {
-    font-size: 16px;
-    color: #333;
-    text-shadow: 0 1px #fff;
+    font-size: 14px;
+}
+
+.dropdown-content a {
+    color: #000;
+}
+
+.dropdown-text {
+    color: #fff !important;
 }
 
 .dropdown-toggle {
@@ -78,7 +68,7 @@ a {
     padding: 0;
     margin: 0;
     opacity: 0;
-    visibility:hidden;
+    visibility: hidden;
     border-radius: 3px;
     text-indent: 10px;
     line-height: 32px;
@@ -87,6 +77,9 @@ a {
     width: 140px;
 
     > li {
+        &:hover {
+            background: #ccc;
+        }
         cursor: pointer;
     }
 }
@@ -95,10 +88,11 @@ a {
     display: block;
 }
 
-.dropdown-content a:hover {
-    background: #e8e8e8;
+.dropdown-content-show {
+    opacity: 1;
+    visibility: visible;
+    top: 42px;
 }
-
 
 .dropdown-toggle:hover ~ .dropdown-text,
 .dropdown-toggle:focus ~ .dropdown-text {
@@ -106,7 +100,7 @@ a {
 }
 
 .dropdown-toggle:focus ~ .dropdown-text {
-    box-shadow: 0 1px 3px rgba(0,0,0, .2) inset, 0 1px 0 rgba(255,255,255, 0.8);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2) inset, 0 1px 0 rgba(255, 255, 255, 0.8);
     z-index: 2;
 }
 
@@ -118,6 +112,6 @@ a {
 .dropdown-content:hover,
 .dropdown-toggle:focus ~ .dropdown-content {
     opacity: 1;
-    visibility:visible;
+    visibility: visible;
     top: 42px;
 }

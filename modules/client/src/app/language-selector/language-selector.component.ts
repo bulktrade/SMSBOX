@@ -8,12 +8,19 @@ import { LanguageModel } from "./language-selector.model";
     template: require('./language-selector.component.html'),
     styles: [
         require('./language-selector.component.scss')
-    ]
+    ],
+    host: {
+        '(document:click)': 'onClick($event)'
+    }
 })
 
 export class LanguageSelectorComponent {
+
     @Input('languages') languages: LanguageModel[];
+
     @Input('defaultLanguage') defaultLanguage: LanguageModel;
+
+    toggle: boolean = false;
 
     constructor(private translate: TranslateService) {
     }
@@ -32,6 +39,10 @@ export class LanguageSelectorComponent {
             this.translate.use(userLang);
 
         }
+    }
+
+    onClick(event) {
+        this.toggle = false;
     }
 
     changeLanguage(language: LanguageModel) {

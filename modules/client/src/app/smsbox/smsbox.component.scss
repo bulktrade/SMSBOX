@@ -1,6 +1,11 @@
 #smsbox-window {
     display: flex;
     height: 100%;
+
+    .language-selector {
+        position: relative;
+        top: 20px;
+    }
 }
 
 .main-wrap {
