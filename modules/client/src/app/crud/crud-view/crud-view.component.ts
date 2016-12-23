@@ -33,6 +33,10 @@ export class CrudViewComponent {
         this.gridOptions = this.getGridOptions();
         this.gridOptions.rowData = this.getRowData();
         this.gridOptions.columnDefs = this.getColumnDefs();
+        // cut the column with a password
+        this.gridOptions.columnDefs = this.crudService.hideColumnDefs(
+            this.gridOptions.columnDefs, ['password']
+        );
         // add buttons in the first column
         this.gridOptions.columnDefs = this.crudViewService.addColumnDef(this.gridOptions);
         this.gridOptions.columnDefs = this.crudViewService.addColumnCheckbox(this.gridOptions);
