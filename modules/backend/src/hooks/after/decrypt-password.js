@@ -2,20 +2,19 @@ var _crypto = require("crypto-js");
 
 exports.default = function (options) {
   return function (hook) {
-    console.log(hook);
-    if (hook.type !== 'before') {
-      throw new Error('The \'cryptoPassword\' hook should only be used as a \'before\' hook.');
+    if (hook.type !== 'after') {
+      throw new Error('The \'decryptPassword\' hook should only be used as a \'after\' hook.');
     }
 
-    if (hook.method !== 'update' && hook.method !== 'create') {
-      throw new Error('The \'cryptoPassword\' hook should only be used as a \'update\' or \'create\' hook.');
+    if (hook.method !== 'get') {
+      throw new Error('The \'decryptPassword\' hook should only be used as a \'get\' hook.');
     }
 
-    if (hook.data === undefined) {
+    if (hook.result === undefined) {
       return hook;
     }
 
-    var dataToCheck = hook.data,
+    var dataToCheck = hook.result,
       passwordField;
 
     if (options) {
@@ -32,10 +31,10 @@ exports.default = function (options) {
       return hook;
     }
 
-    // Encrypt
-    var ciphertext = _crypto.AES.encrypt(dataToCheck[ passwordField ], 'bulktrade/smsc.io');
+    // Decrypt
+    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], 'bulktrade/smsc.io');
 
-    dataToCheck[ passwordField ] = ciphertext.toString();
+    dataToCheck[ passwordField ] = decrypted.toString(_crypto.enc.Utf8);
 
     return hook;
   };
