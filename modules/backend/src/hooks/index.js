@@ -6,6 +6,8 @@
 // see http://docs.feathersjs.com/hooks/readme.html for more details
 // on hooks.
 
+var cryptPassword = require('./before/crypt-password');
+
 exports.myHook = function(options) {
   return function(hook) {
     console.log('My custom global hook ran. Feathers is awesome!');
@@ -50,3 +52,5 @@ var defaults = {
 	as: 'userId',
 	adminRole: 'admin'
 };
+
+exports.cryptPassword = cryptPassword;
