@@ -6,7 +6,10 @@
 // see http://docs.feathersjs.com/hooks/readme.html for more details
 // on hooks.
 
-var cryptPassword = require('./before/crypt-password');
+var encryptPassword = require('./before/encrypt-password');
+var decryptPassword = require('./after/decrypt-password');
+var hasRoleOrRestrict = require('./before/has-role-or-restrict');
+var queryWithCurrentUser = require('./before/query-with-current-user');
 
 exports.myHook = function(options) {
   return function(hook) {
@@ -53,4 +56,7 @@ var defaults = {
 	adminRole: 'admin'
 };
 
-exports.cryptPassword = cryptPassword;
+exports.encryptPassword = encryptPassword;
+exports.decryptPassword = decryptPassword;
+exports.hasRoleOrRestrict = hasRoleOrRestrict;
+exports.queryWithCurrentUser = queryWithCurrentUser;

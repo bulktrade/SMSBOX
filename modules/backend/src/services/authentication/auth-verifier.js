@@ -47,14 +47,12 @@ var LocalVerifier = function () {
     key: '_comparePassword',
     value: function _comparePassword(entity, password) {
       var decrypted = entity[this.options.passwordField];
-      console.log('decrypted: ', decrypted);
 
       if (!decrypted) {
         return Promise.reject(new Error('\'' + this.options.entity + '\' record in the database is missing a \'' + this.options.passwordField + '\''));
       }
 
       decrypted = _crypto.AES.decrypt(decrypted, 'bulktrade/smsc.io').toString(_crypto.enc.Utf8);
-      console.log('password: ', password);
 
       debug('Verifying password');
 

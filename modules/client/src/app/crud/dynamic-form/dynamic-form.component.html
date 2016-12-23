@@ -4,74 +4,80 @@
 		<div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0">
 
 			<div *ngFor="let item of columnDefs">
+				<div [ngSwitch]="item.field">
 
-				<div class="ui-grid-row">
-					<div class="ui-grid-col-2">
-						{{ item.headerName }}
-					</div>
-					<div class="ui-grid-col-6 ui-input-field">
-						<input pInputText class="form-control" [(ngModel)]="model[item.field]"
-						       #field="ngModel" required name="{{ item.field }}" type="text"
-						       id="{{ item.field }}">
-					</div>
-					<div class="ui-grid-col-4" *ngIf="field.invalid&&field.dirty">
-						<div class="ui-message ui-messages-error ui-corner-all">
-							<i class="fa fa-close"></i>
-							{{ item.headerName + ' ' + ('crud.required' | translate) }}
+					<div *ngSwitchDefault>
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ item.headerName }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="model[item.field]"
+								       #field="ngModel" required name="{{ item.field }}" type="text"
+								       id="{{ item.field }}">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="field.invalid&&field.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ item.headerName + ' ' + ('crud.required' | translate) }}
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
 
-			</div>
+					<div *ngSwitchCase="'password'">
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ 'userSettings.password' | translate }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="passwordValue"
+								       (ngModelChange)="model['password']=$event;" #password="ngModel"
+								       name="password" type="password" id="password"
+								       validateEqual="confirmPassword" reverse="true">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' |
+									translate)
+									}}
+								</div>
+							</div>
+						</div>
+						<div class="ui-grid-row">
+							<div class="ui-grid-col-2">
+								{{ 'userSettings.confirmPassword' | translate }}
+							</div>
+							<div class="ui-grid-col-6 ui-input-field">
+								<input pInputText class="form-control" [(ngModel)]="modelConfirmPassword"
+								       #confirmPassword="ngModel"
+								       name="confirmPassword" type="password" id="confirmPassword"
+								       validateEqual="password" reverse="false">
+							</div>
+							<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
+								<div class="ui-message ui-messages-error ui-corner-all">
+									<i class="fa fa-close"></i>
+									{{ 'userSettings.confirmPasswordHint' | translate }}
+								</div>
+							</div>
+						</div>
+					</div>
 
-			<div class="ui-grid-row">
-				<div class="ui-grid-col-2">
-					{{ 'userSettings.password' | translate }}
-				</div>
-				<div class="ui-grid-col-6 ui-input-field">
-					<input pInputText class="form-control" [(ngModel)]="passwordValue"
-					       (ngModelChange)="model['password']=$event;" #password="ngModel"
-					       name="password" type="password" id="password" required
-					       validateEqual="confirmPassword" reverse="true">
-				</div>
-				<div class="ui-grid-col-4" *ngIf="password.invalid&&password.dirty">
-					<div class="ui-message ui-messages-error ui-corner-all">
-						<i class="fa fa-close"></i>
-						{{ ('userSettings.password' | translate) + ' ' + ('userSettings.required' | translate) }}
-					</div>
-				</div>
-			</div>
-			<div class="ui-grid-row">
-				<div class="ui-grid-col-2">
-					{{ 'userSettings.confirmPassword' | translate }}
-				</div>
-				<div class="ui-grid-col-6 ui-input-field">
-					<input pInputText class="form-control" [(ngModel)]="modelConfirmPassword"
-					       #confirmPassword="ngModel"
-					       name="confirmPassword" type="password" id="confirmPassword" required
-					       validateEqual="password" reverse="false">
-				</div>
-				<div class="ui-grid-col-4" *ngIf="confirmPassword.invalid&&password.dirty">
-					<div class="ui-message ui-messages-error ui-corner-all">
-						<i class="fa fa-close"></i>
-						{{ 'userSettings.confirmPasswordHint' | translate }}
-					</div>
 				</div>
 			</div>
 
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-4"></div>
 				<div class="ui-grid-col-2">
-					<button type="button" style="width: 100%" (click)="location.back()"
-					        class="btn btn-primary btn-primary btn-sm" id="backButton">
+					<button type="button" style="width: 100%" (click)="location.back()" class="btn btn-primary btn-primary btn-sm" id="backButton">
 						<span class="fa fa-chevron-left"></span> {{ 'crud.back' | translate }}
 					</button>
 				</div>
 				<div class="ui-grid-col-2">
 					<button style="width: 100%" type="submit" class="btn btn-primary btn-sm"
 					        [disabled]="dynamicForm.invalid" id="{{ buttonModel.nameButton }}">
-						<span class="fa" [ngClass]="buttonModel.iconName"></span> {{ buttonModel.nameButton | translate
-						}}
+						<span class="fa" [ngClass]="buttonModel.iconName"></span> {{ buttonModel.nameButton | translate }}
 					</button>
 				</div>
 				<div class="ui-grid-col-4"></div>

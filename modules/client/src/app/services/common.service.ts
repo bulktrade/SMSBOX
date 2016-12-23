@@ -9,6 +9,6 @@ export class CommonService {
     }
 
     getIDCurrentUser(): string {
-        return jwtDecode(this.tokenService.getToken()).id;
+        return jwtDecode(this.tokenService.getToken()).userId;
     }
 }

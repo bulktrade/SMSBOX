@@ -13,7 +13,7 @@ export class FeathersService {
 
     constructor(private http: Http, private tokenService: TokenService, host: string) {
         this.host = host;
-        this.localEndpoint = 'auth/local';
+        this.localEndpoint = 'authentication';
         this.urlPrefix = this.host + '/';
         this.urlSuffix = '/';
     }
