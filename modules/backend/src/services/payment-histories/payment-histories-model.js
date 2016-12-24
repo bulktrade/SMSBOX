@@ -1,7 +1,7 @@
 'use strict';
 
 const knex = require('knex');
-const connection = require('./../../connection-properties');
+const connection = require('./../../config').connect;
 
 const db = knex({
     client: 'mysql',

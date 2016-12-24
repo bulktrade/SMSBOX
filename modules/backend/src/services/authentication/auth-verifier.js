@@ -14,6 +14,8 @@ var _feathersErrors = require('feathers-errors');
 
 var _feathersErrors2 = _interopRequireDefault(_feathersErrors);
 
+var secretKey = require('./../../config').secretKey;
+
 var _crypto = require("crypto-js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -52,7 +54,7 @@ var LocalVerifier = function () {
         return Promise.reject(new Error('\'' + this.options.entity + '\' record in the database is missing a \'' + this.options.passwordField + '\''));
       }
 
-      decrypted = _crypto.AES.decrypt(decrypted, 'bulktrade/smsc.io').toString(_crypto.enc.Utf8);
+      decrypted = _crypto.AES.decrypt(decrypted, secretKey).toString(_crypto.enc.Utf8);
 
       debug('Verifying password');
 

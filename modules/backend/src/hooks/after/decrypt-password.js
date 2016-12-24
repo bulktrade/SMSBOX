@@ -1,4 +1,5 @@
 var _crypto = require("crypto-js");
+var secretKey = require('./../../config').secretKey;
 
 exports.default = function (options) {
   return function (hook) {
@@ -32,7 +33,7 @@ exports.default = function (options) {
     }
 
     // Decrypt
-    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], 'bulktrade/smsc.io');
+    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], secretKey);
 
     dataToCheck[ passwordField ] = decrypted.toString(_crypto.enc.Utf8);
 
