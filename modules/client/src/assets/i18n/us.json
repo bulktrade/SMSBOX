@@ -82,5 +82,13 @@
     "password": "Password",
     "language.title": "Language",
     "language.us": "English",
-    "navbar.logout": "Logout"
+    "navbar.logout": "Logout",
+    "logo": "SMS Box",
+    "navbar.admin.dashboard": "Dashboard",
+    "navbar.admin.spamFilter": "Spam filter",
+    "navbar.admin.settings": "Settings",
+    "navbar.admin.users": "Users",
+    "navbar.user.dashboard": "Dashboard",
+    "navbar.user.message": "Message",
+    "navbar.user.settings": "Settings"
 }

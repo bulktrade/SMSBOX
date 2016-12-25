@@ -1,22 +1,22 @@
 export const ADMIN_ITEMS = [
     {
-        label: 'SMSBox',
+        label: 'logo',
         routerLink: ['/admin']
     },
     {
-        label: 'Dashboard',
+        label: 'navbar.admin.dashboard',
         routerLink: ['/admin', 'dashboard']
     },
     {
-        label: 'Spam filter',
+        label: 'navbar.admin.spamFilter',
         routerLink: ['/admin', 'spam-filter']
     },
     {
-        label: 'Settings',
+        label: 'navbar.admin.settings',
         routerLink: ['/admin', 'settings']
     },
     {
-        label: 'Users',
+        label: 'navbar.admin.users',
         routerLink: ['/admin', 'user']
     }
 ];
