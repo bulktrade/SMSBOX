@@ -24,9 +24,7 @@ import { GrowlService } from "./services/growl/growl.service";
 export class AppComponent {
     constructor(private translate: TranslateService,
                 private growlService: GrowlService) {
-        let userLang = navigator.language.split('-')[1].toLowerCase();
-
-        translate.setDefaultLang(userLang);
-        translate.use(userLang);
+        translate.setDefaultLang('us');
+        translate.use('us');
     }
 }
