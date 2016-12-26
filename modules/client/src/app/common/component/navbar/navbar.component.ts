@@ -7,7 +7,7 @@ import { SUPPORT_LANGUAGES } from "../language-selector/support-languages";
 import { LanguageSelectorModule } from "../language-selector/language-selector.component";
 import { TokenService } from "../../../services/auth/token.service";
 import { Router, RouterModule } from "@angular/router";
-import { MenubarModule } from "./menubar.component";
+import { MenubarModule } from "./menubar/menubar.component";
 
 @Component({
     selector: 'navbar',

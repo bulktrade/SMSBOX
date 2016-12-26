@@ -1,9 +1,9 @@
 import { NgModule, Component, ElementRef, OnDestroy, Input, Renderer, EventEmitter } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Router } from "@angular/router";
-import { DomHandler } from "primeng/components/dom/domhandler";
 import { MenuItem } from "primeng/components/common/api";
 import { TranslateModule } from "ng2-translate";
+import { DomHandler } from "primeng/components/dom/domhandler";
 
 @Component({
     selector: 'p-menubarSub',
