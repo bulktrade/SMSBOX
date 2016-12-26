@@ -32,6 +32,7 @@
 							</div>
 							<div class="ui-grid-col-6 ui-input-field">
 								<input pInputText class="form-control" [(ngModel)]="passwordValue"
+								       [required]="buttonModel.nameButton === 'crud.create'"
 								       (ngModelChange)="model['password']=$event;" #password="ngModel"
 								       name="password" type="password" id="password"
 								       validateEqual="confirmPassword" reverse="true">
@@ -51,6 +52,7 @@
 							</div>
 							<div class="ui-grid-col-6 ui-input-field">
 								<input pInputText class="form-control" [(ngModel)]="modelConfirmPassword"
+								       [required]="buttonModel.nameButton === 'crud.create'"
 								       #confirmPassword="ngModel"
 								       name="confirmPassword" type="password" id="confirmPassword"
 								       validateEqual="password" reverse="false">
@@ -70,14 +72,16 @@
 			<div class="ui-grid-row">
 				<div class="ui-grid-col-4"></div>
 				<div class="ui-grid-col-2">
-					<button type="button" style="width: 100%" (click)="location.back()" class="btn btn-primary btn-primary btn-sm" id="backButton">
+					<button type="button" style="width: 100%" (click)="location.back()"
+					        class="btn btn-primary btn-primary btn-sm" id="backButton">
 						<span class="fa fa-chevron-left"></span> {{ 'crud.back' | translate }}
 					</button>
 				</div>
 				<div class="ui-grid-col-2">
 					<button style="width: 100%" type="submit" class="btn btn-primary btn-sm"
 					        [disabled]="dynamicForm.invalid" id="{{ buttonModel.nameButton }}">
-						<span class="fa" [ngClass]="buttonModel.iconName"></span> {{ buttonModel.nameButton | translate }}
+						<span class="fa" [ngClass]="buttonModel.iconName"></span> {{ buttonModel.nameButton | translate
+						}}
 					</button>
 				</div>
 				<div class="ui-grid-col-4"></div>
