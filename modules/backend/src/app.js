@@ -1,5 +1,8 @@
 'use strict';
 
+// environment variables
+process.env.secretKey = 'smsbox';
+
 const path = require('path');
 const primus = require('feathers-primus');
 const serveStatic = require('feathers').static;
@@ -14,26 +17,26 @@ const bodyParser = require('body-parser');
 const socketio = require('feathers-socketio');
 const middleware = require('./middleware');
 const services = require('./services');
-const db  = require('./db');
+const db = require('./db');
 
 const app = feathers();
 
 app.configure(configuration(path.join(__dirname, '..')));
 
 app.use(compress())
-	.options('*', cors())
-	.use(cors())
-	.use(favicon(path.join(app.get('public'), 'favicon.ico')))
-	.use('/', serveStatic(app.get('public')))
-	.use(bodyParser.json())
-	.use(bodyParser.urlencoded({ extended: true }))
-	.configure(primus({
-		transformer: 'websockets'
-	}))
-	.configure(hooks())
-	.configure(rest())
-	.configure(socketio())
-	.configure(services)
-	.configure(middleware);
+  .options('*', cors())
+  .use(cors())
+  .use(favicon(path.join(app.get('public'), 'favicon.ico')))
+  .use('/', serveStatic(app.get('public')))
+  .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: true }))
+  .configure(primus({
+    transformer: 'websockets'
+  }))
+  .configure(hooks())
+  .configure(rest())
+  .configure(socketio())
+  .configure(services)
+  .configure(middleware);
 
 module.exports = app;

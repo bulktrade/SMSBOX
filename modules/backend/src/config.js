@@ -5,7 +5,4 @@ var connect = {
 	database: 'smsbox'
 };
 
-var secretKey = 'bulktrade/smsc.io';
-
 exports.connect = connect;
-exports.secretKey = secretKey;

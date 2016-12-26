@@ -33,7 +33,7 @@ exports.default = function (options) {
     }
 
     // Decrypt
-    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], secretKey);
+    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], process.env.secretKey);
 
     dataToCheck[ passwordField ] = decrypted.toString(_crypto.enc.Utf8);
 
