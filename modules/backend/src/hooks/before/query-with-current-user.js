@@ -1,8 +1,13 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+var defaults = {
+  idField: '_id',
+  as: 'userId'
+};
 
 exports.default = function () {
   var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -30,11 +35,6 @@ exports.default = function () {
 
     hook.params.query[options.as] = id;
   };
-};
-
-var defaults = {
-  idField: '_id',
-  as: 'userId'
 };
 
 module.exports = exports['default'];

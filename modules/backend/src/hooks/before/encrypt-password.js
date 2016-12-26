@@ -1,4 +1,6 @@
-var _crypto = require("crypto-js");
+var _crypto = require('crypto-js');
+
+var defaults = { passwordField: 'password' };
 
 exports.default = function (options) {
   return function (hook) {
@@ -39,7 +41,5 @@ exports.default = function (options) {
     return hook;
   };
 };
-
-var defaults = { passwordField: 'password' };
 
 module.exports = exports[ 'default' ];

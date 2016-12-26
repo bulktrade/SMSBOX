@@ -1,3 +1,9 @@
+var defaults = {
+  idField: '_id',
+  as: 'userId',
+  adminRole: 'admin'
+};
+
 /**
  * It only allows the user to retrieve resources that are owned by them. ADMIN role gets all data
  * @param options
@@ -30,11 +36,6 @@ exports.default = function (options) {
       hook.params.query[ options.as ] = id;
     }
   };
-};
-var defaults = {
-  idField: '_id',
-  as: 'userId',
-  adminRole: 'admin'
 };
 
 module.exports = exports[ 'default' ];
