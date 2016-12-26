@@ -21,11 +21,13 @@ export class LanguagePage {
     clickOnRussianLanguageItem() {
         browser.wait(EC.elementToBeClickable(this.russianLanguageItem), this.timeout);
         this.russianLanguageItem.click();
+        browser.sleep(300);
     }
 
     clickOnEnglishLanguageItem() {
         browser.wait(EC.elementToBeClickable(this.englishLanguageItem), this.timeout);
         this.englishLanguageItem.click();
+        browser.sleep(300);
     }
 
     getButtonText() {
