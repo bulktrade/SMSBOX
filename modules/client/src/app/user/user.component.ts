@@ -1,7 +1,6 @@
 import { Component } from "@angular/core";
 import { MenuItem } from "primeng/components/common/api";
 import { USER_ITEMS } from "./user-menu-items";
-import { NavbarService } from "../common/component/navbar/navbar.service";
 
 @Component({
     selector: 'user',
@@ -23,13 +22,10 @@ import { NavbarService } from "../common/component/navbar/navbar.service";
 export class UserComponent {
     items: MenuItem[];
 
-    constructor(private navbarService: NavbarService) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.navbarService.translateItems(USER_ITEMS)
-            .subscribe(items => {
-                this.items = items;
-            });
+        this.items = USER_ITEMS;
     }
 }

@@ -18,7 +18,7 @@ export class LanguageSelectorComponent {
 
     @Input('languages') languages: LanguageModel[];
 
-    @Input('defaultLanguage') defaultLanguage: LanguageModel;
+    @Input('currentLanguage') currentLanguage: LanguageModel;
 
     toggle: boolean = false;
 
@@ -27,17 +27,11 @@ export class LanguageSelectorComponent {
 
     ngOnInit() {
         // set default language
-        if (!this.defaultLanguage) {
-            let userLang = navigator.language.split('-')[1].toLowerCase();
-
-            this.defaultLanguage = <LanguageModel>{
-                languageName: 'language.' + userLang,
-                languageCode: userLang,
+        if (!this.currentLanguage) {
+            this.currentLanguage = <LanguageModel>{
+                languageName: 'language.' + this.translate.currentLang,
+                languageCode: this.translate.currentLang,
             };
-
-            this.translate.setDefaultLang(userLang);
-            this.translate.use(userLang);
-
         }
     }
 
@@ -46,7 +40,7 @@ export class LanguageSelectorComponent {
     }
 
     changeLanguage(language: LanguageModel) {
-        this.defaultLanguage = language;
+        this.currentLanguage = language;
         this.translate.use(language.languageCode);
     }
 }

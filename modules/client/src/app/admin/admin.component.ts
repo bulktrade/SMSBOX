@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { MenuItem } from "primeng/components/common/api";
 import { ADMIN_ITEMS } from "./admin-menu-items";
-import { NavbarService } from "../common/component/navbar/navbar.service";
 
 @Component({
     selector: 'admin',
@@ -26,13 +25,10 @@ import { NavbarService } from "../common/component/navbar/navbar.service";
 export class AdminComponent {
     items: MenuItem[];
 
-    constructor(private navbarService: NavbarService) {
+    constructor() {
     }
 
     ngOnInit() {
-        this.navbarService.translateItems(ADMIN_ITEMS)
-            .subscribe(items => {
-                this.items = items;
-            });
+        this.items = ADMIN_ITEMS;
     }
 }

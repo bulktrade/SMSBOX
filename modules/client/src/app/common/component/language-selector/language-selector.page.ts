@@ -1,4 +1,4 @@
-import { EC } from "../common/test/integration/expected-conditions";
+import { EC } from "../../test/integration/expected-conditions";
 
 export class LanguagePage {
     dropdownText = element(by.className('dropdown-text'));

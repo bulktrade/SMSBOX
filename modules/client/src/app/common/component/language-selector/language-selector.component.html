@@ -2,7 +2,7 @@
 
 	<div class="dropdown-text" (click)="$event.stopPropagation();toggle=!toggle">
 		<span class="language-header">{{ 'language.title' | translate }}:&nbsp;</span>
-		<span class="flag-icon flag-icon-{{ defaultLanguage.languageCode }}"></span>
+		<span class="flag-icon flag-icon-{{ currentLanguage.languageCode }}"></span>
 	</div>
 
 	<ul class="dropdown-content" [ngClass]="{'dropdown-content-show': toggle}">
