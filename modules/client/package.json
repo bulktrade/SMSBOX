@@ -58,9 +58,7 @@
     "watch": "npm run watch:dev",
     "webdriver-manager": "webdriver-manager",
     "webdriver:start": "npm run webdriver-manager start",
-    "webdriver:update": "npm run webdriver-manager update",
-    "webpack-dev-server": "2.1.0-beta.9",
-    "webpack": "2.1.0-beta.25"
+    "webdriver:update": "npm run webdriver-manager update"
   },
   "dependencies": {
     "@angular/common": "2.3.1",
