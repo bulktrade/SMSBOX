@@ -1,0 +1,32 @@
+{
+  "name": "smsbox",
+  "version": "0.0.1",
+  "description": "Open source sms service with billing, routing and more.",
+  "keywords": [
+    "smsbox"
+  ],
+  "author": "Bulktrade GmbH",
+  "homepage": "https://github.com/bulktrade/SMSBOX",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build:docker": "npm run build:prod && docker build -t smsbox:latest .",
+    "docker": "docker"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bulktrade/SMSBOX.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bulktrade/SMSBOX/issues"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
+  }
+}
