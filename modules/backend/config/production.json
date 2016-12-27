@@ -1,6 +1,6 @@
 {
   "host": "smsbox-app.feathersjs.com",
-  "port": 80,
+  "port": 3030,
   "mysql": "DATABASE_URL",
   "public": "../public/",
   "auth": {

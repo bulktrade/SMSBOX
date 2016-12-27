@@ -9,6 +9,8 @@
   "homepage": "https://github.com/bulktrade/SMSBOX",
   "license": "Apache-2.0",
   "scripts": {
+    "prebuild": "cd modules/backend && npm install && cd ../client && npm install && cd ..",
+    "build": "cd modules/client && npm run build:universal",
     "build:docker": "npm run build:prod && docker build -t smsbox:latest .",
     "docker": "docker"
   },
