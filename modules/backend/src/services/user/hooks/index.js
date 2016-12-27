@@ -5,56 +5,39 @@ const hooks = require('feathers-hooks');
 const auth = require('feathers-authentication').hooks;
 
 exports.before = {
-    all: [],
-    find: [
-        auth.verifyToken(),
-        auth.populateUser(),
-        auth.restrictToAuthenticated(),
-        auth.hasRoleOrRestrict({
-            roles: [ 'ADMIN', 'USER' ],
-            fieldName: 'permissions',
-            restrict: { approved: true }
-        })
-    ],
-    get: [
-        auth.verifyToken(),
-        auth.populateUser(),
-        auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ ownerField: 'id' }),
-        auth.hasRoleOrRestrict({
-            roles: [ 'ADMIN', 'USER' ],
-            fieldName: 'permissions',
-            restrict: { approved: true }
-        })
-    ],
-    create: [],
-    update: [
-        auth.verifyToken(),
-        auth.populateUser(),
-        auth.restrictToAuthenticated(),
-        auth.hashPassword(),
-        auth.restrictToOwner({ ownerField: 'id' })
-    ],
-    patch: [
-        auth.verifyToken(),
-        auth.populateUser(),
-        auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ ownerField: 'id' })
-    ],
-    remove: [
-        auth.verifyToken(),
-        auth.populateUser(),
-        auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ ownerField: 'id' })
-    ]
+  all: [ auth.authenticate('jwt') ],
+  find: [
+    globalHooks.hasRoleOrRestrict({
+      roles: [ 'ADMIN' ],
+      fieldName: 'permissions',
+      idField: 'id',
+      restrict: { approved: true }
+    })
+  ],
+  get: [
+    globalHooks.hasRoleOrRestrict({
+      roles: [ 'ADMIN' ],
+      fieldName: 'permissions',
+      idField: 'id',
+      restrict: { approved: true }
+    })
+  ],
+  create: [
+    globalHooks.encryptPassword()
+  ],
+  update: [
+    globalHooks.encryptPassword()
+  ],
+  patch: [],
+  remove: []
 };
 
 exports.after = {
-    all: [ hooks.remove('password') ],
-    find: [],
-    get: [],
-    create: [],
-    update: [],
-    patch: [],
-    remove: []
+  all: [ hooks.remove('password') ],
+  find: [],
+  get: [],
+  create: [],
+  update: [],
+  patch: [],
+  remove: []
 };

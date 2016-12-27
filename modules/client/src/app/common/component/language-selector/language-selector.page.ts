@@ -1,4 +1,4 @@
-import { EC } from "../common/test/integration/expected-conditions";
+import { EC } from "../../test/integration/expected-conditions";
 
 export class LanguagePage {
     dropdownText = element(by.className('dropdown-text'));
@@ -21,11 +21,13 @@ export class LanguagePage {
     clickOnRussianLanguageItem() {
         browser.wait(EC.elementToBeClickable(this.russianLanguageItem), this.timeout);
         this.russianLanguageItem.click();
+        browser.sleep(300);
     }
 
     clickOnEnglishLanguageItem() {
         browser.wait(EC.elementToBeClickable(this.englishLanguageItem), this.timeout);
         this.englishLanguageItem.click();
+        browser.sleep(300);
     }
 
     getButtonText() {

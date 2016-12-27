@@ -5,7 +5,7 @@ export class LoginPage {
     timeout: number = 5000;
 
     loginTag = element(by.tagName('login'));
-    usernameField = element(by.id('username'));
+    usernameField = element(by.id('emailAddress'));
     passwordField = element(by.id('password'));
     submitButton = element(by.className('submitButton'));
     adminTag = element(by.tagName('admin'));

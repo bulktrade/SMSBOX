@@ -49,5 +49,12 @@
   "smsbox.body": "Сообщение",
   "smsbox.sendButton": "Отправить",
   "smsbox.phoneNumberHint": "Введите номер телефона в правильном формате",
-  "language.title": "Язык"
+  "language.title": "Язык",
+  "navbar.admin.dashboard": "Приборная панель",
+  "navbar.admin.spamFilter": "Спам фильтр",
+  "navbar.admin.settings": "Настройки",
+  "navbar.admin.users": "Пользователи",
+  "navbar.user.dashboard": "Приборная панель",
+  "navbar.user.message": "Сообщения",
+  "navbar.user.settings": "Настройки"
 }

@@ -1,17 +1,17 @@
 var defaultData = [
     {
         'email': 'admin@smsc.io',
-        'password': '$2a$10$0Uk/Si20QcvzYkrkHZWXGe7iPy5VU9AQBnAwFBH9eNuTS/71S7mD6',
+        'password': 'U2FsdGVkX19anFWzM8j90IZLMOrjN3EZ94lfZLbhP44=',
         'permissions': 'ADMIN'
     },
     {
         'email': 'user@smsc.io',
-        'password': '$2a$10$WoBlxhh5ekxyebIOjnmBYeXNcyRZlgEnU22oGhh9PAfU..ffC1Pfq',
+        'password': 'U2FsdGVkX19ggNwUuvI0W+uj37T5pxDP0RtYRT6xQM0=',
         'permissions': 'USER'
     },
     {
         'email': 'guest@smsc.io',
-        'password': '$2a$10$ENDfpYGeuJI7DmHX6OwmFOUwX6mqUuCsYie6KN2N3yk7CnzyFOYjC',
+        'password': 'U2FsdGVkX1/LVLiimkfuS5Fqc6BcMJSR7dLehIYROog=',
         'permissions': 'GUEST'
     }
 ];

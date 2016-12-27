@@ -1,18 +1,18 @@
 export const USER_ITEMS = [
     {
-        label: 'SMSBox',
+        label: 'logo',
         routerLink: ['/admin']
     },
     {
-        label: 'Dashboard',
+        label: 'navbar.user.dashboard',
         routerLink: ['/user', 'dashboard']
     },
     {
-        label: 'Message',
+        label: 'navbar.user.message',
         routerLink: ['/user', 'message']
     },
     {
-        label: 'Settings',
+        label: 'navbar.user.settings',
         routerLink: ['/user', 'settings']
     }
 ];

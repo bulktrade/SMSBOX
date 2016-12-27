@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { SMSBoxModel } from "./smsbox.model";
 import { SelectItem } from "primeng/components/common/api";
-import { LanguageModel } from "../language-selector/language-selector.model";
-import { SUPPORT_LANGUAGES } from "../language-selector/support-languages";
+import { LanguageModel } from "../common/component/language-selector/language-selector.model";
+import { SUPPORT_LANGUAGES } from "../common/component/language-selector/support-languages";
 
 @Component({
     selector: 'smsbox',

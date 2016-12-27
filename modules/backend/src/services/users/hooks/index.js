@@ -5,49 +5,41 @@ const hooks = require('feathers-hooks');
 const auth = require('feathers-authentication').hooks;
 
 exports.before = {
-  all: [ auth.hashPassword() ],
+  all: [
+    auth.authenticate('jwt'),
+  ],
   find: [
-    auth.verifyToken(),
-    auth.populateUser(),
-    auth.restrictToAuthenticated(),
-    auth.hasRoleOrRestrict({
+    globalHooks.hasRoleOrRestrict({
       roles: [ 'ADMIN' ],
       fieldName: 'permissions',
+      idField: 'id',
       restrict: { approved: true }
     })
   ],
   get: [
-    auth.verifyToken(),
-    auth.populateUser(),
-    auth.restrictToAuthenticated(),
-    auth.hasRoleOrRestrict({
+    globalHooks.hasRoleOrRestrict({
       roles: [ 'ADMIN' ],
       fieldName: 'permissions',
+      idField: 'id',
       restrict: { approved: true }
     })
   ],
-  create: [],
+  create: [
+    globalHooks.encryptPassword()
+  ],
   update: [
-    auth.verifyToken(),
-    auth.populateUser(),
-    auth.restrictToAuthenticated()
+    globalHooks.encryptPassword(),
   ],
-  patch: [
-    auth.verifyToken(),
-    auth.populateUser(),
-    auth.restrictToAuthenticated()
-  ],
-  remove: [
-    auth.verifyToken(),
-    auth.populateUser(),
-    auth.restrictToAuthenticated()
-  ]
+  patch: [],
+  remove: []
 };
 
 exports.after = {
-  all: [ hooks.remove('password') ],
+  all: [],
   find: [],
-  get: [],
+  get: [
+    globalHooks.decryptPassword()
+  ],
   create: [],
   update: [],
   patch: [],

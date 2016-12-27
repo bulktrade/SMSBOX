@@ -1,4 +1,4 @@
-const connection = require('./src/connection-properties');
+const connection = require('./src/config').connect;
 
 module.exports = {
 

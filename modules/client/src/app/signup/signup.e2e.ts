@@ -14,7 +14,6 @@ describe('App', () => {
   });
   
   it('Enter data', () => {
-    ProtractorHelp.InputText('login', 'Masha');
     ProtractorHelp.InputText('email', 'masha@gmail.com');
     ProtractorHelp.InputText('password', 'Masha2000');
     ProtractorHelp.InputText('confirmPassword', 'Masha2000');

@@ -1,13 +1,13 @@
 import { Component, ModuleWithProviders, NgModule, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { TranslateModule } from "ng2-translate";
-import { MenubarModule } from "primeng/components/menubar/menubar";
 import { MenuItem } from "primeng/components/common/api";
-import { LanguageModel } from "../../../language-selector/language-selector.model";
-import { SUPPORT_LANGUAGES } from "../../../language-selector/support-languages";
-import { LanguageSelectorModule } from "../../../language-selector/language-selector.component";
+import { LanguageModel } from "../language-selector/language-selector.model";
+import { SUPPORT_LANGUAGES } from "../language-selector/support-languages";
+import { LanguageSelectorModule } from "../language-selector/language-selector.component";
 import { TokenService } from "../../../services/auth/token.service";
 import { Router, RouterModule } from "@angular/router";
+import { MenubarModule } from "./menubar/menubar.component";
 
 @Component({
     selector: 'navbar',
@@ -43,7 +43,7 @@ export class NavbarComponent {
         TranslateModule,
         MenubarModule,
         RouterModule,
-        LanguageSelectorModule
+        LanguageSelectorModule,
     ],
     exports: [NavbarComponent],
     declarations: [NavbarComponent],

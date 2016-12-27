@@ -1,13 +1,12 @@
 {
     "login.title": "Login",
-    "login.username": "Username",
+    "login.emailAddress": "Email address",
     "login.password": "Password",
     "login.submit": "Log in",
     "login.userNotFound": "The credentials you supplied were not correct!",
     "login.commonError": "An error has occurred!",
     "signup.title": "Signup",
-    "signup.login": "Login",
-    "signup.email": "Email",
+    "signup.emailAddress": "Email address",
     "signup.password": "Password",
     "signup.confirmPassword": "Confirm password",
     "signup.submit": "Sign up",
@@ -82,5 +81,13 @@
     "password": "Password",
     "language.title": "Language",
     "language.us": "English",
-    "navbar.logout": "Logout"
+    "navbar.logout": "Logout",
+    "logo": "SMS Box",
+    "navbar.admin.dashboard": "Dashboard",
+    "navbar.admin.spamFilter": "Spam filter",
+    "navbar.admin.settings": "Settings",
+    "navbar.admin.users": "Users",
+    "navbar.user.dashboard": "Dashboard",
+    "navbar.user.message": "Message",
+    "navbar.user.settings": "Settings"
 }

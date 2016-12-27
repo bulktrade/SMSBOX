@@ -6,9 +6,9 @@
 			<form role="form" (ngSubmit)="onSubmit($event)" #loginForm="ngForm" novalidate>
 				<div class="input-container">
 					<input type="text" required
-					       [(ngModel)]="model.email" id="username" name="username"
-					       autocomplete="on" #username="ngModel"/>
-					<label for="Username">{{'login.username' | translate}}</label>
+					       [(ngModel)]="model.email" id="emailAddress" name="emailAddress"
+					       autocomplete="on" #emailAddress="ngModel"/>
+					<label for="EmailAddress">{{'login.emailAddress' | translate}}</label>
 					<div class="bar"></div>
 				</div>
 				<div class="input-container">

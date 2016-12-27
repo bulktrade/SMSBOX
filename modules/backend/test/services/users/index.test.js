@@ -4,7 +4,7 @@ const assert = require('assert');
 const request = require('request');
 const app = require('../../../src/app');
 
-describe('invoices service', function () {
+describe('users service', function () {
   let credentials = {
     email: 'admin@smsc.io',
     password: 'admin',
@@ -12,8 +12,8 @@ describe('invoices service', function () {
 
   let accessToken = '';
 
-  it('registered the invoices service', () => {
-    assert.ok(app.service('invoices'));
+  it('registered the users service', () => {
+    assert.ok(app.service('users'));
   });
 
   it('authentication', (done) => {
@@ -28,9 +28,9 @@ describe('invoices service', function () {
     });
   });
 
-  it('shows the invoices data', (done) => {
+  it('shows the users data', (done) => {
     request.get({
-      url: 'http://localhost:3030/invoices',
+      url: 'http://localhost:3030/users',
       headers: {
         'Authorization': accessToken,
       }

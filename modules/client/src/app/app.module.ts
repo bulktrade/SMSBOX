@@ -33,6 +33,7 @@ import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 import { InternalStateType, AppState } from "./app.service";
 import { createNewHosts, createInputTransfer, removeNgStyles } from "@angularclass/hmr";
 import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
+import { NavbarService } from "./common/component/navbar/navbar.service";
 
 type StoreType = {
     state: InternalStateType,
@@ -85,6 +86,7 @@ type StoreType = {
         TokenService,
         GrowlService,
         CommonService,
+        NavbarService,
         LoginGuard,
         {
             provide: FeathersService,

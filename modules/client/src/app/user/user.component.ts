@@ -23,7 +23,6 @@ export class UserComponent {
     items: MenuItem[];
 
     constructor() {
-
     }
 
     ngOnInit() {

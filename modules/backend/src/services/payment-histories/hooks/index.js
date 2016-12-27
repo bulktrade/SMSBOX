@@ -6,10 +6,8 @@ const auth = require('feathers-authentication').hooks;
 
 exports.before = {
 	all: [
-		auth.verifyToken(),
-		auth.populateUser(),
-		auth.restrictToAuthenticated(),
-		auth.queryWithCurrentUser({ idField: 'ID', as: 'USER_ID' })
+    auth.authenticate('jwt'),
+		globalHooks.queryWithCurrentUser({ idField: 'id', as: 'USER_ID' })
 	],
 	find: [],
 	get: [],

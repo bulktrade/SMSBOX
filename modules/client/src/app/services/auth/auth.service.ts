@@ -21,7 +21,7 @@ export class AuthService {
             this.feathersService.authentication(model)
                 .subscribe(
                     data => {
-                        this.tokenService.setToken(data.json()['token']);
+                        this.tokenService.setToken(data.json()['accessToken']);
                         observer.next(this.tokenService.getToken());
                         observer.complete();
                     },
