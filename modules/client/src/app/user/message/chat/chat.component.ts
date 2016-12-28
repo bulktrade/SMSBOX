@@ -7,9 +7,9 @@ import { MessageModel } from "../message.model";
 
 @Component({
     selector: 'chat',
-    template: require('./chat.component.html'),
-    styles: [
-        require('./chat.component.scss')
+    templateUrl: './chat.component.html',
+    styleUrls: [
+        './chat.component.scss'
     ],
     providers: [ChatService]
 })

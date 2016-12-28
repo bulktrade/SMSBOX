@@ -10,9 +10,9 @@ import { GrowlService } from "../../services/growl/growl.service";
 
 @Component({
     selector: 'crud-view',
-    template: require('./crud-view.component.html'),
-    styles: [
-        require('./crud-view.component.scss')
+    templateUrl: './crud-view.component.html',
+    styleUrls: [
+        './crud-view.component.scss'
     ],
     providers: [CrudViewService],
 })

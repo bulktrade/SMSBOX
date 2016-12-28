@@ -5,9 +5,9 @@ import { LanguageModel } from "./language-selector.model";
 
 @Component({
     selector: 'language-selector',
-    template: require('./language-selector.component.html'),
-    styles: [
-        require('./language-selector.component.scss')
+    templateUrl: './language-selector.component.html',
+    styleUrls: [
+        './language-selector.component.scss'
     ],
     host: {
         '(document:click)': 'onClick($event)'

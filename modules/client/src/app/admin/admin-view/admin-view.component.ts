@@ -3,9 +3,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
     selector: 'admin-view',
-    template: require('./admin-view.component.html'),
-    styles: [
-        require('./admin-view.component.scss')
+    templateUrl: './admin-view.component.html',
+    styleUrls: [
+        './admin-view.component.scss'
     ]
 })
 

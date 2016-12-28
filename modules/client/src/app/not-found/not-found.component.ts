@@ -2,9 +2,9 @@ import { Component } from "@angular/core";
 
 @Component({
     selector: 'notFound',
-    template: require('./not-found.component.html'),
-    styles: [
-        require('./not-found.component.scss')
+    templateUrl: './not-found.component.html',
+    styleUrls: [
+        './not-found.component.scss'
     ]
 })
 

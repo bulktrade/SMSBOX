@@ -14,8 +14,8 @@ import { USER_ITEMS } from "./user-menu-items";
             </div>
         </div>
     `,
-    styles: [
-        require('./user.component.scss')
+    styleUrls: [
+        './user.component.scss'
     ]
 })
 

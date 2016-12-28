@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from "@angular/core";
 import { TranslateService } from "ng2-translate";
 import { GrowlService } from "./services/growl/growl.service";
+import "flag-icon-css/css/flag-icon.css";
 
 @Component({
     selector: "app",
@@ -9,15 +10,15 @@ import { GrowlService } from "./services/growl/growl.service";
         <p-growl [value]="growlService.msgs"></p-growl>
         <router-outlet></router-outlet>
     `,
-    styles: [
-        require('./app.component.scss'),
-        require('flag-icon-css/css/flag-icon.css'),
-        require('webpack-material-design-icons/material-design-icons.css'),
-        require('font-awesome/css/font-awesome.css'),
-        require('primeng/resources/themes/omega/theme.css'),
-        require('primeng/resources/primeng.min.css'),
-        require('ag-grid/dist/styles/ag-grid.css'),
-        require('ag-grid/dist/styles/theme-fresh.css')
+    styleUrls: [
+        './app.component.scss',
+        '../../node_modules/flag-icon-css/css/flag-icon.css',
+        '../../node_modules/webpack-material-design-icons/material-design-icons.css',
+        '../../node_modules/font-awesome/css/font-awesome.css',
+        '../../node_modules/primeng/resources/themes/omega/theme.css',
+        '../../node_modules/primeng/resources/primeng.min.css',
+        '../../node_modules/ag-grid/dist/styles/ag-grid.css',
+        '../../node_modules/ag-grid/dist/styles/theme-fresh.css'
     ]
 })
 

@@ -5,10 +5,10 @@ import { SignupModel } from "./signup.model";
 
 @Component({
     selector: 'signup',
-    template: require('./signup.component.html'),
-    styles: [
-        require('./signup.component.scss'),
-        require('./../common/style/login-form.scss')
+    templateUrl: './signup.component.html',
+    styleUrls: [
+        './signup.component.scss',
+        './../common/style/login-form.scss'
     ]
 })
 

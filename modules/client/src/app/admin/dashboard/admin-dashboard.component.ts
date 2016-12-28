@@ -4,9 +4,9 @@ import { DashboardService } from "../../common/component/dashboard/dashboard.ser
 
 @Component({
     selector: 'admin-dashboard',
-    template: require('./admin-dashboard.component.html'),
-    styles: [
-        require('./admin-dashboard.component.scss')
+    templateUrl: './admin-dashboard.component.html',
+    styleUrls: [
+        './admin-dashboard.component.scss'
     ],
     providers: [DashboardService]
 })

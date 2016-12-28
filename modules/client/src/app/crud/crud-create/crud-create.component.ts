@@ -7,9 +7,9 @@ import { CrudService } from "../crud.service";
 
 @Component({
     selector: 'crud-create',
-    template: require('./crud-create.component.html'),
-    styles: [
-        require('./crud-create.component.scss')
+    templateUrl: './crud-create.component.html',
+    styleUrls: [
+        './crud-create.component.scss'
     ],
     providers: []
 })

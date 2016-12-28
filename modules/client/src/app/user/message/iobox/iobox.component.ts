@@ -4,9 +4,9 @@ import { MessageModel } from "../message.model";
 
 @Component({
     selector: 'iobox',
-    template: require('./iobox.component.html'),
-    styles: [
-        require('./iobox.component.scss')
+    templateUrl: './iobox.component.html',
+    styleUrls: [
+        './iobox.component.scss'
     ]
 })
 

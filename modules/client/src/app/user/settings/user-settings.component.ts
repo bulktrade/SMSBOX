@@ -6,9 +6,9 @@ import { GrowlService } from "../../services/growl/growl.service";
 
 @Component({
     selector: 'settings',
-    template: require('./user-settings.component.html'),
-    styles: [
-        require('./user-settings.component.scss')
+    templateUrl: './user-settings.component.html',
+    styleUrls: [
+        './user-settings.component.scss'
     ],
     providers: []
 })

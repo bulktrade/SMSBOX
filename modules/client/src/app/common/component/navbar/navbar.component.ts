@@ -11,9 +11,9 @@ import { MenubarModule } from "./menubar/menubar.component";
 
 @Component({
     selector: 'navbar',
-    template: require('./navbar.component.html'),
-    styles: [
-        require('./navbar.component.scss')
+    templateUrl: './navbar.component.html',
+    styleUrls: [
+        './navbar.component.scss'
     ]
 })
 

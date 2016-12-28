@@ -8,9 +8,9 @@ import { Response } from "@angular/http";
 
 @Component({
     selector: 'crud-update',
-    template: require('./crud-update.component.html'),
-    styles: [
-        require('./crud-update.component.scss')
+    templateUrl: './crud-update.component.html',
+    styleUrls: [
+        './crud-update.component.scss'
     ],
     providers: []
 })

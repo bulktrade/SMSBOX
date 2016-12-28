@@ -8,15 +8,15 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'breadcrumb',
-    template: require('./breadcrumb.component.html'),
+    templateUrl: './breadcrumb.component.html',
     inputs: [
         'title',
         'description',
         'parents'
     ],
     providers: [],
-    styles: [
-        require('./breadcrumb.component.scss')
+    styleUrls: [
+        './breadcrumb.component.scss'
     ]
 })
 

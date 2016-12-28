@@ -24,7 +24,7 @@ import { LoginGuard } from "./login/login.guard";
 import { CrudMainResolve } from "./crud/crud.resolve";
 import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 
-const ROUTES: Routes = [
+export const ROUTES: Routes = [
     {
         path: '',
         component: SmsBoxComponent

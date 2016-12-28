@@ -3,8 +3,6 @@ import { TranslateService } from "ng2-translate";
 import { MenuItem } from "primeng/components/common/api";
 import { Observable } from "rxjs";
 
-const clone = require('js.clone');
-
 @Injectable()
 export class NavbarService {
 
@@ -18,7 +16,7 @@ export class NavbarService {
      */
     translateItems(items: MenuItem[]): Observable<MenuItem[]> {
         let observStore = [],
-            result: MenuItem[] = clone(items);
+            result: MenuItem[] = items;
 
         result.forEach(item => {
             this.findAndTranslateAllLabels(item, observStore);

@@ -10,11 +10,9 @@ import { NotFoundComponent } from "./not-found/not-found.component";
 import { SmsBoxComponentModule } from "./smsbox/smsbox.module";
 import { SignupComponent } from "./signup/signup.component";
 import { SignupService } from "./signup/signup-service";
-import { LoginComponent } from "./login/login.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { CommonModule } from "@angular/common";
 import { UserModule } from "./user/user.module";
-import { CubeGridComponent } from "./common/spinner/cube-grid/cube-grid.component";
 import { EqualValidatorModule } from "./common/equal-validator.directive";
 import { CrudModule } from "./crud/crud.module";
 import { CrudViewResolve } from "./crud/crud-view/crud-view.resolve";
@@ -34,12 +32,23 @@ import { InternalStateType, AppState } from "./app.service";
 import { createNewHosts, createInputTransfer, removeNgStyles } from "@angularclass/hmr";
 import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
 import { NavbarService } from "./common/component/navbar/navbar.service";
+import { LoginModule } from "./login/login.module";
+import { RouterModule, PreloadAllModules } from "@angular/router";
+import { CubeGridModule } from "./common/spinner/cube-grid/cube-grid.component";
 
 type StoreType = {
     state: InternalStateType,
     restoreInputValues: () => void,
     disposeOldHosts: () => void
 };
+
+export function translateFactory(http: Http) {
+    return new TranslateStaticLoader(http, '../assets/i18n', '.json')
+}
+
+export function feathersFactory(http: Http, tokenService: TokenService) {
+    return new FeathersService(http, tokenService, 'http://localhost:3030');
+}
 
 @NgModule({
     imports: [
@@ -51,9 +60,7 @@ type StoreType = {
         AppRoutingModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
-            useFactory: (http: Http) => {
-                return new TranslateStaticLoader(http, '../assets/i18n', '.json')
-            },
+            useFactory: translateFactory,
             deps: [Http]
         }),
         BreadcrumbModule,
@@ -64,14 +71,14 @@ type StoreType = {
         UserModule,
         ThereComponentModule,
         SmsBoxComponentModule,
-        GrowlModule
+        GrowlModule,
+        LoginModule,
+        CubeGridModule
     ],
     declarations: [
         AppComponent,
         NotFoundComponent,
-        SignupComponent,
-        LoginComponent,
-        CubeGridComponent
+        SignupComponent
     ],
     providers: [
         AppState,
@@ -90,9 +97,7 @@ type StoreType = {
         LoginGuard,
         {
             provide: FeathersService,
-            useFactory: (http: Http, tokenService: TokenService) => {
-                return new FeathersService(http, tokenService, 'http://localhost:3030');
-            },
+            useFactory: feathersFactory,
             deps: [Http, TokenService]
         }
     ],

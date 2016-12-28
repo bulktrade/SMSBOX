@@ -6,9 +6,9 @@ import { SUPPORT_LANGUAGES } from "../common/component/language-selector/support
 
 @Component({
     selector: 'smsbox',
-    template: require('./smsbox.component.html'),
-    styles: [
-        require('./smsbox.component.scss')
+    templateUrl: './smsbox.component.html',
+    styleUrls: [
+        './smsbox.component.scss'
     ]
 })
 export class SmsBoxComponent {

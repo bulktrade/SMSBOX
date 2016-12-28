@@ -17,8 +17,8 @@ import { ADMIN_ITEMS } from "./admin-menu-items";
             </div>
         </div>
     `,
-    styles: [
-        require('./admin.component.scss')
+    styleUrls: [
+        './admin.component.scss'
     ]
 })
 

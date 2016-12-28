@@ -9,9 +9,9 @@ import { EqualValidatorModule } from "../../common/equal-validator.directive";
 
 @Component({
     selector: 'dynamic-form',
-    template: require('./dynamic-form.component.html'),
-    styles: [
-        require('./dynamic-form.component.scss')
+    templateUrl: './dynamic-form.component.html',
+    styleUrls: [
+        './dynamic-form.component.scss'
     ],
     providers: [],
 })

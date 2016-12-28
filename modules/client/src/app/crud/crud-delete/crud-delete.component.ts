@@ -10,9 +10,9 @@ import { Observable } from "rxjs";
 
 @Component({
     selector: 'crud-delete',
-    template: require('./crud-delete.component.html'),
-    styles: [
-        require('./crud-delete.component.scss')
+    templateUrl: './crud-delete.component.html',
+    styleUrls: [
+        './crud-delete.component.scss'
     ],
     providers: [],
 })

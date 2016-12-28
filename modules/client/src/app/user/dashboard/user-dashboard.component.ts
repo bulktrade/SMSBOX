@@ -4,9 +4,9 @@ import { AdminDashboardModel } from "../../common/component/dashboard/dashboard.
 
 @Component({
     selector: 'user-dashboard',
-    template: require('./user-dashboard.component.html'),
-    styles: [
-        require('./user-dashboard.component.scss')
+    templateUrl: './user-dashboard.component.html',
+    styleUrls: [
+        './user-dashboard.component.scss'
     ],
     providers: [DashboardService]
 })

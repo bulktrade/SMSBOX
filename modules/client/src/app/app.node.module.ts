@@ -13,8 +13,8 @@ import { AdminModule } from "./admin/admin.module";
 import { NotFoundComponent } from "./not-found/not-found.component";
 import { SignupComponent } from "./signup/signup.component";
 import { LoginComponent } from "./login/login.component";
-import { CubeGridComponent } from "./common/spinner/cube-grid/cube-grid.component";
-import { RouterModule } from "@angular/router";
+import { CubeGridComponent, CubeGridModule } from "./common/spinner/cube-grid/cube-grid.component";
+import { RouterModule, PreloadAllModules } from "@angular/router";
 import { FeathersService } from "./services/feathers.service";
 import { TokenService } from "./services/auth/token.service";
 import { LoginGuard } from "./login/login.guard";
@@ -32,8 +32,8 @@ import { ThereComponentModule } from "./there/there.module";
 import { UserModule } from "./user/user.module";
 import { CrudModule } from "./crud/crud.module";
 import { EqualValidatorModule } from "./common/equal-validator.directive";
-import { AppRoutingModule } from "./app-routing.module";
 import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
+import { AppRoutingModule } from "./app-routing.module";
 
 type StoreType = {
     state: InternalStateType,
@@ -65,14 +65,14 @@ type StoreType = {
         UserModule,
         ThereComponentModule,
         SmsBoxComponentModule,
-        GrowlModule
+        GrowlModule,
+        CubeGridModule
     ],
     declarations: [
         AppComponent,
         NotFoundComponent,
         SignupComponent,
-        LoginComponent,
-        CubeGridComponent
+        LoginComponent
     ],
     providers: [
         AppState,

@@ -9,10 +9,10 @@ import { AuthService } from "../services/auth/auth.service";
 
 @Component({
     selector: 'login',
-    template: require('./login.component.html'),
-    styles: [
-        require('./login.component.scss'),
-        require('./../common/style/login-form.scss')
+    templateUrl: 'login.component.html',
+    styleUrls: [
+        './login.component.scss',
+        './../common/style/login-form.scss'
     ],
     providers: [AuthService]
 })

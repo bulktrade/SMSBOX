@@ -9,7 +9,7 @@ import { FeathersService } from "../../services/feathers/feathers.service";
             <router-outlet></router-outlet>
         </div>
     `,
-    styles: []
+    styleUrls: []
 })
 
 export class MessageComponent {
