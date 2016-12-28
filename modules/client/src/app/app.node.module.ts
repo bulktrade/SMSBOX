@@ -41,6 +41,22 @@ type StoreType = {
     disposeOldHosts: () => void
 };
 
+export function translateFactory(http: Http) {
+    return new TranslateStaticLoader(http, '../assets/i18n', '.json')
+}
+
+export function feathersFactory(http: Http, tokenService: TokenService) {
+    return new FeathersService(http, tokenService, 'http://localhost:3030');
+}
+
+export function _isBrowser() {
+    return isBrowser;
+}
+
+export function _isNode() {
+    return isNode;
+}
+
 @NgModule({
     imports: [
         CommonModule,
@@ -51,9 +67,7 @@ type StoreType = {
         AppRoutingModule,
         TranslateModule.forRoot({
             provide: TranslateLoader,
-            useFactory: (http: Http) => {
-                return new TranslateStaticLoader(http, '../assets/i18n', '.json')
-            },
+            useFactory: translateFactory,
             deps: [Http]
         }),
         BreadcrumbModule,
@@ -90,13 +104,11 @@ type StoreType = {
         LoginGuard,
         {
             provide: FeathersService,
-            useFactory: (http: Http, tokenService: TokenService) => {
-                return new FeathersService(http, tokenService, 'http://localhost:3030');
-            },
+            useFactory: feathersFactory,
             deps: [Http, TokenService]
         },
-        { provide: 'isBrowser', useValue: isBrowser },
-        { provide: 'isNode', useValue: isNode }
+        { provide: 'isBrowser', useFactory: _isBrowser },
+        { provide: 'isNode', useValue: _isNode }
     ],
     bootstrap: [AppComponent]
 })
