@@ -36,6 +36,7 @@ script:
   - sleep 5
   - cd ../client && npm run e2e
   - cd ../backend && npm run test
+  - npm run build:docker
 
 notifications:
   email:

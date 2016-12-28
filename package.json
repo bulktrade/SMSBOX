@@ -11,15 +11,13 @@
   "scripts": {
     "prebuild": "cd modules/backend && npm install && cd ../client && npm install && cd ..",
     "build": "cd modules/client && npm run build:universal",
-    "build:docker": "npm run build:prod && docker build -t smsbox:latest .",
+    "build:docker": "npm run build && docker build -t smsbox:latest .",
     "docker": "docker"
   },
   "dependencies": {
-
+    "http-proxy": "^1.16.2"
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/bulktrade/SMSBOX.git"
