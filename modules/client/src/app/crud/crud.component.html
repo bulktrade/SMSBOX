@@ -1,5 +1,5 @@
 <div id="crud-window">
-	<p-panel [style]="{'margin':'0'}" header="{{ route.data.value.translationKey | uppercase | translate }}" [toggleable]="false"
+	<p-panel [style]="{'margin':'0'}" header="{{ route.data['value'].translationKey | uppercase | translate }}" [toggleable]="false"
 	         [style]="{'margin-bottom':'20px'}">
 		<router-outlet></router-outlet>
 	</p-panel>

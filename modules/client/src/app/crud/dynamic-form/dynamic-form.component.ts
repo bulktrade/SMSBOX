@@ -23,8 +23,8 @@ export class DynamicFormComponent {
 
     @Output('submit') submit = new EventEmitter();
 
-    constructor(private location: Location,
-                private translate: TranslateService) {
+    constructor(public location: Location,
+                public translate: TranslateService) {
     }
 
     onSubmit() {

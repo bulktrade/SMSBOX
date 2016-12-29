@@ -10,13 +10,13 @@
   "homepage": "https://github.com/bulktrade/SMSBOX",
   "license": "Apache-2.0",
   "scripts": {
-    "clean:ngc": "rimraf **/*.ngfactory.ts **/*.css.shim.ts",
+    "clean:ngc": "rimraf **/*.ngfactory.ts **/*.css.shim.ts **/*.ngsummary.json **/*.ngstyle.ts",
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile",
     "build:universal": "webpack --config config/webpack.universal.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
     "build:prod": "webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:prod:ngc": "npm run clean:ngc && npm run ngc",
-    "ngc": "ngc -p tsconfig.aot.json",
+    "ngc": "npm run clean:ngc && ngc -p tsconfig.aot.json",
     "build": "npm run build:dev",
     "ci": "npm run lint && npm test && npm run e2e",
     "clean:dist": "npm run rimraf -- dist",
@@ -94,7 +94,9 @@
     "modern-lru": "^1.0.8",
     "preboot": "~4.5.2",
     "rxjs": "^5.0.0-rc.1",
-    "zone.js": "~0.6.17"
+    "zone.js": "~0.6.17",
+    "webfontloader": "^1.6.26",
+    "@angularclass/bootloader": "~1.0.1"
   },
   "devDependencies": {
     "@types/amcharts": "^0.0.36",

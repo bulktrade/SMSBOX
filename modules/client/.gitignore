@@ -1,5 +1,10 @@
 compiled
 
+*.ngfactory.ts
+*.ngsummary.json
+*.ngstyle.ts
+*.css.shim.ts
+
 # Logs
 logs
 *.log

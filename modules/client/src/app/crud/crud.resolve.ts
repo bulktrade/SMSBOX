@@ -7,7 +7,7 @@ import { CrudService } from "./crud.service";
 @Injectable()
 export class CrudMainResolve extends CrudResolve {
 
-    constructor(private crudService: CrudService) {
+    constructor(public crudService: CrudService) {
         super();
     }
 

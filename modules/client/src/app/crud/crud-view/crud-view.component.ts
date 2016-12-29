@@ -20,16 +20,16 @@ import { GrowlService } from "../../services/growl/growl.service";
 export class CrudViewComponent {
     public pagination = new Pagination(0, 10, null, null);
     public rowsPerPageOptions: number[] = [10, 20, 30];
-    private gridOptions: GridOptions;
-    private isDisabledDeleteButton: boolean = true;
+    public gridOptions: GridOptions;
+    public isDisabledDeleteButton: boolean = true;
 
     constructor(public translate: TranslateService,
                 public router: Router,
                 public route: ActivatedRoute,
                 public crudViewService: CrudViewService,
                 public crudService: CrudService,
-                private growlService: GrowlService,
-                private feathersService: FeathersService) {
+                public growlService: GrowlService,
+                public feathersService: FeathersService) {
         this.gridOptions = this.getGridOptions();
         this.gridOptions.rowData = this.getRowData();
         this.gridOptions.columnDefs = this.getColumnDefs();

@@ -18,10 +18,10 @@ export class ChatComponent {
     message: MessageModel = <MessageModel>{};
     messages: MessageModel[] = [];
 
-    constructor(private messageService: MessageService,
-                private route: ActivatedRoute,
-                private chatService: ChatService,
-                private location: Location) {
+    constructor(public messageService: MessageService,
+                public route: ActivatedRoute,
+                public chatService: ChatService,
+                public location: Location) {
     }
 
     ngOnInit() {

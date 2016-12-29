@@ -21,12 +21,12 @@ export class CrudDeleteComponent {
     id: string = null;
     msgs: Message[] = [];
 
-    constructor(private location: Location,
-                private translate: TranslateService,
-                private crudService: CrudService,
-                private route: ActivatedRoute,
-                private growlService: GrowlService,
-                private feathersService: FeathersService) {
+    constructor(public location: Location,
+                public translate: TranslateService,
+                public crudService: CrudService,
+                public route: ActivatedRoute,
+                public growlService: GrowlService,
+                public feathersService: FeathersService) {
     }
 
     ngOnInit() {

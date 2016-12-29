@@ -23,8 +23,8 @@ export class NavbarComponent {
 
     languages: LanguageModel[] = [];
 
-    constructor(private tokenService: TokenService,
-                private router: Router) {
+    constructor(public tokenService: TokenService,
+                public router: Router) {
     }
 
     ngOnInit() {

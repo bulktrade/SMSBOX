@@ -3,7 +3,7 @@
 		<div class="card" style="display: none;"></div>
 		<div class="card">
 			<h1 class="title">{{'login.title' | translate}}</h1>
-			<form role="form" (ngSubmit)="onSubmit($event)" #loginForm="ngForm" novalidate>
+			<form role="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
 				<div class="input-container">
 					<input type="text" required
 					       [(ngModel)]="model.email" id="emailAddress" name="emailAddress"

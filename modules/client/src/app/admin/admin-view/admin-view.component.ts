@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 })
 
 export class AdminViewComponent {
-    private form: FormGroup;
+    public form: FormGroup;
     
     constructor(private formBuilder: FormBuilder) {
 

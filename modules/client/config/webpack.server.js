@@ -52,7 +52,7 @@ module.exports = function (options) {
     entry: [
       './src/polyfills.node',
       './src/vendor.node',
-      './src/main.node'
+      './src/main.node.aot'
     ],
     output: {
       path: helpers.root('dist/server'),

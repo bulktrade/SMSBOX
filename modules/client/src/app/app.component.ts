@@ -23,8 +23,8 @@ import "flag-icon-css/css/flag-icon.css";
 })
 
 export class AppComponent {
-    constructor(private translate: TranslateService,
-                private growlService: GrowlService) {
+    constructor(public translate: TranslateService,
+                public growlService: GrowlService) {
         translate.setDefaultLang('us');
         translate.use('us');
     }

@@ -17,7 +17,7 @@ export class CrudComponent {
     constructor(public translate: TranslateService,
                 public route: ActivatedRoute,
                 public router: Router,
-                private crudService: CrudService) {
+                public crudService: CrudService) {
     }
 
     ngOnInit() {

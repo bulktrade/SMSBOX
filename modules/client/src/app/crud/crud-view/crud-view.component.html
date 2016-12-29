@@ -4,8 +4,7 @@
 		<div class="search-panel">
 			<div class="row">
 				<input id="search" placeholder="{{ 'crud.search' | translate }}" type="text" size="30" pInputText
-				       [(ngModel)]="text"
-				       (ngModelChange)="onFilterChanged($event, gridOptions)"/>
+				       ngModel (ngModelChange)="onFilterChanged($event, gridOptions)"/>
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</div>
 		</div>

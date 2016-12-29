@@ -20,10 +20,10 @@ import { AuthService } from "../services/auth/auth.service";
 export class LoginComponent {
     public model: LoginModel = new LoginModel('', '');
 
-    constructor(private router: Router,
-                private location: Location,
-                private authService: AuthService,
-                private growlService: GrowlService) {
+    constructor(public router: Router,
+                public location: Location,
+                public authService: AuthService,
+                public growlService: GrowlService) {
     }
 
     ngOnInit() {

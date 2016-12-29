@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
 @Injectable()
 export class NavbarService {
 
-    constructor(private translateService: TranslateService) {
+    constructor(public translateService: TranslateService) {
     }
 
     /**

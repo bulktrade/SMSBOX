@@ -9,11 +9,6 @@ import { CommonModule } from '@angular/common';
 @Component({
     selector: 'breadcrumb',
     templateUrl: './breadcrumb.component.html',
-    inputs: [
-        'title',
-        'description',
-        'parents'
-    ],
     providers: [],
     styleUrls: [
         './breadcrumb.component.scss'

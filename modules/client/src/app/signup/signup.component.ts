@@ -15,7 +15,7 @@ import { SignupModel } from "./signup.model";
 export class SignupComponent {
     public model: SignupModel = new SignupModel('', '', '', '');
 
-    constructor(private signupService: SignupService,
+    constructor(public signupService: SignupService,
                 public location: Location) {
     }
 
@@ -23,7 +23,6 @@ export class SignupComponent {
     }
 
     onSubmit() {
-        this.signupService.registerUser(this.model);
     }
 
     back() {
