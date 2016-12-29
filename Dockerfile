@@ -1,7 +1,10 @@
 FROM node:7-alpine
 
-ADD modules/backend /app/backend
-ADD modules/client /app/client
+ADD ./ /app
+
+WORKDIR /app
+
+RUN npm install
 
 WORKDIR /app/backend
 
@@ -11,5 +14,7 @@ RUN npm run build:universal
 WORKDIR /app/client
 
 RUN npm install
+
+CMD ["node","/app"]
 
 EXPOSE 80
