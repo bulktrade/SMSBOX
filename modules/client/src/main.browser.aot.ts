@@ -15,7 +15,7 @@ import { load as loadWebFont } from 'webfontloader';
 // enable prod for faster renders
 enableProdMode();
 
-import { MainModuleNgFactory } from './app/browser.module.ngfactory';
+import { MainModuleNgFactory } from './../compiled/src/app/browser.module.ngfactory';
 
 export const platformRef = platformBrowser();
 

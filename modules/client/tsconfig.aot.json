@@ -36,6 +36,7 @@
     "useWebpackText": true
   },
   "angularCompilerOptions": {
+    "genDir": "./compiled",
     "skipMetadataEmit": true
   },
   "compileOnSave": false,

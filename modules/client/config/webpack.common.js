@@ -23,6 +23,7 @@ const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 /*
  * Webpack Constants
  */
+const AOT = helpers.hasNpmFlag('aot');
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   title: 'SMSBox',
@@ -58,7 +59,8 @@ module.exports = function (options) {
 
       'polyfills': './src/polyfills.browser.ts',
       'vendor': './src/vendor.browser.ts',
-      'main': './src/main.browser.ts'
+      'main': AOT ? './src/main.browser.aot.ts' :
+          './src/main.browser.ts'
 
     },
 
@@ -74,10 +76,10 @@ module.exports = function (options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
-      extensions: ['.ts', '.js', '.json'],
+      extensions: [ '.ts', '.js', '.json' ],
 
       // An array of directory names to be resolved to the current directory
-      modules: [helpers.root('src'), 'node_modules'],
+      modules: [ helpers.root('src'), 'node_modules' ],
 
     },
 
@@ -101,11 +103,11 @@ module.exports = function (options) {
           test: /\.ts$/,
           loaders: [
             '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
-            'awesome-typescript-loader',
+            'awesome-typescript-loader?{configFileName: "tsconfig.aot.json"}',
             'angular2-template-loader',
-            'angular2-router-loader'
+            'angular2-router-loader?loader=system&genDir=compiled/src/app&aot=' + AOT
           ],
-          exclude: [/\.(spec|e2e)\.ts$/]
+          exclude: [ /\.(spec|e2e)\.ts$/ ]
         },
 
         /*
@@ -125,13 +127,13 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          loaders: ['to-string-loader', 'css-loader']
+          loaders: [ 'to-string-loader', 'css-loader' ]
         },
 
         {
-            test: /\.scss$/,
-            exclude: /node_modules/,
-            loader: 'raw-loader!sass-loader?includePaths[]=' + bourbon
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loader: 'raw-loader!sass-loader?includePaths[]=' + bourbon
         },
 
         /* Raw loader support for *.html
@@ -142,7 +144,7 @@ module.exports = function (options) {
         {
           test: /\.html$/,
           loader: 'raw-loader',
-          exclude: [helpers.root('src/index.html')]
+          exclude: [ helpers.root('src/index.html') ]
         },
 
         /* File loader for supporting images, for example, in CSS files.
@@ -189,7 +191,7 @@ module.exports = function (options) {
        * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
       new CommonsChunkPlugin({
-        name: ['polyfills', 'vendor'].reverse()
+        name: [ 'polyfills', 'vendor' ].reverse()
       }),
 
       /**
@@ -205,24 +207,24 @@ module.exports = function (options) {
         helpers.root('src') // location of your src
       ),
 
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            "window.jQuery": "jquery",
-            Tether: "tether",
-            "window.Tether": "tether",
-            Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
-            Button: "exports-loader?Button!bootstrap/js/dist/button",
-            Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
-            Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
-            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
-            Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
-            Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
-            Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
-            Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
-            Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
-            Util: "exports-loader?Util!bootstrap/js/dist/util",
-        }),
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery",
+        Tether: "tether",
+        "window.Tether": "tether",
+        Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+        Button: "exports-loader?Button!bootstrap/js/dist/button",
+        Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
+        Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
+        Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+        Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
+        Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+        Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
+        Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
+        Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
+        Util: "exports-loader?Util!bootstrap/js/dist/util",
+      }),
 
       /*
        * Plugin: CopyWebpackPlugin
@@ -241,8 +243,8 @@ module.exports = function (options) {
           from: 'src/meta',
         },
         {
-            from: 'src/app/common/component/dashboard/dashboard.json',
-            to: 'dashboard.json'
+          from: 'src/app/common/component/dashboard/dashboard.json',
+          to: 'dashboard.json'
         }
       ]),
 
@@ -305,26 +307,26 @@ module.exports = function (options) {
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
-        new LoaderOptionsPlugin({
-            debug: true,
-            options: {
-                context: helpers.root(),
-                output: {
-                    path: helpers.root('dist')
-                },
-                /**
-                 * Static analysis linter for TypeScript advanced options configuration
-                 * Description: An extensible linter for the TypeScript language.
-                 *
-                 * See: https://github.com/wbuchwalter/tslint-loader
-                 */
-                tslint: {
-                    emitErrors: false,
-                    failOnHint: false,
-                    resourcePath: 'src'
-                }
-            }
-        })
+      new LoaderOptionsPlugin({
+        debug: true,
+        options: {
+          context: helpers.root(),
+          output: {
+            path: helpers.root('dist')
+          },
+          /**
+           * Static analysis linter for TypeScript advanced options configuration
+           * Description: An extensible linter for the TypeScript language.
+           *
+           * See: https://github.com/wbuchwalter/tslint-loader
+           */
+          tslint: {
+            emitErrors: false,
+            failOnHint: false,
+            resourcePath: 'src'
+          }
+        }
+      })
 
     ],
 

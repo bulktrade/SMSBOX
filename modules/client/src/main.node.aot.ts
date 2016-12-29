@@ -6,7 +6,7 @@ import * as express from "express";
 // Angular 2 Universal
 import { createEngine } from "angular2-express-engine";
 // App
-import { MainModuleNgFactory } from "./app/node.module.ngfactory";
+import { MainModuleNgFactory } from "./../compiled/src/app/node.module.ngfactory";
 function renderComponentFix(componentProto: any) {
     return new NodeDomRenderer(this, componentProto, this._animationDriver);
 }
