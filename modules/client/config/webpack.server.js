@@ -50,7 +50,6 @@ var serverPlugins = [
 module.exports = function (options) {
   let serverConfig = webpackMerge(commonConfig({ env: ENV }), {
     entry: [
-      './src/polyfills.node',
       './src/vendor.node',
       './src/main.node.aot'
     ],
@@ -77,14 +76,6 @@ module.exports = function (options) {
             replace: 'function(){}'
           }
         },
-        {
-          test: /angular2-platform-node\/__private_imports__\.js$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: /__.(SelectorMatcher|CssSelector)/g,
-            replace: ''
-          }
-        }
       ]
     }
   });

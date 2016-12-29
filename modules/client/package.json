@@ -12,7 +12,8 @@
   "scripts": {
     "clean:ngc": "rimraf **/*.ngfactory.ts **/*.css.shim.ts **/*.ngsummary.json **/*.ngstyle.ts",
     "clean:aot": "npm run rimraf -- compiled",
-    "build:aot:prod": "npm run clean:aot && npm run ngc && webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "build:aot:prod": "npm run clean:dist && npm run clean:aot && npm run ngc && webpack --config config/webpack.prod.js  --progress --profile --bail",
+    "build:aot:universal": "npm run clean:dist && npm run clean:aot && npm run ngc && webpack --config config/webpack.universal.js  --progress --profile",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
     "build:universal": "webpack --config config/webpack.universal.js --progress --profile",
@@ -100,9 +101,11 @@
     "rxjs": "^5.0.0-rc.1",
     "zone.js": "~0.6.17",
     "webfontloader": "^1.6.26",
-    "@angularclass/bootloader": "~1.0.1"
+    "@angularclass/bootloader": "~1.0.1",
+    "morgan": "^1.7.0"
   },
   "devDependencies": {
+    "@types/morgan": "^1.7.32",
     "@types/amcharts": "^0.0.36",
     "@types/body-parser": "0.0.29",
     "@types/chai": "^3.4.34",

@@ -1,28 +1,29 @@
-// Fix Universal Style
-import { NodeDomRootRenderer, NodeDomRenderer } from "angular2-universal/node";
-// End Fix Universal Style
+import "angular2-universal-polyfills";
+import "ts-helpers";
+import "./__workaround.node";
 import * as path from "path";
 import * as express from "express";
+import * as bodyParser from "body-parser";
+import * as cookieParser from "cookie-parser";
+import * as morgan from "morgan";
+import * as compression from "compression";
+// Angular 2
+import { enableProdMode } from "@angular/core";
 // Angular 2 Universal
 import { createEngine } from "angular2-express-engine";
 // App
 import { MainModule } from "./app/node.module";
-function renderComponentFix(componentProto: any) {
-    return new NodeDomRenderer(this, componentProto, this._animationDriver);
-}
-NodeDomRootRenderer.prototype.renderComponent = renderComponentFix;
 
+// enable prod for faster renders
+enableProdMode();
 
-console.log('STARTING APP');
 const app = express();
-//const ROOT = path.join(path.resolve('.'), 'dist');
 const ROOT = path.join(path.resolve(__dirname, '..'));
 const VIEWDIR = path.join(ROOT, 'client');
 const ASSETDIR = path.join(ROOT, 'client/assets');
 
 // Express View
 app.engine('.html', createEngine({
-    precompile: true,
     ngModule: MainModule,
     providers: [
         // use only if you have shared state between users
@@ -34,38 +35,39 @@ app.engine('.html', createEngine({
 app.set('port', process.env.PORT || 3000);
 app.set('views', VIEWDIR);
 app.set('view engine', 'html');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+app.set('json spaces', 2);
+
+app.use(cookieParser('Angular 2 Universal'));
+app.use(bodyParser.json());
+app.use(compression());
+
+app.use(morgan('dev'));
+
+function cacheControl(req, res, next) {
+    // instruct browser to revalidate in 60 seconds
+    res.header('Cache-Control', 'max-age=60');
+    next();
+}
+// Serve static files
+app.use('/assets', cacheControl, express.static(ASSETDIR, { maxAge: 30 }));
+app.use(cacheControl, express.static(VIEWDIR, { index: false }));
 
 function ngApp(req, res) {
     res.render('index', {
         req,
         res,
+        // time: true, // use this to determine what part of your app is slow only in development
         preboot: false,
         baseUrl: '/',
         requestUrl: req.originalUrl,
-        originUrl: 'http://localhost:3000'
+        originUrl: `http://localhost:${ app.get('port') }`
     });
 }
-/*
- function indexFile(req, res) {
- res.sendFile('/index.html', {root: ROOT});
- }
+
+/**
+ * use universal for specific routes
  */
-
-app.use('/assets', express.static(ASSETDIR, { maxAge: 30 }));
-app.use(express.static(VIEWDIR, { index: false }));
-
-// Serve static files
-/*app.use(express.static(path.join(ROOT, 'assets'), { index: false }));
- app.use(express.static(ROOT, { index: false }));
- app.get(/bootstrap.css.map/, function (req, res) {
- res.sendStatus(404);
- });
- */
-console.log(__dirname, ROOT, ASSETDIR);
-
-// Routes with html5pushstate
-app.use('/', ngApp);
+app.get('*', ngApp);
 
 // Server
 let server = app.listen(app.get('port'), () => {
