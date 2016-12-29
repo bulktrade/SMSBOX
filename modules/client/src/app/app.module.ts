@@ -1,5 +1,4 @@
 import { NgModule, ApplicationRef } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { FormsModule, FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import { HttpModule, Http } from "@angular/http";
@@ -33,7 +32,6 @@ import { createNewHosts, createInputTransfer, removeNgStyles } from "@angularcla
 import { BreadcrumbModule } from "./breadcrumb/breadcrumb.component";
 import { NavbarService } from "./common/component/navbar/navbar.service";
 import { LoginModule } from "./login/login.module";
-import { RouterModule, PreloadAllModules } from "@angular/router";
 import { CubeGridModule } from "./common/spinner/cube-grid/cube-grid.component";
 
 type StoreType = {
@@ -53,7 +51,6 @@ export function feathersFactory(http: Http, tokenService: TokenService) {
 @NgModule({
     imports: [
         CommonModule,
-        BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
@@ -101,7 +98,6 @@ export function feathersFactory(http: Http, tokenService: TokenService) {
             deps: [Http, TokenService]
         }
     ],
-    bootstrap: [AppComponent]
 })
 
 export class AppModule {

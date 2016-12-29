@@ -8,14 +8,13 @@ import { bootloader } from '@angularclass/hmr';
  * App Module
  * our top level module that holds all of our components
  */
-import { AppModule } from './app';
-
+import { MainModule } from "./app/browser.module";
 /*
  * Bootstrap our Angular app with a top level NgModule
  */
 export function main(): Promise<any> {
   return platformBrowserDynamic()
-    .bootstrapModule(AppModule)
+    .bootstrapModule(MainModule)
     .then(decorateModuleRef)
     .catch(err => console.error(err));
 }

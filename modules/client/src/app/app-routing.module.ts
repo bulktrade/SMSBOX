@@ -19,7 +19,6 @@ import { UserViewComponent } from "./user/user-view/user-view.component";
 import { IOBoxComponent } from "./user/message/iobox/iobox.component";
 import { ChatComponent } from "./user/message/chat/chat.component";
 import { CrudComponent } from "./crud/crud.component";
-import { CrudModule } from "./crud/crud.module";
 import { LoginGuard } from "./login/login.guard";
 import { CrudMainResolve } from "./crud/crud.resolve";
 import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
@@ -59,7 +58,7 @@ export const ROUTES: Routes = [
                     {
                         path: '',
                         component: CrudComponent,
-                        loadChildren: () => CrudModule,
+                        loadChildren: './crud/crud.module#CrudModule',
                         resolve: { crud: CrudMainResolve },
                         data: {
                             showInBreadcrumb: false

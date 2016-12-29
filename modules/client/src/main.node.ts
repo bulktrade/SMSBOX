@@ -6,7 +6,7 @@ import * as express from "express";
 // Angular 2 Universal
 import { createEngine } from "angular2-express-engine";
 // App
-import { AppModule } from "./app/app.node.module";
+import { MainModule } from "./app/node.module";
 function renderComponentFix(componentProto: any) {
     return new NodeDomRenderer(this, componentProto, this._animationDriver);
 }
@@ -23,7 +23,7 @@ const ASSETDIR = path.join(ROOT, 'client/assets');
 // Express View
 app.engine('.html', createEngine({
     precompile: true,
-    ngModule: AppModule,
+    ngModule: MainModule,
     providers: [
         // use only if you have shared state between users
         // { provide: 'LRU', useFactory: () => new LRU(10) }
