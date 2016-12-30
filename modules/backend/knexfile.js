@@ -1,4 +1,5 @@
 const connection = require('./src/config').connect;
+const path = require('path');
 
 module.exports = {
 
@@ -10,6 +11,7 @@ module.exports = {
             max: 10
         },
         migrations: {
+            directory: path.join(__dirname, 'migrations'),
             tableName: 'smsbox'
         }
     }

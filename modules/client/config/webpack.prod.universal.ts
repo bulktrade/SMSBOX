@@ -88,8 +88,6 @@ export const serverConfig = {
     node: {
         global: true,
         crypto: true,
-        __dirname: true,
-        __filename: true,
         process: true,
         Buffer: true
     }

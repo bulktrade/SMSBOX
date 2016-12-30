@@ -9,7 +9,7 @@ RUN npm install
 WORKDIR /app/backend
 
 RUN npm install
-RUN npm run build:universal
+RUN npm run build:aot:universal:prod
 
 WORKDIR /app/client
 
