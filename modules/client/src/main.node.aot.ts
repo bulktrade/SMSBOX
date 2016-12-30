@@ -22,8 +22,8 @@ enableProdMode();
 
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
-const VIEWDIR = path.join(ROOT, 'client');
-const ASSETDIR = path.join(ROOT, 'client/assets');
+const VIEWDIR = path.join(ROOT, 'dist/client');
+const ASSETDIR = path.join(ROOT, 'dist/client/assets');
 
 // Express View
 app.engine('.html', createEngine({

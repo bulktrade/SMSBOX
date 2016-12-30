@@ -14,6 +14,7 @@
     "clean:aot": "npm run rimraf -- compiled",
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && npm run ngc && webpack --config config/webpack.prod.js  --progress --profile --bail",
     "build:aot:universal": "npm run clean:dist && npm run clean:aot && npm run ngc && webpack --config config/webpack.universal.js  --progress --profile",
+    "build:aot:universal:prod": "npm run clean:dist && npm run clean:aot && npm run ngc && webpack --config config/webpack.prod.universal.ts  --progress --profile",
     "build:aot": "npm run build:aot:prod",
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
     "build:universal": "webpack --config config/webpack.universal.js --progress --profile",

@@ -5,7 +5,7 @@ const webpack = require('webpack');
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const devConfig = require('./webpack.dev.js'); // the settings that are common to prod and dev
+const prodConfig = require('./webpack.prod.js'); // the settings that are common to prod and dev
 const clone = require('js.clone');
 /**
  * Webpack Plugins
@@ -18,7 +18,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 const HMR = helpers.hasProcessFlag('hot');
-const METADATA = webpackMerge(devConfig({ env: ENV }).metadata, {
+const METADATA = webpackMerge(prodConfig({ env: ENV }).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
@@ -31,7 +31,7 @@ const METADATA = webpackMerge(devConfig({ env: ENV }).metadata, {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
-  return webpackMerge(devConfig({ env: ENV }), {
+  return webpackMerge(prodConfig({ env: ENV }), {
     output: {
       path: helpers.root('dist/client')
     },
