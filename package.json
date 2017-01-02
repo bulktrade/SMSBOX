@@ -15,7 +15,8 @@
     "docker": "docker"
   },
   "dependencies": {
-    "http-proxy": "^1.16.2"
+    "http-proxy": "^1.16.2",
+    "js.clone": "0.0.3"
   },
   "devDependencies": {
     "http-proxy": "^1.16.2"

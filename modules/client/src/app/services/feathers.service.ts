@@ -6,16 +6,14 @@ import { TokenService } from "./auth/token.service";
 
 @Injectable()
 export class FeathersService {
-    private host: string;
     private urlPrefix: string;
     private urlSuffix: string;
     private localEndpoint: string;
 
-    constructor(private http: Http, private tokenService: TokenService, host: string) {
-        this.host = host;
+    constructor(private http: Http, private tokenService: TokenService) {
         this.localEndpoint = 'authentication';
-        this.urlPrefix = this.host + '/';
         this.urlSuffix = '/';
+        this.urlPrefix = '/api' + this.urlSuffix;
     }
 
     /**
@@ -30,7 +28,7 @@ export class FeathersService {
      * @return {any}
      */
     authentication(model: LoginModel, localEndpoint?: string) {
-        if (typeof localEndpoint === undefined) {
+        if (localEndpoint) {
             this.localEndpoint = localEndpoint;
         }
 
@@ -53,27 +51,23 @@ export class FeathersService {
      * @param serviceName
      * @return {any}
      */
-    get(id: string, serviceName: string) {
-        if (id && serviceName) {
+    get(id: string = '', serviceName: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        return Observable.create((observer) => {
+            this.http.get(this.urlPrefix + serviceName + this.urlSuffix + id,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            return Observable.create((observer) => {
-                this.http.get(this.urlPrefix + serviceName + this.urlSuffix + id,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
-
-            });
-
-        }
+        });
     }
 
     /**
@@ -81,27 +75,23 @@ export class FeathersService {
      * @param serviceName
      * @return {any}
      */
-    find(serviceName: string) {
-        if (serviceName) {
+    find(serviceName: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        return Observable.create((observer) => {
+            this.http.get(this.urlPrefix + serviceName + this.urlSuffix,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            return Observable.create((observer) => {
-                this.http.get(this.urlPrefix + serviceName + this.urlSuffix,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
-
-            });
-
-        }
+        });
     }
 
     /**
@@ -110,27 +100,23 @@ export class FeathersService {
      * @param serviceName
      * @return {any}
      */
-    create(data, serviceName: string) {
-        if (data && serviceName) {
+    create(data = {}, serviceName: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        return Observable.create((observer) => {
+            this.http.post(this.urlPrefix + serviceName, data,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            return Observable.create((observer) => {
-                this.http.post(this.urlPrefix + serviceName, data,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
-
-            });
-
-        }
+        });
     }
 
     /**
@@ -140,27 +126,23 @@ export class FeathersService {
      * @param serviceName
      * @return {any}
      */
-    update(id: string, data, serviceName: string) {
-        if (id && data && serviceName) {
+    update(id: string = '', data = {}, serviceName: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        return Observable.create((observer) => {
+            this.http.put(this.urlPrefix + serviceName + this.urlSuffix + id, data,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            return Observable.create((observer) => {
-                this.http.put(this.urlPrefix + serviceName + this.urlSuffix + id, data,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
-
-            });
-
-        }
+        });
     }
 
     /**
@@ -169,27 +151,23 @@ export class FeathersService {
      * @param serviceName
      * @return {any}
      */
-    remove(id: string, serviceName: string) {
-        if (id && serviceName) {
+    remove(id: string = '', serviceName: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        return Observable.create((observer) => {
+            this.http.delete(this.urlPrefix + serviceName + this.urlSuffix + id,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            return Observable.create((observer) => {
-                this.http.delete(this.urlPrefix + serviceName + this.urlSuffix + id,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
-
-            });
-
-        }
+        });
     }
 
     /**
@@ -199,27 +177,24 @@ export class FeathersService {
      * @param serviceName
      * @returns {any}
      */
-    pagination(skip: number|string, limit: number|string, serviceName: string) {
-        if (serviceName) {
-            let query = '?$skip=' + skip + '&$limit=' + limit;
+    pagination(skip: number|string = '', limit: number|string = '', serviceName: string = '') {
+        let query = '?$skip=' + skip + '&$limit=' + limit;
 
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.tokenService.getToken());
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
 
-            return Observable.create((observer) => {
-                this.http.get(this.urlPrefix + serviceName + this.urlSuffix + query,
-                    { headers: headers })
-                    .subscribe((res: Response) => {
-                        observer.next(res);
-                        observer.complete();
-                    }, (err) => {
-                        observer.error(err);
-                        observer.complete();
-                    });
+        return Observable.create((observer) => {
+            this.http.get(this.urlPrefix + serviceName + this.urlSuffix + query,
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
 
-            });
-        }
-
+        });
     }
 }

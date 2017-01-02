@@ -45,7 +45,7 @@ export function translateFactory(http: Http) {
 }
 
 export function feathersFactory(http: Http, tokenService: TokenService) {
-    return new FeathersService(http, tokenService, 'http://localhost:3030');
+    return new FeathersService(http, tokenService);
 }
 
 @NgModule({
