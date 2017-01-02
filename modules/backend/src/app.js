@@ -1,8 +1,6 @@
 'use strict';
 
-// environment variables
-process.env.secretKey = 'smsbox';
-
+const env = require('./env');
 const path = require('path');
 const primus = require('feathers-primus');
 const serveStatic = require('feathers').static;

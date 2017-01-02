@@ -1,7 +1,7 @@
-var _crypto = require('crypto-js');
-var secretKey = require('./../../config').secretKey;
+const _crypto = require('crypto-js');
+const secretKey = require('./../../config').secretKey;
 
-var defaults = { passwordField: 'password' };
+const defaults = { passwordField: 'password' };
 
 exports.default = function (options) {
   return function (hook) {
@@ -35,7 +35,7 @@ exports.default = function (options) {
     }
 
     // Decrypt
-    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], process.env.secretKey);
+    var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ], secretKey);
 
     dataToCheck[ passwordField ] = decrypted.toString(_crypto.enc.Utf8);
 

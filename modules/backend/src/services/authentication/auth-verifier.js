@@ -28,15 +28,17 @@ var _createClass = (function () {
   };
 })();
 
-var _debug = require('debug');
+const _debug = require('debug');
 
-var _debug2 = _interopRequireDefault(_debug);
+const _debug2 = _interopRequireDefault(_debug);
 
-var _feathersErrors = require('feathers-errors');
+const _feathersErrors = require('feathers-errors');
 
-var _feathersErrors2 = _interopRequireDefault(_feathersErrors);
+const _feathersErrors2 = _interopRequireDefault(_feathersErrors);
 
-var _crypto = require('crypto-js');
+const _crypto = require('crypto-js');
+
+const secretKey = require('./../../config').secretKey;
 
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
@@ -87,7 +89,7 @@ var LocalVerifier = (function () {
         return Promise.reject(new Error('\'' + this.options.entity + '\' record in the database is missing a \'' + this.options.passwordField + '\''));
       }
 
-      decrypted = _crypto.AES.decrypt(decrypted, process.env.secretKey).toString(_crypto.enc.Utf8);
+      decrypted = _crypto.AES.decrypt(decrypted, secretKey).toString(_crypto.enc.Utf8);
 
       debug('Verifying password');
 
