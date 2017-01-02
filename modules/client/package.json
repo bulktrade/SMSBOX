@@ -1,10 +1,9 @@
 {
-  "name": "client",
+  "name": "smsbox",
   "version": "0.0.1",
-  "description": "SMSBOX client",
+  "description": "Open source sms service with billing, routing and more.",
   "keywords": [
-    "smsbox",
-    "client"
+    "smsbox"
   ],
   "author": "Bulktrade GmbH",
   "homepage": "https://github.com/bulktrade/SMSBOX",
@@ -202,10 +201,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/bulktrade/SMSBOX.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/bulktrade/SMSBOX/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

@@ -1,17 +1,16 @@
 {
   "name": "smsbox",
-  "description": "",
-  "version": "0.0.0",
-  "homepage": "",
-  "main": "src/",
+  "description": "Open source sms service with billing, routing and more.",
+  "version": "0.0.1",
   "keywords": [
-    "feathers"
+    "smsbox"
   ],
-  "license": "MIT",
-  "repository": {},
-  "author": {},
-  "contributors": [],
-  "bugs": {},
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bulktrade/SMSBOX.git"
+  },
+  "author": "Bulktrade GmbH",
   "engines": {
     "node": ">= 0.12.0"
   },
@@ -67,5 +66,8 @@
     "path": "^0.12.7",
     "pg": "^6.1.0",
     "request": "^2.79.0"
+  },
+  "bugs": {
+    "url": "https://github.com/bulktrade/SMSBOX/issues"
   }
 }
