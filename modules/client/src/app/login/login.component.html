@@ -1,7 +1,7 @@
 <div id="login-window">
-	<div class="container">
+	<div class="container" [ngClass]="{active: toggle}">
 		<div class="card" style="display: none;"></div>
-		<div class="card">
+		<div class="card" [ngStyle]="{'height': toggle ? '375px' : 'auto', 'overflow': toggle ? 'hidden' : 'visible'}">
 			<h1 class="title">{{'login.title' | translate}}</h1>
 			<form role="form" (ngSubmit)="onSubmit()" #loginForm="ngForm" novalidate>
 				<div class="input-container">
@@ -20,6 +20,30 @@
 				</div>
 				<div class="button-container">
 					<button type="submit" class="submitButton" [disabled]="loginForm.form.invalid"><span>{{'login.submit' | translate}}</span>
+					</button>
+				</div>
+				<div class="footer" (click)="toggle=!toggle">
+					<a href="javascript:void(0)">Forgot your password?</a>
+				</div>
+			</form>
+		</div>
+		<div class="card alt">
+			<div class="toggle"></div>
+			<h1 class="title">{{ 'login.recoveryPasswordTitle' | translate }}
+				<div class="close" (click)="toggle=false"></div>
+			</h1>
+			<form role="form" (ngSubmit)="restorePassword(forgotEmailAddress)" #loginForm="ngForm" novalidate>
+
+				<div class="input-container">
+					<input type="text" required id="email"
+					       [(ngModel)]="forgotEmailAddress" name="email"
+					       autocomplete="on" #email="ngModel"/>
+					<label for="Email">{{"login.emailAddress" | translate}}</label>
+					<div class="bar"></div>
+				</div>
+				<div class="button-container">
+					<button type="submit" class="submitButton" [disabled]="loginForm.form.invalid">
+						<span>{{'login.send' | translate}}</span>
 					</button>
 				</div>
 			</form>

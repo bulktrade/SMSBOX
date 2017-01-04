@@ -160,7 +160,7 @@ body {
       }
 
       &.alt {
-        top: 20px;
+        top: 10px;
         right: 0;
         width: 100%;
         min-width: 100%;
@@ -171,7 +171,7 @@ body {
 
         .toggle {
           position: absolute;
-          top: 40px;
+          top: 70px;
           right: -70px;
           box-shadow: none;
           @include transform(scale(10));
@@ -435,10 +435,11 @@ body {
     top: 40px;
     right: -70px;
     z-index: 10;
-    width: 140px;
-    height: 140px;
+    width: 0px;
+    height: 0px;
     background: none;
     border-radius: 100%;
+    border-color: transparent;
     box-shadow: none;
     padding: 0;
     transition: .3s ease;
@@ -447,8 +448,8 @@ body {
     .toggle {
       position: relative;
       background: $accent;
-      width: 140px;
-      height: 140px;
+      width: inherit;
+      height: inherit;
       border-radius: 100%;
       @include materialShadow(1);
       color: $white;
@@ -458,7 +459,7 @@ body {
       cursor: pointer;
 
       &:before {
-        content: '\f040';
+        content: '';
         display: inline-block;
         font: normal normal normal 14px/1 FontAwesome;
         font-size: inherit;

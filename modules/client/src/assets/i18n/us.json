@@ -5,6 +5,8 @@
     "login.submit": "Log in",
     "login.userNotFound": "The credentials you supplied were not correct!",
     "login.commonError": "An error has occurred!",
+    "login.recoveryPasswordTitle": "Recovery",
+    "login.send": "Send",
     "signup.title": "Signup",
     "signup.emailAddress": "Email address",
     "signup.password": "Password",

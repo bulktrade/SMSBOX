@@ -14,16 +14,18 @@ import { AuthService } from "../services/auth/auth.service";
         './login.component.scss',
         './../common/style/login-form.scss'
     ],
-    providers: [AuthService]
+    providers: [AuthService, LoginService]
 })
 
 export class LoginComponent {
     public model: LoginModel = new LoginModel('', '');
+    public toggle: boolean = false;
 
     constructor(public router: Router,
                 public location: Location,
                 public authService: AuthService,
-                public growlService: GrowlService) {
+                public growlService: GrowlService,
+                public loginService: LoginService) {
     }
 
     ngOnInit() {
@@ -44,6 +46,10 @@ export class LoginComponent {
                         break;
                 }
             });
+    }
+
+    restorePassword(email: string) {
+        this.loginService.forgotPassword(email);
     }
 
     back() {
