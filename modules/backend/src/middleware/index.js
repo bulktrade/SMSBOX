@@ -3,6 +3,7 @@
 const handler = require('feathers-errors/handler');
 const notFound = require('./not-found-handler');
 const logger = require('./logger');
+const index = require('./routes/index');
 
 module.exports = function() {
   // Add your custom middleware here. Remember, that
@@ -10,6 +11,7 @@ module.exports = function() {
   // handling middleware should go last.
   const app = this;
 
+  app.use('/', index(app));
   app.use(notFound());
   app.use(logger(app));
   app.use(handler());

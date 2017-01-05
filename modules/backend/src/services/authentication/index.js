@@ -9,8 +9,6 @@ const secretKey = require('./../../config').secretKey;
 module.exports = function () {
   const app = this;
 
-  let config = app.get('auth');
-
   app.configure(authentication({ secret: secretKey }))
     .configure(local({ Verifier: LocalVerifier }))
     .configure(jwt());
