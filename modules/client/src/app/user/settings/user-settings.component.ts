@@ -17,8 +17,8 @@ export class UserSettingsComponent {
     public model: UserSettingsModel = new UserSettingsModel('', '', '', '', '', '', '');
 
     constructor(public userSettingsService: UserSettingsService,
-                private route: ActivatedRoute,
-                private growlService: GrowlService) {
+                public route: ActivatedRoute,
+                public growlService: GrowlService) {
 
     }
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { LoginModel } from "../login/login.model";
-import { Http, Response, Headers } from "@angular/http";
+import { Http, Response, Headers, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs";
 import { TokenService } from "./auth/token.service";
 
@@ -14,6 +14,30 @@ export class FeathersService {
         this.localEndpoint = 'authentication';
         this.urlSuffix = '/';
         this.urlPrefix = '/api' + this.urlSuffix;
+    }
+
+    /**
+     * Sends mail. Returns a forgotten password
+     * @param email
+     * @returns {any}
+     */
+    sendMail(email: string = '') {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Authorization', this.tokenService.getToken());
+
+        return Observable.create((observer) => {
+            this.http.post(this.urlPrefix + 'send-mail', { email: email },
+                { headers: headers })
+                .subscribe((res: Response) => {
+                    observer.next(res);
+                    observer.complete();
+                }, (err) => {
+                    observer.error(err);
+                    observer.complete();
+                });
+
+        });
     }
 
     /**
@@ -73,16 +97,20 @@ export class FeathersService {
     /**
      * Retrieves a list of all resources from the service
      * @param serviceName
-     * @return {any}
+     * @param search
+     * @returns {any}
      */
-    find(serviceName: string = '') {
+    find(serviceName: string = '', search?: string|URLSearchParams) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', this.tokenService.getToken());
 
         return Observable.create((observer) => {
             this.http.get(this.urlPrefix + serviceName + this.urlSuffix,
-                { headers: headers })
+                {
+                    headers: headers,
+                    search: search ? search : ''
+                })
                 .subscribe((res: Response) => {
                     observer.next(res);
                     observer.complete();

@@ -32,18 +32,20 @@
 			<h1 class="title">{{ 'login.recoveryPasswordTitle' | translate }}
 				<div class="close" (click)="toggle=false"></div>
 			</h1>
-			<form role="form" (ngSubmit)="restorePassword(forgotEmailAddress)" #loginForm="ngForm" novalidate>
+			<form role="form" (ngSubmit)="restorePassword(forgotEmailAddress)" #restorePasswordForm="ngForm" novalidate>
 
 				<div class="input-container">
 					<input type="text" required id="email"
+					       pattern="^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@([a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*(aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$"
 					       [(ngModel)]="forgotEmailAddress" name="email"
 					       autocomplete="on" #email="ngModel"/>
 					<label for="Email">{{"login.emailAddress" | translate}}</label>
 					<div class="bar"></div>
 				</div>
 				<div class="button-container">
-					<button type="submit" class="submitButton" [disabled]="loginForm.form.invalid">
+					<button type="submit" class="submitButton" [disabled]="restorePasswordForm.form.invalid">
 						<span>{{'login.send' | translate}}</span>
+						<i *ngIf="showSendMailSpinner" class="fa fa-spinner fa-pulse fa-3x fa-fw loading-spinner"></i>
 					</button>
 				</div>
 			</form>
