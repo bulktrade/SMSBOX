@@ -1,17 +1,18 @@
 'use strict';
 
 const knex = require('knex');
-const config = require('./../../config');
 
-const db = knex({
-  client: config.databaseClient,
-  useNullAsDefault: true,
-  connection: {
-    host: config.databaseHost,
-    user: config.databaseUser,
-    password: config.databasePassword,
-    database: config.databaseName
-  }
-});
+module.exports = function (app) {
+  const dbConfig = app.get('database');
 
-module.exports = db;
+  return knex({
+    client: dbConfig.client,
+    useNullAsDefault: true,
+    connection: {
+      host: dbConfig.host,
+      user: dbConfig.user,
+      password: dbConfig.password,
+      database: dbConfig.name
+    }
+  });
+};

@@ -1,16 +1,16 @@
-const config = require('./src/config');
+const dbConfig = require('config').get('database');
 const path = require('path');
 
 module.exports = {
 
   development: {
-    client: config.databaseClient,
+    client: dbConfig.client,
     useNullAsDefault: true,
     connection: {
-      host: config.databaseHost,
-      user: config.databaseUser,
-      password: config.databasePassword,
-      database: config.databaseName
+      host: dbConfig.host,
+      user: dbConfig.user,
+      password: dbConfig.password,
+      database: dbConfig.name
     },
     pool: {
       min: 2,

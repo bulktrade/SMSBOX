@@ -3,7 +3,7 @@ const errors = require('feathers-errors');
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const config = require('./../../config');
+const config = require('config');
 
 module.exports = function (app) {
 
@@ -12,10 +12,10 @@ module.exports = function (app) {
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      service: config.nodemailService,
+      service: config.get('mailer').service,
       auth: {
-        user: config.nodemailUsername,
-        pass: config.nodemailPassword
+        user: config.get('mailer').username,
+        pass: config.get('mailer').password
       }
     });
 
@@ -36,11 +36,11 @@ module.exports = function (app) {
       })
       .then(function (entity) {
 
-        const forgottenPassword = _crypto.AES.decrypt(entity[ 'password' ], config.secretKey);
+        const forgottenPassword = _crypto.AES.decrypt(entity[ 'password' ], config.get('secretKey'));
 
         // setup e-mail data with unicode symbols
         const mailOptions = {
-          from: config.nodemailUsername, // sender address
+          from: config.get('mailer').username, // sender address
           to: to, // list of receivers
           subject: 'Restore password', // Subject line
           text: `

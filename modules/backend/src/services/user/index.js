@@ -8,7 +8,7 @@ module.exports = function () {
 	const app = this;
 
 	const options = {
-		Model: users,
+		Model: users(app),
 		name: 'USER',
 		paginate: {
 			default: 5,

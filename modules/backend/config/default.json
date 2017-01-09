@@ -1,13 +1,26 @@
 {
-  "host": "localhost",
-  "port": 3030,
-  "mysql": "mysql://root:@localhost:3306/smsbox",
-  "public": "../public/",
-  "auth": {
-    "idField": "id",
-    "token": {
-      "secret": "TeIZq2EawZGkCG8dk0wsJM7VwKNRTbjbmZPIOp0nxz7nYALW9qpl1qZUT588iI/LdtNG905nO/qDy2SAq9OIWQ=="
+    "host": "localhost",
+    "port": 3030,
+    "mysql": "mysql://root:@localhost:3306/smsbox",
+    "public": "../public/",
+    "secretKey": "smsbox",
+    "auth": {
+        "idField": "id",
+        "token": {
+            "secret": "TeIZq2EawZGkCG8dk0wsJM7VwKNRTbjbmZPIOp0nxz7nYALW9qpl1qZUT588iI/LdtNG905nO/qDy2SAq9OIWQ=="
+        },
+        "local": {}
     },
-    "local": {}
-  }
+    "database": {
+        "client": "mysql",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "name": "smsbox"
+    },
+    "mailer": {
+        "service": "",
+        "username": "",
+        "password": ""
+    }
 }

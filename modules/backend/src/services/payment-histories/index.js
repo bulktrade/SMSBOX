@@ -8,7 +8,7 @@ module.exports = function () {
 	const app = this;
 
 	const options = {
-		Model: paymentHistories,
+		Model: paymentHistories(app),
 		name: 'PAYMENT_HISTORY',
 		paginate: {
 			default: 5,

@@ -8,7 +8,7 @@ module.exports = function () {
 	const app = this;
 
 	const options = {
-		Model: messages,
+		Model: messages(app),
 		name: 'MESSAGE',
 		paginate: {
 			default: 5,

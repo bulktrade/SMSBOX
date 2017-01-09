@@ -1,13 +1,25 @@
 {
-  "host": "smsbox-app.feathersjs.com",
-  "port": 3030,
-  "mysql": "DATABASE_URL",
-  "public": "../public/",
-  "auth": {
-    "idField": "id",
-    "token": {
-      "secret": "FEATHERS_AUTH_SECRET"
+    "host": "smsbox-app.feathersjs.com",
+    "port": 3030,
+    "mysql": "DATABASE_URL",
+    "public": "../public/",
+    "auth": {
+        "idField": "id",
+        "token": {
+            "secret": "smsbox"
+        },
+        "local": {}
     },
-    "local": {}
-  }
+    "database": {
+        "clint": "mysql",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "name": "smsbox"
+    },
+    "mailer": {
+        "service": "",
+        "username": "",
+        "password": ""
+    }
 }
