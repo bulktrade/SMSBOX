@@ -18,6 +18,7 @@ import { AuthService } from "../services/auth/auth.service";
 })
 
 export class LoginComponent {
+    public forgotEmailAddress: string = '';
     public model: LoginModel = new LoginModel('', '');
     public toggle: boolean = false;
     public showSendMailSpinner: boolean = false;

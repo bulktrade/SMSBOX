@@ -1,7 +1,6 @@
-let http = require('http');
-let httpProxy = require('http-proxy');
-
-let proxy = httpProxy.createProxy();
+const http = require('http');
+const express = require('express');
+const proxy = require('http-proxy-middleware');
 
 let childProcess = require('child_process'),
     backend,
@@ -77,17 +76,24 @@ backend.stderr.on('data', function(data) {
     console.error(`Backend stderr: ${data}`);
 });
 
-http.createServer(function (req, res) {
-    let target;
+// proxy middleware options
+const serverOptions = {
+  target: 'http://localhost:8080',  // target host
+  changeOrigin: true,               // needed for virtual hosted sites
+  ws: true                          // proxy websockets
+};
 
-    if (req.url.indexOf('/api') == 0) {
-        target = 'http://127.0.0.1:3030';
-    } else {
-        target = 'http://127.0.0.1:8080';
-    }
+// proxy middleware options
+const clientOptions = {
+  target: 'http://localhost:3030',  // target host
+  changeOrigin: true,               // needed for virtual hosted sites
+  ws: true,                         // proxy websockets
+  pathRewrite: {
+    '^/api' : '/',                  // rewrite path
+  },
+};
 
-    proxy.web(req, res, {
-        target: target,
-        ws: true
-    });
-}).listen(80);
+const app = express();
+app.use('/api', proxy(clientOptions));
+app.use('/', proxy(serverOptions));
+app.listen(80);

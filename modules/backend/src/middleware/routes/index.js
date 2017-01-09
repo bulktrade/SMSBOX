@@ -54,7 +54,7 @@ module.exports = function (app) {
           if (error) {
             return res.status(error.responseCode).send(error);
           }
-          res.status(201).send({ 'Message sent': info });
+          res.status(201).send(info);
         });
 
       })

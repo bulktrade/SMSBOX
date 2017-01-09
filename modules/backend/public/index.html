@@ -3,9 +3,130 @@
 <head>
 	<meta charset="UTF-8">
 	<title>smsc.io</title>
-	<link rel="stylesheet" href="style.css">
 </head>
 <body>
+	<style>
+		*, *:before, *:after {
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+
+		html, body {
+			font-family: 'Helvetica Neue', 'Helevetica', 'Arial', 'sans-serif';
+			font-weight: 400;
+			font-size: 16px;
+		}
+
+		main {
+			padding: 20px;
+		}
+
+		section {
+			padding: 20px;
+			border: 1px solid #EEE;
+			margin: 20px 0;
+		}
+
+		img.logo {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			display: block;
+			width: 180px;
+		}
+
+		h1 {
+			font-weight: 100;
+			font-size: 3em;
+			margin-bottom: 10px;
+		}
+
+		h3 {
+			font-size: 1.4em;
+			font-weight: 300;
+			margin-bottom: 10px;
+		}
+
+		button,
+		.button {
+			color: #FFF;
+			border: #29C9A5;
+			background: #29C9A5;
+			font-size: 1.0em;
+			padding: 0.8em 1.2em;
+			text-decoration: none;
+		}
+
+		button:hover,
+		button:focus,
+		.button:hover,
+		.button:focus {
+			cursor: pointer;
+			background: #1DAE8E;
+			border: #1DAE8E;
+			text-decoration: none;
+		}
+
+		form > fieldset {
+			position: relative;
+			padding: 10px 0;
+			border: none;
+			margin: 0;
+		}
+
+		form > fieldset:first-child {
+			padding-top: 10px;
+		}
+
+		form > fieldset:last-child {
+			padding-bottom: 10px;
+		}
+
+		fieldset > label {
+			display: block;
+			margin-bottom: 2px;
+			text-transform: uppercase;
+			font-size: 0.6em;
+			font-weight: 300;
+			color: #AEAEAE;
+		}
+
+		form > fieldset > input {
+			padding: 0.8em 0.6em;
+			font-size: 1em;
+			box-sizing: border-box;
+		}
+
+		.container {
+			padding: 0 60px;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.center-text {
+			text-align: center;
+		}
+
+		.left-text {
+			text-align: left;
+		}
+
+		.block {
+			display: block;
+		}
+
+		.full {
+			width: 100%;
+		}
+	</style>
+
 	<div class="container center-text">
 		<section>
 			<h3>Login</h3>

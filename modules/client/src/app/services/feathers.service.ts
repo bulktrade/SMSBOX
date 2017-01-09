@@ -24,7 +24,6 @@ export class FeathersService {
     sendMail(email: string = '') {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        headers.append('Authorization', this.tokenService.getToken());
 
         return Observable.create((observer) => {
             this.http.post(this.urlPrefix + 'send-mail', { email: email },
