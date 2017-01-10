@@ -6,11 +6,13 @@ addons:
 
 services:
   - mysql
+  - docker
 
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS smsbox;'
 
 cache:
+  docker: true
   directories:
     - modules/client/node_modules
     - .autoconf
