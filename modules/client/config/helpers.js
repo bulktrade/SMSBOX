@@ -1,6 +1,3 @@
-/**
- * @author: @AngularClass
- */
 let path = require('path');
 
 const EVENT = process.env.npm_lifecycle_event || '';
