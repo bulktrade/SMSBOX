@@ -8,7 +8,7 @@ const config = require('config');
 module.exports = function (app) {
 
   return router.post('/send-mail', function (req, res, next) {
-    const to = req.body[ 'email' ] || ''; // sender address
+    const to = req.body.email || ''; // sender address
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
@@ -36,7 +36,7 @@ module.exports = function (app) {
       })
       .then(function (entity) {
 
-        const forgottenPassword = _crypto.AES.decrypt(entity[ 'password' ], config.get('secretKey'));
+        const forgottenPassword = _crypto.AES.decrypt(entity.password, config.get('secretKey'));
 
         // setup e-mail data with unicode symbols
         const mailOptions = {
@@ -57,7 +57,7 @@ module.exports = function (app) {
           res.status(201).send(info);
         });
 
-      })
+      });
   });
 
 };

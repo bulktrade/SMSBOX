@@ -4,6 +4,8 @@ import { Http, Response, Headers, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs";
 import { TokenService } from "./auth/token.service";
 
+const HOST = process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3030';
+
 @Injectable()
 export class FeathersService {
     private urlPrefix: string;
@@ -13,7 +15,7 @@ export class FeathersService {
     constructor(private http: Http, private tokenService: TokenService) {
         this.localEndpoint = 'authentication';
         this.urlSuffix = '/';
-        this.urlPrefix = '/api' + this.urlSuffix;
+        this.urlPrefix = HOST + this.urlSuffix;
     }
 
     /**
