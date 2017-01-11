@@ -200,7 +200,7 @@ export class FeathersService {
     }
 
     /**
-     *
+     * Use the skip/limit to paginate a data
      * @param skip will skip the specified number of results
      * @param limit will return only the number of results you specify
      * @param serviceName
