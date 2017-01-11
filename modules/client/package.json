@@ -18,7 +18,6 @@
     "build:dev": "npm run clean:dist && webpack --config config/webpack.dev.js --progress --profile",
     "build:universal": "webpack --config config/webpack.universal.js --progress --profile",
     "build:prod": "npm run clean:dist && webpack --config config/webpack.prod.js  --progress --profile --bail",
-    "build:universal:aot": "webpack --config config/webpack.universal.js --progress --profile",
     "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
     "build:prod:ngc": "npm run clean:ngc && npm run ngc",
     "ngc": "./node_modules/.bin/ngc -p tsconfig.aot.json",

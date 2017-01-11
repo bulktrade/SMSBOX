@@ -8,7 +8,7 @@ import { CrudCreateResolve } from "./crud-create/crud-create.resolve";
 import { CrudUpdateComponent } from "./crud-update/crud-update.component";
 import { CrudUpdateResolve } from "./crud-update/crud-update.resolve";
 
-const CRUD_ROUTE_PROVIDER = [
+export const CRUD_ROUTES = [
     {
         path: '',
         component: CrudViewComponent,
@@ -44,7 +44,7 @@ const CRUD_ROUTE_PROVIDER = [
 
 @NgModule({
     imports: [
-        RouterModule.forChild(CRUD_ROUTE_PROVIDER)
+        RouterModule.forChild(CRUD_ROUTES)
     ],
     exports: [
         RouterModule

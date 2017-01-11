@@ -207,15 +207,20 @@ export class FeathersService {
      * @returns {any}
      */
     pagination(skip: number|string = '', limit: number|string = '', serviceName: string = '') {
-        let query = '?$skip=' + skip + '&$limit=' + limit;
+        let search = new URLSearchParams();
+        search.set('skip', skip + '');
+        search.set('limit', limit + '');
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', this.tokenService.getToken());
 
         return Observable.create((observer) => {
-            this.http.get(this.urlPrefix + serviceName + this.urlSuffix + query,
-                { headers: headers })
+            this.http.get(this.urlPrefix + serviceName + this.urlSuffix,
+                {
+                    headers: headers,
+                    search: search
+                })
                 .subscribe((res: Response) => {
                     observer.next(res);
                     observer.complete();

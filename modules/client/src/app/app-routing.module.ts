@@ -22,6 +22,7 @@ import { CrudComponent } from "./crud/crud.component";
 import { LoginGuard } from "./login/login.guard";
 import { CrudMainResolve } from "./crud/crud.resolve";
 import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
+import { CRUD_ROUTES } from "./crud/crud-routing.module";
 
 export const ROUTES: Routes = [
     {
@@ -58,7 +59,7 @@ export const ROUTES: Routes = [
                     {
                         path: '',
                         component: CrudComponent,
-                        loadChildren: './crud/crud.module#CrudModule',
+                        children: CRUD_ROUTES,
                         resolve: { crud: CrudMainResolve },
                         data: {
                             showInBreadcrumb: false

@@ -26,7 +26,17 @@ export class CrudViewResolve extends CrudResolve {
 
                             observer.next(gridOptions);
                             observer.complete();
+                        }, err => {
+                            gridOptions.rowData = [];
+
+                            observer.next(gridOptions);
+                            observer.complete();
                         });
+                }, err => {
+                    gridOptions.columnDefs = [];
+
+                    observer.next(gridOptions);
+                    observer.complete();
                 });
         });
     }
