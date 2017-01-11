@@ -19,6 +19,14 @@ type StoreType = {
     disposeOldHosts: () => void
 };
 
+export function _isBrowser() {
+    return isBrowser;
+}
+
+export function _isNode() {
+    return isNode;
+}
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -35,8 +43,8 @@ type StoreType = {
     providers: [ // expose our Services and Providers into Angular's dependency injection
         ENV_PROVIDERS,
         APP_PROVIDERS,
-        { provide: 'isBrowser', useValue: isBrowser },
-        { provide: 'isNode', useValue: isNode }
+        { provide: 'isBrowser', useFactory: _isBrowser },
+        { provide: 'isNode', useFactory: _isNode }
     ]
 })
 export class MainModule {
