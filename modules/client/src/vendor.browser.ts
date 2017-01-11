@@ -26,7 +26,7 @@ import 'chart.js';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-if ('production' === ENV) {
+if ('production' === process.env.NODE_ENV) {
   // Production
 
 

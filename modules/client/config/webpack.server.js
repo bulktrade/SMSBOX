@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
@@ -32,29 +33,8 @@ const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-
-var serverPlugins = [
-  new webpack.IgnorePlugin(/vertx/),
-  new ForkCheckerPlugin(),
-  new ContextReplacementPlugin(
-    // The (\\|\/) piece accounts for path separators in *nix and Windows
-    /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-    helpers.root('src') // location of your src
-  ),
-  new LoaderOptionsPlugin({}),
-];
-
 module.exports = function (options) {
-  let serverConfig = webpackMerge(commonConfig({ env: ENV }), {
-    entry: [
-      './src/vendor.node',
-      './src/main.node.aot'
-    ],
-    output: {
-      path: helpers.root('dist/server'),
-      filename: 'index.js',
-      libraryTarget: 'commonjs2'
-    },
+  let config = webpackMerge(commonConfig({ env: ENV }), {
     target: "node",
     node: {
       global: false,
@@ -63,6 +43,11 @@ module.exports = function (options) {
       process: false,
       Buffer: false
     },
+    entry: [
+      './src/polyfills.node',
+      './src/vendor.node',
+      './src/main.node'
+    ],
     module: {
       rules: [
         {
@@ -72,24 +57,28 @@ module.exports = function (options) {
             search: /HTMLElement/g,
             replace: 'function(){}'
           }
-        },
+        }
       ]
+    },
+    output: {
+      path: helpers.root('dist/server'),
+      filename: 'index.js',
+      libraryTarget: 'commonjs2'
     }
   });
+  config.plugins = [
+    new webpack.IgnorePlugin(/vertx/),
+    new ForkCheckerPlugin(),
+    new ContextReplacementPlugin(
+      // The (\\|\/) piece accounts for path separators in *nix and Windows
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      helpers.root('src') // location of your src
+    ),
+    new LoaderOptionsPlugin({}),
+  ];
 
-  serverConfig.plugins = serverPlugins;
-
-  return serverConfig;
+  return config;
 };
-
-function includeClientPackages(packages) {
-  return function (context, request, cb) {
-    if (packages && packages.indexOf(request) !== -1) {
-      return cb();
-    }
-    return checkNodeImport(context, request, cb);
-  };
-}
 
 // Helpers
 function checkNodeImport(context, request, cb) {

@@ -10,7 +10,7 @@ import 'angular2-universal-polyfills';
 // Typescript emit helpers polyfill
 import 'ts-helpers';
 
-if ('production' === process.env.ENV) {
+if ('production' === process.env.NODE_ENV) {
   // Production
 
 
