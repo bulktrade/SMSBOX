@@ -85,7 +85,8 @@ var LocalVerifier = (function () {
         return Promise.reject(new Error('\'' + this.options.entity + '\' record in the database is missing a \'' + this.options.passwordField + '\''));
       }
 
-      decrypted = _crypto.AES.decrypt(decrypted, config.get('secretKey')).toString(_crypto.enc.Utf8);
+      decrypted = _crypto.AES.decrypt(decrypted,
+        process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : config.get('secretKey')).toString(_crypto.enc.Utf8);
 
       debug('Verifying password');
 

@@ -1,6 +1,7 @@
 const http = require('http');
 const express = require('express');
 const proxy = require('http-proxy-middleware');
+const config = require('./config');
 
 let childProcess = require('child_process'),
     backend,
@@ -8,7 +9,7 @@ let childProcess = require('child_process'),
 
 client = childProcess.exec('node modules/client/dist/server', {
     env: {
-        PORT: 8080
+        PORT: process.env.CLIENT_PORT ? process.env.CLIENT_PORT : 8080
     }
 }, function (error, stdout, stderr) {
     if (error) {

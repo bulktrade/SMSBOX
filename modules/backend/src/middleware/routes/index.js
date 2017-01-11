@@ -12,10 +12,10 @@ module.exports = function (app) {
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      service: config.get('mailer').service,
+      service: process.env.BACKEND_MAILER_SERVISE ? process.env.BACKEND_MAILER_SERVISE : config.get('mailer').service,
       auth: {
-        user: config.get('mailer').username,
-        pass: config.get('mailer').password
+        user: process.env.BACKEND_MAILER_USERNAME ? process.env.BACKEND_MAILER_USERNAME : config.get('mailer').username,
+        pass: process.env.BACKEND_MAILER_PASSWORD ? process.env.BACKEND_MAILER_PASSWORD : config.get('mailer').password
       }
     });
 
@@ -36,11 +36,12 @@ module.exports = function (app) {
       })
       .then(function (entity) {
 
-        const forgottenPassword = _crypto.AES.decrypt(entity.password, config.get('secretKey'));
+        const forgottenPassword = _crypto.AES.decrypt(entity.password,
+          process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : config.get('secretKey'));
 
         // setup e-mail data with unicode symbols
         const mailOptions = {
-          from: config.get('mailer').username, // sender address
+          from: process.env.BACKEND_MAILER_USERNAME ? process.env.BACKEND_MAILER_USERNAME : config.get('mailer').username, // sender address
           to: to, // list of receivers
           subject: 'Restore password', // Subject line
           text: `

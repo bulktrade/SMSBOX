@@ -1,7 +1,7 @@
 'use strict';
 
 const service = require('feathers-knex');
-const invoices = require('./invoices-model');
+const invoices = require('./../common/model');
 const hooks = require('./hooks');
 
 module.exports = function () {
