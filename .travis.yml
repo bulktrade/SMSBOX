@@ -30,6 +30,12 @@ install:
   - cd modules/client && npm install
   - cd ../backend && npm install && cd ../client
 
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    fi
+  - mvn clean -DrepoToken=$COVERALLS_REPO_TOKEN cobertura:cobertura coveralls:report
+
 script:
   - npm test
   - npm run start &
