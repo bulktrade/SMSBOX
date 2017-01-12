@@ -1,10 +1,9 @@
 import { Component } from "@angular/core";
-import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
 import { CrudService } from "../crud.service";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
-import { Response } from "@angular/http";
+import { ColFormDefs } from "../model/column/column-form";
 
 @Component({
     selector: 'crud-update',
@@ -17,7 +16,7 @@ import { Response } from "@angular/http";
 
 export class CrudUpdateComponent {
     id: string;
-    columnDefs: ColDef[] = [];
+    columnDefs: ColFormDefs[] = [];
     model = {};
 
     constructor(private route: ActivatedRoute,
@@ -33,7 +32,6 @@ export class CrudUpdateComponent {
             });
 
         this.columnDefs = this.getColumnDefs();
-        this.columnDefs = this.crudService.hideColumnDefs(this.columnDefs, ['id']);
         this.model = this.getModel() || {};
     }
 

@@ -3,48 +3,41 @@ import { Response } from "@angular/http";
 import { Observable } from "rxjs";
 import { ColDef } from "ag-grid";
 import { TranslateService } from "ng2-translate";
-import { Router } from "@angular/router";
 import { FeathersService } from "../services/feathers.service";
+import * as clone from "js.clone";
+import { ColFormDefs } from "./model/column/column-form";
 
 @Injectable()
 export class CrudService {
     feathersServiceName: string = null;
+    columnDefinitions;
 
     constructor(private translate: TranslateService,
-                private router: Router,
                 private feathersService: FeathersService) {
     }
 
-    getColumnDefs(serviceName: string): Observable<ColDef[]> {
+    getColumnGridDefs(): Observable<ColDef[]> {
         return Observable.create((observer) => {
 
-            this.getRowData(serviceName)
-                .subscribe((data) => {
-                    this.translateColumns(Object.keys(data[0]))
-                        .subscribe((res: ColDef[]) => {
-                            observer.next(res);
-                            observer.complete();
-                        });
-                }, err => {
-                    observer.error(err);
+            this.translateColumns(this.getColumnDefinitions().colGridDefs)
+                .subscribe((columns: ColDef[]) => {
+                    observer.next(columns);
                     observer.complete();
                 });
 
         });
     }
 
-    hideColumnDefs(columnDefs: ColDef[], hideColumns: string[]): ColDef[] {
-        let result: ColDef[] = columnDefs;
+    getColumnFormDefs(): Observable<ColDef[]> {
+        return Observable.create((observer) => {
 
-        hideColumns.forEach(hideColumn => {
-            result.forEach((columnDef, index, object) => {
-                if (columnDef.field === hideColumn) {
-                    object.splice(index, 1);
-                }
-            });
+            this.translateColumns(this.getColumnDefinitions().colFormDefs)
+                .subscribe((columns: ColFormDefs[]) => {
+                    observer.next(columns);
+                    observer.complete();
+                });
+
         });
-
-        return result;
     }
 
     getRowData(serviceName: string): Observable<Object[]> {
@@ -63,27 +56,25 @@ export class CrudService {
     }
 
     translateColumns(columns): Observable<ColDef[]> {
-        let colDefs: ColDef[] = [];
+        let colDefs = clone(columns);
+        let store = [];
 
-        return Observable.create((observer) => {
+        colDefs.forEach(i => {
+            store.push(Observable.create((observer) => {
 
-            this.translate.get(columns)
-                .subscribe(columnsName => {
-                    for (let columnName in columnsName) {
-                        if (columnsName.hasOwnProperty(columnName)) {
-                            colDefs.push(<ColDef>{
-                                headerName: columnsName[columnName],
-                                field: columnName,
-                                editable: true
-                            });
-                        }
-                    }
+                this.translate.get(i.headerName)
+                    .subscribe(columnsName => {
+                        i.headerName = columnsName;
 
-                    observer.next(colDefs);
-                    observer.complete();
-                });
+                        observer.next(true);
+                        observer.complete();
+                    });
 
+            }));
         });
+
+        return Observable.forkJoin(store)
+            .map(columns => colDefs);
     }
 
     getFeathersServiceName(): string {
@@ -92,5 +83,13 @@ export class CrudService {
 
     setFeathersServiceName(value: string) {
         this.feathersServiceName = value;
+    }
+
+    getColumnDefinitions() {
+        return this.columnDefinitions;
+    }
+
+    setColumnDefinitions(value) {
+        this.columnDefinitions = value;
     }
 }

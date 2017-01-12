@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { ColDef } from "ag-grid";
 import { ActivatedRoute } from "@angular/router";
 import { FeathersService } from "../../services/feathers.service";
 import { GrowlService } from "../../services/growl/growl.service";
 import { CrudService } from "../crud.service";
+import { ColFormDefs } from "../model/column/column-form";
 
 @Component({
     selector: 'crud-create',
@@ -15,7 +15,7 @@ import { CrudService } from "../crud.service";
 })
 
 export class CrudCreateComponent {
-    columnDefs: ColDef[] = [];
+    columnDefs: ColFormDefs[] = [];
 
     constructor(private route: ActivatedRoute,
                 private crudService: CrudService,
@@ -25,11 +25,10 @@ export class CrudCreateComponent {
 
     ngOnInit() {
         this.columnDefs = this.getColumnDefs();
-        this.columnDefs = this.crudService.hideColumnDefs(this.columnDefs, ['id']);
     }
 
     getColumnDefs() {
-        return this.route.snapshot.data['create'];
+        return this.route.snapshot.data['create'].columnDefs;
     }
 
     createRecord(model) {

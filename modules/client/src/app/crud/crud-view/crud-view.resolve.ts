@@ -16,7 +16,7 @@ export class CrudViewResolve extends CrudResolve {
         let gridOptions: GridOptions = <GridOptions>{};
 
         return Observable.create((observer) => {
-            this.crudService.getColumnDefs(this.crudService.getFeathersServiceName())
+            this.crudService.getColumnGridDefs()
                 .subscribe(columnDefs => {
                     gridOptions.columnDefs = columnDefs;
 

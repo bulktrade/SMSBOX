@@ -23,6 +23,7 @@ import { LoginGuard } from "./login/login.guard";
 import { CrudMainResolve } from "./crud/crud.resolve";
 import { UserSettingsResolve } from "./user/settings/user-settings.resolve";
 import { CRUD_ROUTES } from "./crud/crud-routing.module";
+import { AdminUsersColDefs } from "./admin/users/admin-users-columns";
 
 export const ROUTES: Routes = [
     {
@@ -53,7 +54,8 @@ export const ROUTES: Routes = [
                     showInBreadcrumb: true,
                     translationKey: 'ADMIN_USER_BREADCRUMB_TITLE',
                     showNavigationBar: true,
-                    feathersService: 'users'
+                    feathersService: 'users',
+                    columnsDefinitions: AdminUsersColDefs
                 },
                 children: [
                     {

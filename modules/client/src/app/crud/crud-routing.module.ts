@@ -25,7 +25,7 @@ export const CRUD_ROUTES = [
         }
     },
     {
-        path: 'create/:serviceName',
+        path: 'create',
         component: CrudCreateComponent,
         resolve: { create: CrudCreateResolve },
         data: {

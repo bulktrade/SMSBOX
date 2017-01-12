@@ -206,8 +206,8 @@ export class FeathersService {
      */
     pagination(skip: number|string = '', limit: number|string = '', serviceName: string = '') {
         let search = new URLSearchParams();
-        search.set('skip', skip + '');
-        search.set('limit', limit + '');
+        search.set('$skip', skip + '');
+        search.set('$limit', limit + '');
 
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

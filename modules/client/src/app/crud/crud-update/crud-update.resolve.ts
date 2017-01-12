@@ -20,7 +20,7 @@ export class CrudUpdateResolve extends CrudResolve {
         let id = route.params['id'];
 
         return Observable.create((observer) => {
-            this.crudService.getColumnDefs(this.crudService.getFeathersServiceName())
+            this.crudService.getColumnFormDefs()
                 .subscribe(columnDefs => {
                     gridOptions.columnDefs = columnDefs;
 

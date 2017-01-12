@@ -13,6 +13,7 @@ export class CrudMainResolve extends CrudResolve {
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         this.crudService.setFeathersServiceName(route.parent.data['feathersService']);
+        this.crudService.setColumnDefinitions(route.parent.data['columnsDefinitions']);
 
         return undefined;
     }
