@@ -18,7 +18,7 @@ export class AuthService {
         headers.append('Content-Type', 'application/json');
 
         return Observable.create((observer) => {
-            this.feathersService.authentication(model)
+            this.feathersService.authentication(model.email, model.password)
                 .subscribe(
                     data => {
                         this.tokenService.setToken(data.json()['accessToken']);

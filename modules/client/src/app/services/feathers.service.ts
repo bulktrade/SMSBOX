@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { LoginModel } from "../login/login.model";
 import { Http, Response, Headers, URLSearchParams } from "@angular/http";
 import { Observable } from "rxjs";
 import { TokenService } from "./auth/token.service";
@@ -43,22 +42,21 @@ export class FeathersService {
 
     /**
      * User authentication. Returns a JWT token if authentication was successful
-     *
-     * @example
-     * let userModel = new LoginModel('root', '123f');
-     * authentication(userModel) // should get a JWT token
-     *
-     * @param model
+     * @param username
+     * @param password
      * @param localEndpoint
-     * @return {any}
+     * @returns {any}
      */
-    authentication(model: LoginModel, localEndpoint?: string) {
+    authentication(username: string = '', password: string = '', localEndpoint?: string) {
         if (localEndpoint) {
             this.localEndpoint = localEndpoint;
         }
 
         return Observable.create((observer) => {
-            this.http.post(this.urlPrefix + this.localEndpoint, model)
+            this.http.post(this.urlPrefix + this.localEndpoint, {
+                username: username,
+                password: password
+            })
                 .subscribe((res: Response) => {
                     observer.next(res);
                     observer.complete();

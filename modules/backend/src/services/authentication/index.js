@@ -9,7 +9,7 @@ module.exports = function () {
   const app = this;
 
   app.configure(authentication({ secret: process.env.BACKEND_SECRET_KEY }))
-    .configure(local({ Verifier: LocalVerifier }))
+    .configure(local({ Verifier: LocalVerifier, usernameField: 'username' }))
     .configure(jwt());
 
   app.service('authentication').hooks({

@@ -4,10 +4,10 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _createClass = (function () {
+let _createClass = (function () {
   function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[ i ];
+    for (let i = 0; i < props.length; i++) {
+      let descriptor = props[ i ];
       descriptor.enumerable = descriptor.enumerable || false;
       descriptor.configurable = true;
       if ('value' in descriptor) {
@@ -53,11 +53,11 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-var debug = (_debug2.default)('feathers-authentication-local:verify');
+let debug = (_debug2.default)('feathers-authentication-local:verify');
 
-var LocalVerifier = (function () {
+let LocalVerifier = (function () {
   function LocalVerifier(app) {
-    var options = arguments.length > 1 && arguments[ 1 ] !== undefined ? arguments[ 1 ] : {};
+    let options = arguments.length > 1 && arguments[ 1 ] !== undefined ? arguments[ 1 ] : {};
 
     _classCallCheck(this, LocalVerifier);
 
@@ -77,7 +77,7 @@ var LocalVerifier = (function () {
   _createClass(LocalVerifier, [ {
     key: '_comparePassword',
     value: function _comparePassword(entity, password) {
-      var decrypted = entity[ this.options.passwordField ];
+      let decrypted = entity[ this.options.passwordField ];
 
       if (!decrypted) {
         return Promise.reject(new Error('\'' + this.options.entity + '\' record in the database is missing a \'' + this.options.passwordField + '\''));
@@ -104,8 +104,8 @@ var LocalVerifier = (function () {
     key: '_normalizeResult',
     value: function _normalizeResult(results) {
       // Paginated services return the array of results in the data attribute.
-      var entities = results.data ? results.data : results;
-      var entity = entities[ 0 ];
+      let entities = results.data ? results.data : results;
+      let entity = entities[ 0 ];
 
       // Handle bad username.
       if (!entity) {
@@ -118,18 +118,22 @@ var LocalVerifier = (function () {
   }, {
     key: 'verify',
     value: function verify(req, username, password, done) {
-      var _query,
+      let _query,
         _this = this;
 
       debug('Checking credentials', username, password);
-      var query = (_query = {}, _defineProperty(_query, this.options.usernameField, username), _defineProperty(_query, '$limit', 1), _query);
+      let query = (_query = {}, _defineProperty(_query, '$limit', 1), _query);
+      query[ '$or' ] = [
+        { email: username },
+        { telephoneNumber: username }
+      ];
 
       // Look up the entity
       this.service.find({ query: query }).then(this._normalizeResult).then(function (entity) {
         return _this._comparePassword(entity, password);
       }).then(function (entity) {
-        var id = entity[ _this.service.id ];
-        var payload = _defineProperty({}, _this.options.entity + 'Id', id);
+        let id = entity[ _this.service.id ];
+        let payload = _defineProperty({}, _this.options.entity + 'Id', id);
         done(null, entity, payload);
       }).catch(function (error) {
         return error ? done(error) : done(null, error);

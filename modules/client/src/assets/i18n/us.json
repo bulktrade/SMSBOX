@@ -1,6 +1,6 @@
 {
     "login.title": "Login",
-    "login.emailAddress": "Email address",
+    "login.emailAddress": "Number or email",
     "login.password": "Password",
     "login.submit": "Log in",
     "login.userNotFound": "The credentials you supplied were not correct!",
@@ -11,7 +11,7 @@
     "forgotPassword.commonError": "Mail was not send",
     "forgotPassword.userNotFound": "The email you supplied were not correct!",
     "signup.title": "Signup",
-    "signup.emailAddress": "Email address",
+    "signup.emailAddress": "Number or email",
     "signup.password": "Password",
     "signup.confirmPassword": "Confirm password",
     "signup.submit": "Sign up",
