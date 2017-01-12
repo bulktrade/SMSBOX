@@ -34,7 +34,7 @@ exports.default = function (options) {
 
     // Encrypt
     var ciphertext = _crypto.AES.encrypt(dataToCheck[ passwordField ],
-      process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : hook.app.get('secretKey'));
+      process.env.BACKEND_SECRET_KEY);
 
     dataToCheck[ passwordField ] = ciphertext.toString();
 

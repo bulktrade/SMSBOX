@@ -8,7 +8,7 @@ const LocalVerifier = require('./auth-verifier');
 module.exports = function () {
   const app = this;
 
-  app.configure(authentication({ secret: process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : app.get('secretKey') }))
+  app.configure(authentication({ secret: process.env.BACKEND_SECRET_KEY }))
     .configure(local({ Verifier: LocalVerifier }))
     .configure(jwt());
 

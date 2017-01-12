@@ -9,17 +9,5 @@
             "secret": "smsbox"
         },
         "local": {}
-    },
-    "database": {
-        "clint": "mysql",
-        "host": "127.0.0.1",
-        "user": "root",
-        "password": "",
-        "name": "smsbox"
-    },
-    "mailer": {
-        "service": "",
-        "username": "",
-        "password": ""
     }
 }

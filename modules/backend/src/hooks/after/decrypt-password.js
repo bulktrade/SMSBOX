@@ -35,7 +35,7 @@ exports.default = function (options) {
 
     // Decrypt
     var decrypted = _crypto.AES.decrypt(dataToCheck[ passwordField ],
-      process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY :hook.app.get('secretKey'));
+      process.env.BACKEND_SECRET_KEY);
 
     dataToCheck[ passwordField ] = decrypted.toString(_crypto.enc.Utf8);
 

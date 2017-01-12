@@ -34,8 +34,6 @@ const _debug2 = _interopRequireDefault(_debug);
 
 const _crypto = require('crypto-js');
 
-const config = require('config');
-
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
@@ -86,7 +84,7 @@ var LocalVerifier = (function () {
       }
 
       decrypted = _crypto.AES.decrypt(decrypted,
-        process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : config.get('secretKey')).toString(_crypto.enc.Utf8);
+        process.env.BACKEND_SECRET_KEY).toString(_crypto.enc.Utf8);
 
       debug('Verifying password');
 

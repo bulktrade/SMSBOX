@@ -3,7 +3,6 @@ const errors = require('feathers-errors');
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const config = require('config');
 
 module.exports = function (app) {
 
@@ -12,10 +11,10 @@ module.exports = function (app) {
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      service: process.env.BACKEND_MAILER_SERVISE ? process.env.BACKEND_MAILER_SERVISE : config.get('mailer').service,
+      service: process.env.BACKEND_MAILER_SERVISE,
       auth: {
-        user: process.env.BACKEND_MAILER_USERNAME ? process.env.BACKEND_MAILER_USERNAME : config.get('mailer').username,
-        pass: process.env.BACKEND_MAILER_PASSWORD ? process.env.BACKEND_MAILER_PASSWORD : config.get('mailer').password
+        user: process.env.BACKEND_MAILER_USERNAME,
+        pass: process.env.BACKEND_MAILER_PASSWORD
       }
     });
 
@@ -37,11 +36,10 @@ module.exports = function (app) {
       .then(function (entity) {
 
         const forgottenPassword = _crypto.AES.decrypt(entity.password,
-          process.env.BACKEND_SECRET_KEY ? process.env.BACKEND_SECRET_KEY : config.get('secretKey'));
-
+          process.env.BACKEND_SECRET_KEY);
         // setup e-mail data with unicode symbols
         const mailOptions = {
-          from: process.env.BACKEND_MAILER_USERNAME ? process.env.BACKEND_MAILER_USERNAME : config.get('mailer').username, // sender address
+          from: process.env.BACKEND_MAILER_USERNAME, // sender address
           to: to, // list of receivers
           subject: 'Restore password', // Subject line
           text: `
