@@ -6,7 +6,7 @@ const app = require('../../../src/app');
 
 describe('invoices service', function () {
   let credentials = {
-    email: 'admin@smsc.io',
+    username: 'admin@smsc.io',
     password: 'admin',
   };
 
@@ -19,7 +19,7 @@ describe('invoices service', function () {
   it('authentication', (done) => {
     request.post({
       url: 'http://localhost:3030/authentication',
-      form: { email: credentials.email, password: credentials.password }
+      form: { username: credentials.username, password: credentials.password }
     }, function (err, httpResponse, body) {
       assert.equal(201, httpResponse.statusCode);
       assert.ok(JSON.parse(body).accessToken);

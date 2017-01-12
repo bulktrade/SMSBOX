@@ -123,7 +123,7 @@ let LocalVerifier = (function () {
 
       debug('Checking credentials', username, password);
       let query = (_query = {}, _defineProperty(_query, '$limit', 1), _query);
-      query[ '$or' ] = [
+      query.$or = [
         { email: username },
         { telephoneNumber: username }
       ];
