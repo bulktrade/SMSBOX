@@ -17,7 +17,7 @@ describe('Chat service', () => {
                 {
                     provide: FeathersService,
                     useFactory: (http: Http, tokenService: TokenService) => {
-                        return new FeathersService(http, tokenService, 'http://localhost:3030');
+                        return new FeathersService(http, tokenService);
                     },
                     deps: [Http, TokenService]
                 }
