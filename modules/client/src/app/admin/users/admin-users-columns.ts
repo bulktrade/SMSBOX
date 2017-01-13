@@ -40,7 +40,13 @@ export namespace AdminUsersColDefs {
         {
             field: 'permissions',
             headerName: 'user.permissions',
-            type: 'Selection'
+            type: 'Selection',
+            options: [
+                { label: '', value: '' },
+                { label: 'ADMIN', value: 'ADMIN' },
+                { label: 'USER', value: 'USER' },
+                { label: 'GUEST', value: 'GUEST' }
+            ]
         },
         {
             field: 'password',

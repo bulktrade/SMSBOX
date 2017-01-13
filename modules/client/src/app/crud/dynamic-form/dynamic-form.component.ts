@@ -1,13 +1,23 @@
-import { Component, Input, Output, EventEmitter, NgModule, ModuleWithProviders } from "@angular/core";
+import {
+    Component,
+    Input,
+    Output,
+    EventEmitter,
+    NgModule,
+    ModuleWithProviders,
+    ViewEncapsulation
+} from "@angular/core";
 import { Location, CommonModule } from "@angular/common";
-import { ColDef } from "ag-grid";
 import { TranslateService, TranslateModule } from "ng2-translate";
 import { Button } from "../model/button";
 import { FormsModule } from "@angular/forms";
 import { MessagesModule } from "primeng/components/messages/messages";
 import { EqualValidatorModule } from "../../common/equal-validator.directive";
+import { DropdownModule } from "primeng/components/dropdown/dropdown";
+import { ColFormDefs } from "../model/column/column-form";
 
 @Component({
+    encapsulation: ViewEncapsulation.None,
     selector: 'dynamic-form',
     templateUrl: './dynamic-form.component.html',
     styleUrls: [
@@ -17,7 +27,7 @@ import { EqualValidatorModule } from "../../common/equal-validator.directive";
 })
 
 export class DynamicFormComponent {
-    @Input('columnDefs') columnDefs: ColDef[];
+    @Input('columnDefs') columnDefs: ColFormDefs[];
     @Input('buttonModel') buttonModel: Button;
     @Input('model') model = {};
 
@@ -39,7 +49,8 @@ export class DynamicFormComponent {
         FormsModule,
         TranslateModule,
         MessagesModule,
-        EqualValidatorModule
+        EqualValidatorModule,
+        DropdownModule
     ],
     exports: [DynamicFormComponent],
     declarations: [DynamicFormComponent],
