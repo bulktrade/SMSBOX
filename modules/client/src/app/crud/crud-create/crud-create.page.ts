@@ -1,7 +1,7 @@
 import { EC } from "../../common/test/integration/expected-conditions";
 
 export class CrudCreatePage {
-    timeout: number = 500;
+    readonly timeout: number = 500;
 
     crudViewTag = element(by.tagName('crud-view'));
     crudCreateTag = element(by.tagName('crud-create'));
@@ -11,7 +11,7 @@ export class CrudCreatePage {
     backButton = element(by.id('backButton'));
     inputFields = [
         { element: element(by.id('email')), data: 'ylain' },
-        { element: element(by.id('permissions')), data: 'USER' },
+        { element: element(by.id('telephoneNumber')), data: '380434975498' },
         { element: element(by.id('password')), data: 'qweF' },
         { element: element(by.id('confirmPassword')), data: 'qweF' },
     ];

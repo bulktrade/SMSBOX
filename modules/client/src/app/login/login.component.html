@@ -7,14 +7,14 @@
 				<div class="input-container">
 					<input type="text" required
 					       [(ngModel)]="model.email" id="emailAddress" name="emailAddress"
-					       autocomplete="on" #emailAddress="ngModel"/>
+					       #emailAddress="ngModel"/>
 					<label for="EmailAddress">{{'login.emailAddress' | translate}}</label>
 					<div class="bar"></div>
 				</div>
 				<div class="input-container">
 					<input type="password" required id="password"
 					       maxlength="64" [(ngModel)]="model.password" name="password"
-					       autocomplete="on" #password="ngModel"/>
+					       #password="ngModel"/>
 					<label for="Password">{{"login.password" | translate}}</label>
 					<div class="bar"></div>
 				</div>
@@ -43,7 +43,7 @@
 					<div class="bar"></div>
 				</div>
 				<div class="button-container">
-					<button type="submit" class="submitButton" [disabled]="restorePasswordForm.form.invalid">
+					<button type="submit" class="forgotPasswordSubmitButton" [disabled]="restorePasswordForm.form.invalid">
 						<span>{{'login.send' | translate}}</span>
 						<i *ngIf="showSendMailSpinner" class="fa fa-spinner fa-pulse fa-3x fa-fw loading-spinner"></i>
 					</button>
