@@ -11,7 +11,7 @@ module.exports = function (app) {
 
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
-      service: process.env.BACKEND_MAILER_SERVISE,
+      service: process.env.BACKEND_MAILER_SERVICE,
       auth: {
         user: process.env.BACKEND_MAILER_USERNAME,
         pass: process.env.BACKEND_MAILER_PASSWORD

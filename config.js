@@ -27,7 +27,7 @@ process.env.BACKEND_DATABASE_PASSWORD = process.env.BACKEND_DATABASE_PASSWORD ? 
 process.env.BACKEND_DATABASE_NAME = process.env.BACKEND_DATABASE_NAME ? process.env.BACKEND_DATABASE_NAME : backendDatabaseName;
 process.env.BACKEND_DATABASE_FILENAME = process.env.BACKEND_DATABASE_FILENAME ? process.env.BACKEND_DATABASE_FILENAME : backendDatabaseFilename;
 
-process.env.BACKEND_MAILER_SERVISE = process.env.BACKEND_MAILER_SERVISE ? process.env.BACKEND_MAILER_SERVISE : backendMailerService; // See supported services https://github.com/nodemailer/nodemailer-wellknown#supported-services
+process.env.BACKEND_MAILER_SERVICE = process.env.BACKEND_MAILER_SERVICE ? process.env.BACKEND_MAILER_SERVICE : backendMailerService; // See supported services https://github.com/nodemailer/nodemailer-wellknown#supported-services
 process.env.BACKEND_MAILER_USERNAME = process.env.BACKEND_MAILER_USERNAME ? process.env.BACKEND_MAILER_USERNAME : backendMailerUsername;
 process.env.BACKEND_MAILER_PASSWORD = process.env.BACKEND_MAILER_PASSWORD ? process.env.BACKEND_MAILER_PASSWORD : backendMailerPassword;
 
