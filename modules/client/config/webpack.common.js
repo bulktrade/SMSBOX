@@ -1,3 +1,5 @@
+'use strict';
+
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const bourbon = require('node-bourbon').includePaths;
@@ -33,7 +35,7 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function (options) {
-  isProd = options.env === 'production';
+  let isProd = options.env === 'production';
   return {
 
     /*

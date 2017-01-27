@@ -1,9 +1,11 @@
-let path = require('path');
+'use strict';
+
+const path = require('path');
 
 const EVENT = process.env.npm_lifecycle_event || '';
 
 // Helper functions
-let ROOT = path.resolve(__dirname, '..');
+const ROOT = path.resolve(__dirname, '..');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
